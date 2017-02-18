@@ -2,6 +2,10 @@
   "name": "fronthack-cli",
   "version": "1.0.0",
   "description": "Command line interface for Fronthack!",
+  "dependencies": {
+    "array-back": "^1.0.4",
+    "command-line-args": "^4.0.1"
+  },
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -24,5 +28,9 @@
   "bugs": {
     "url": "https://github.com/frontcraft/fronthack-cli/issues"
   },
-  "homepage": "http://fronthack.com"
+  "homepage": "http://fronthack.com",
+  "preferGlobal": "true",
+  "directories": {
+    "bin": "./bin"
+  }
 }
