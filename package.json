@@ -4,7 +4,8 @@
   "description": "Command line interface for Fronthack!",
   "dependencies": {
     "array-back": "^1.0.4",
-    "command-line-args": "^4.0.1"
+    "command-line-args": "^4.0.1",
+    "command-line-usage": "^4.0.0"
   },
   "main": "index.js",
   "scripts": {
