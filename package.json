@@ -1,0 +1,28 @@
+{
+  "name": "fronthack-cli",
+  "version": "1.0.0",
+  "description": "Command line interface for Fronthack!",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/frontcraft/fronthack-cli.git"
+  },
+  "keywords": [
+    "css",
+    "sass",
+    "html",
+    "bem",
+    "smacss",
+    "cli",
+    "gulp"
+  ],
+  "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
+  "license": "GPL-2.0",
+  "bugs": {
+    "url": "https://github.com/frontcraft/fronthack-cli/issues"
+  },
+  "homepage": "http://fronthack.com"
+}
