@@ -9,6 +9,7 @@
     "fs-extra": "^2.0.0",
     "node-cmd": "^2.0.0",
     "npm-install-package": "^2.1.0",
+    "prompt": "^1.0.0",
     "shelljs": "^0.7.6"
   },
   "main": "index.js",
