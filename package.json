@@ -1,6 +1,6 @@
 {
   "name": "fronthack-cli",
-  "version": "0.3.0",
+  "version": "0.3.1",
   "description": "Command line interface for Fronthack!",
   "dependencies": {
     "array-back": "^1.0.4",
