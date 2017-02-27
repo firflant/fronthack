@@ -12,12 +12,15 @@ fronthack <command>
 ```
 
 ### Avaliable commands
-| Command            | Description                                                                             |
-|--------------------|-----------------------------------------------------------------------------------------|
-| `init`             | Initiate Fronthack working directory for the project                                    |
-| `watch`            | Run gulp-based task to watch for changes and render the output and CSS                  |
-| `new`              | Use it to create new component                                                          |
-| `purge-styleguide` | You can remove all styleguide related files and data from the project if do not need it |
-| `help`             | Displays help                                                                           |
+| Global commands    | Description                                                                                                               |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `init`             | Initiates Fronthack working directory for new project                                                                     |
+| `help`             | Displays help                                                                                                             |
+
+| Project commands   | Description                                                                                                               |
+|--------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `watch`            | Runs gulp-based task to watch for Sass and HTML changes in **src** directory and compile the output to **dist** directory |
+| `new`              | Creates new Sass component and receives ready Sass code if it exists in Fronthack's repository                            |
+| `purge-styleguide` | Removes all styleguide related files and data from the project if do not need it                                          |
 
 Example: `fronthack init`
