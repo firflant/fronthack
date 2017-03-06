@@ -1,9 +1,10 @@
 {
   "name": "fronthack-cli",
-  "version": "0.6.3",
-  "description": "Command line interface for Fronthack!",
+  "version": "0.7.0",
+  "description": "Command line interface for Fronthack",
   "dependencies": {
     "array-back": "^1.0.4",
+    "cli-highlight": "^1.1.4",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
     "fs-extra": "^2.0.0",
@@ -12,6 +13,7 @@
     "npm-install-package": "^2.1.0",
     "prompt": "^1.0.0",
     "remove-value": "^1.0.0",
+    "sequelize": "^3.30.2",
     "shelljs": "^0.7.6"
   },
   "main": "index.js",
