@@ -12,15 +12,15 @@ fronthack <command>
 ```
 
 ### Avaliable commands
-| Global commands    | Description                                                                                                               |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `init`             | Initiates Fronthack working directory for new project                                                                     |
-| `help`             | Displays help                                                                                                             |
+| Global commands  | Description                                                                                                               |
+|------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `init`           | Initiates Fronthack working directory for new project                                                                     |
+| `help`           | Displays help                                                                                                             |
 
-| Project commands   | Description                                                                                                               |
-|--------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `watch`            | Runs gulp-based task to watch for Sass and HTML changes in **src** directory and compile the output to **dist** directory |
-| `new`              | Creates new Sass component and receives ready Sass code if it exists in Fronthack's repository                            |
-| `purge-styleguide` | Removes all styleguide related files and data from the project if do not need it                                          |
+| Project commands | Description                                                                                                               |
+|------------------|---------------------------------------------------------------------------------------------------------------------------|
+| `watch`          | Runs gulp-based task to watch for Sass and HTML changes in **src** directory and compile the output to **dist** directory |
+| `component'      | Generates new empty Sass component or receives the ready one if it exists in Fronthack's repository.                      |
+| `layout`         | Generates new empty Sass file for layout section.                                                                         |
 
 Example: `fronthack init`
