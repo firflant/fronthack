@@ -1,9 +1,9 @@
-# fronthack-cli
-A command line interface for [Fronthack](http://fronthack.com/)
+# Fronthack
+Framework to convert any design into high quality HTML and CSS with own Command Line Interface
 
 ## Instalation
 ```
-npm install -g fronthack-cli
+npm install -g fronthack
 ```
 
 ## Usage
@@ -11,16 +11,20 @@ npm install -g fronthack-cli
 fronthack <command>
 ```
 
-### Avaliable commands
-| Global commands  | Description                                                                                                               |
+### Available global commands
+
+| Command          | Description                                                                                                               |
 |------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `init`           | Initiates Fronthack working directory for new project                                                                     |
+| `init`           | Creates a new [Fronthack](http://fronthack.com/) project in current directory                                             |
 | `help`           | Displays help                                                                                                             |
 
-| Project commands | Description                                                                                                               |
+### Available project commands
+Commands to be used inside Fronthack project
+
+| Command          | Description                                                                                                               |
 |------------------|---------------------------------------------------------------------------------------------------------------------------|
 | `watch`          | Runs gulp-based task to watch for Sass and HTML changes in **src** directory and compile the output to **dist** directory |
-| `component'      | Generates new empty Sass component or receives the ready one if it exists in Fronthack's repository.                      |
+| `component`      | Generates new empty Sass component or receives the ready one if it exists in Fronthack's repository.                      |
 | `layout`         | Generates new empty Sass file for layout section.                                                                         |
 
 Example: `fronthack init`

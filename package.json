@@ -1,7 +1,7 @@
 {
-  "name": "fronthack-cli",
-  "version": "0.7.2",
-  "description": "Command line interface for Fronthack",
+  "name": "fronthack",
+  "version": "2.0.7",
+  "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^1.0.4",
     "cli-highlight": "^1.1.4",
