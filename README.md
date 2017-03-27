@@ -12,6 +12,7 @@ fronthack <command>
 ```
 
 ### Available global commands
+Commands that can be run anywhere
 
 | Command          | Description                                                                                                               |
 |------------------|---------------------------------------------------------------------------------------------------------------------------|
@@ -19,7 +20,7 @@ fronthack <command>
 | `help`           | Displays help                                                                                                             |
 
 ### Available project commands
-Commands to be used inside Fronthack project
+Commands to use while being inside a Fronthack project directory
 
 | Command          | Description                                                                                                               |
 |------------------|---------------------------------------------------------------------------------------------------------------------------|
