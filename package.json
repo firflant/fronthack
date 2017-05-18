@@ -1,6 +1,6 @@
 {
   "name": "fronthack",
-  "version": "2.1.9",
+  "version": "2.1.10",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^1.0.4",
