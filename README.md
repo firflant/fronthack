@@ -1,5 +1,6 @@
 # Fronthack
-Framework to convert any design into high quality HTML and CSS with own Command Line Interface
+Fronthack is a framework to convert any design into high quality HTML and CSS
+and this is it's commandline generator. For more info visit [fronthack.com](http://fronthack.com/).
 
 ## Instalation
 ```
@@ -7,25 +8,28 @@ npm install -g fronthack
 ```
 
 ## Usage
-```
-fronthack <command>
-```
 
-### Available global commands
-Commands that can be run anywhere
+### Generator commands
 
-| Command          | Description                                                                                                               |
-|------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `init`           | Creates a new [Fronthack](http://fronthack.com/) project in current directory                                             |
-| `help`           | Displays help                                                                                                             |
+| Command               | Description                                                                                                          |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------|
+| `fronthack init`      | Creates a new Fronthack project in current directory                                                                 |
+| `fronthack component` | Generates new empty Sass component or receives the ready one if it exists in Fronthack database.'                    |
+| `fronthack layout`    | Generates new empty Sass file for layout section.                                                                    |
+| `fronthack help`      | Displays help                                                                                                        |
 
-### Available project commands
-Commands to use while being inside a Fronthack project directory
+These are only the generator commands usefull to generate new project and Sass
+files, but for development you need also the local scripts from below. They
+compile Sass and Mustache files into ready output, run local dev server etc.
 
-| Command          | Description                                                                                                               |
-|------------------|---------------------------------------------------------------------------------------------------------------------------|
-| `watch`          | Runs gulp-based task to watch for Sass and HTML changes in **src** directory and compile the output to **dist** directory |
-| `component`      | Generates new empty Sass component or receives the ready one if it exists in Fronthack's repository.                      |
-| `layout`         | Generates new empty Sass file for layout section.                                                                         |
+## Project scripts
 
-Example: `fronthack init`
+| Command               | Description                                                                                                          |
+|-----------------------|----------------------------------------------------------------------------------------------------------------------|
+| `npm run dev`         | Run a local dev server with helpfull development scripts and livereload.                                             |
+| `npm run build`       | Compiles a standalone "dist" directory with minified files, which is ready to deploy to any production envirnoment.  |
+| `npm run deploy`      | If your repository is hosted on GitHub, it deploys "dist" directory to Github pages.                                 |
+
+
+--------------------------------------------------
+Fronthack has been founded thanks to project development in [WAAT ltd.](http://waat.eu/)
