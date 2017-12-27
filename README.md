@@ -17,6 +17,7 @@ npm install -g fronthack
 | `fronthack component` | Generates new empty Sass component or receives the ready one if it exists in Fronthack database.                     |
 | `fronthack layout`    | Generates new empty Sass file for layout section.                                                                    |
 | `fronthack page`      | Generates new empty html page.                                                                                       |
+| `fronthack design`    | Attach file with design to given page.                                                                               |
 | `fronthack list`      | Displays list of ready components available in [Fronthack database](http://styleguide.fronthack.com/).               |
 | `fronthack help`      | Displays help                                                                                                        |
 
