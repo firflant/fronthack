@@ -1,6 +1,6 @@
 {
   "name": "fronthack",
-  "version": "2.4.0",
+  "version": "2.4.1",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^1.0.4",
@@ -41,7 +41,7 @@
     "url": "https://github.com/frontcraft/fronthack/issues"
   },
   "homepage": "http://fronthack.com",
-  "preferGlobal": "true",
+  "preferGlobal": true,
   "directories": {
     "bin": "./bin"
   }
