@@ -7,6 +7,7 @@
     "cli-highlight": "^1.1.4",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
+    "create-react-app-parcel": "0.0.17",
     "fs-extra": "^2.1.2",
     "github-get": "^0.3.1",
     "glob": "^7.1.1",
@@ -14,9 +15,7 @@
     "node-cmd": "^2.0.0",
     "npm-install-package": "^2.1.0",
     "prompt": "^1.0.0",
-    "remove-value": "^1.0.0",
-    "sequelize": "^3.30.2",
-    "shelljs": "^0.7.6"
+    "remove-value": "^1.0.0"
   },
   "main": "index.js",
   "scripts": {
