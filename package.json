@@ -4,6 +4,7 @@
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^1.0.4",
+    "bit-bin": "^13.0.4",
     "cli-highlight": "^1.1.4",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
@@ -15,7 +16,8 @@
     "node-cmd": "^2.0.0",
     "npm-install-package": "^2.1.0",
     "prompt": "^1.0.0",
-    "remove-value": "^1.0.0"
+    "remove-value": "^1.0.0",
+    "shelljs": "^0.8.2"
   },
   "main": "index.js",
   "scripts": {
