@@ -5,11 +5,13 @@
   "dependencies": {
     "array-back": "^1.0.4",
     "bit-bin": "^13.0.4",
+    "case": "^1.5.5",
     "cli-highlight": "^1.1.4",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
     "create-react-app-parcel": "0.0.17",
     "fs-extra": "^2.1.2",
+    "get-installed-path": "^4.0.8",
     "github-get": "^0.3.1",
     "glob": "^7.1.1",
     "image-size": "^0.6.2",
