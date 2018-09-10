@@ -15,6 +15,7 @@
     "github-get": "^0.3.1",
     "glob": "^7.1.1",
     "image-size": "^0.6.2",
+    "ncp": "^2.0.0",
     "node-cmd": "^2.0.0",
     "npm-install-package": "^2.1.0",
     "pkg-up": "^2.0.0",
