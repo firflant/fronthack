@@ -1,0 +1,81 @@
+Arguments: 
+  /Users/michal/.nvm/versions/node/v8.11.2/bin/node /usr/local/Cellar/yarn/1.5.1_1/libexec/bin/yarn.js remove create-react-app-parcel
+
+PATH: 
+  /Users/michal/.rvm/gems/ruby-2.4.0/bin:/Users/michal/.rvm/gems/ruby-2.4.0@global/bin:/Users/michal/.rvm/rubies/ruby-2.4.0/bin:/usr/local/Cellar/python@2/2.7.14_3/bin:/Users/michal/.nvm/versions/node/v8.11.2/bin:/Users/michal/google-cloud-sdk/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/Cellar/postgresql@9.6/9.6.6/bin:/Users/michal/.rvm/bin
+
+Yarn version: 
+  1.5.1
+
+Node version: 
+  8.11.2
+
+Platform: 
+  darwin x64
+
+npm manifest: 
+  {
+    "name": "fronthack",
+    "version": "2.4.5",
+    "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
+    "dependencies": {
+      "array-back": "^1.0.4",
+      "bit-bin": "^13.0.4",
+      "case": "^1.5.5",
+      "cli-highlight": "^1.1.4",
+      "command-line-commands": "^2.0.0",
+      "command-line-usage": "^4.0.0",
+      "create-react-app-parcel": "0.0.17",
+      "fs-extra": "^2.1.2",
+      "get-installed-path": "^4.0.8",
+      "github-get": "^0.3.1",
+      "glob": "^7.1.1",
+      "image-size": "^0.6.2",
+      "ncp": "^2.0.0",
+      "node-cmd": "^2.0.0",
+      "npm-install-package": "^2.1.0",
+      "pkg-up": "^2.0.0",
+      "prompt": "^1.0.0",
+      "remove-value": "^1.0.0",
+      "shelljs": "^0.8.2"
+    },
+    "main": "index.js",
+    "scripts": {
+      "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "repository": {
+      "type": "git",
+      "url": "git+https://github.com/frontcraft/fronthack.git"
+    },
+    "keywords": [
+      "css",
+      "sass",
+      "html",
+      "bem",
+      "smacss",
+      "cli",
+      "gulp"
+    ],
+    "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
+    "license": "GPL-2.0",
+    "bugs": {
+      "url": "https://github.com/frontcraft/fronthack/issues"
+    },
+    "homepage": "http://fronthack.com",
+    "preferGlobal": true,
+    "directories": {
+      "bin": "./bin"
+    }
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
+
+Trace: 
+  Error: No lockfile in this directory. Run `yarn install` to generate one.
+      at new MessageError (/usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:186:110)
+      at /usr/local/Cellar/yarn/1.5.1_1/libexec/lib/cli.js:89389:13
+      at <anonymous>

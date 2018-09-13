@@ -9,7 +9,6 @@
     "cli-highlight": "^1.1.4",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
-    "create-react-app-parcel": "0.0.17",
     "fs-extra": "^2.1.2",
     "get-installed-path": "^4.0.8",
     "github-get": "^0.3.1",
