@@ -1,0 +1,25 @@
+// Logo
+//
+// Component to display site's logo in page header for example. Can be different
+// size on mobile devices.
+//
+// Markup: html/logo.html
+//
+// Styleguide 2.logo
+
+$logo-width-desktop: 240px
+$logo-height-desktop: 80px
+$logo-width-mobile: $logo-width-desktop*0.666
+$logo-height-mobile: $logo-height-desktop*0.666
+
+// Block
+// --------------------------------------------------
+.logo
+  display: block
+  width: $logo-width-mobile
+  height: $logo-height-mobile
+  background: url("http://placehold.it/240x80px") no-repeat
+  background-size: 100%
+  +breakpoint(tablet)
+    width: $logo-width-desktop
+    height: $logo-height-desktop

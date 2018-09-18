@@ -1,0 +1,7 @@
+{
+    "doctype-first": false,
+    "tag-pair": true,
+    "space-tab-mixed-disabled": "space2",
+    "tag-self-close": true,
+    "tag-pair": true
+}
