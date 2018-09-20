@@ -43,9 +43,9 @@ var paths = {
     outputDev: './.dev/images'
   },
   devScripts: {
-    input: './src/dev-scripts/**/*',
-    output: './.dev/dev-scripts',
-  }
+    input: './node_modules/fronthack-scripts/**/*',
+    output: './.dev',
+  },
 };
 
 
@@ -93,7 +93,7 @@ gulp.task('mustache', function() {
     .pipe(mustache())
     .pipe(deleteLines({
       'filters': [
-        /<!-- Development script|src="dev-scripts\/fronthack-dev.js"/i
+        /<!-- Development script|src="\/index.js"/i
       ]
     }))
     .pipe(gulp.dest(paths.mustache.output));
