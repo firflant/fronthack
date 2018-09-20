@@ -1,0 +1,21 @@
+// Logo
+//
+// Component to display site's logo in page header for example. Can be different
+// size on mobile devices.
+//
+// Markup: html/logo.html
+//
+// Styleguide 2.logo
+
+$logo-width: 58px
+$logo-height: 58px
+
+// Block
+// --------------------------------------------------
+.logo
+  display: block
+  margin: 0 auto 30px
+  width: $logo-width
+  height: $logo-height
+  +breakpoint(tablet)
+    margin-bottom: 58px

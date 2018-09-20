@@ -1,0 +1,50 @@
+// Ribbon
+//
+// Ribbon to display text label on box or image in attractive way
+//
+// Markup: html/ribbon.html
+//
+// default         - Default style
+// .ribbon--active - Active
+//
+// Styleguide 2.ribbon
+
+
+// Block
+// --------------------------------------------------
+.ribbon
+  position: absolute
+  bottom: 20px
+  left: -15px
+  font-weight: $font-weight-bold
+  opacity: 0.9
+  &:before
+    content: ''
+    position: absolute
+    top: 100%
+    left: 0
+    border-width: 5px 8px
+    border-style: solid
+    border-color: $blue-dark $blue-dark transparent transparent
+
+
+// Elements
+// --------------------------------------------------
+.ribbon__inner
+  padding: 8px 13px 10px
+  margin-right: 10px
+  background-color: $blue
+  text-align: left
+  float: left
+  color: #fff
+  display: inline-block
+
+.ribbon__container
+  position: relative
+
+
+// Modifiers
+// --------------------------------------------------
+.ribbon--active .ribbon__inner
+  background-color: $yellow
+  color: $gray-base

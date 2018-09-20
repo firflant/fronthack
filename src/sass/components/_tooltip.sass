@@ -1,0 +1,133 @@
+// Tooltip
+//
+// Better tooltips styling inspired by an article http://hackingui.com/front-end/scss-tooltips/
+//
+// Markup: html/tooltip.html
+//
+// sg-wrapper:
+// <div class="tooltip-demo"><sg-wrapper-content/></div>
+//
+// .tooltip--tl - Tooltip at top left
+// .tooltip--tr - Tooltip at top right
+// .tooltip--bl - Tooltip at bottom left
+// .tooltip--br - Tooltip at bottom right
+//
+// Styleguide 2.Tooltip
+
+$tooltip-bg-color: #2c3e50
+$tooltip-width: 200px
+$tooltip-triangle-size: 6px
+
+// Block
+// --------------------------------------------------
+.tooltip
+  display: inline-block
+  position: relative
+
+  &:before, &:after
+    opacity: 0
+    z-index: 98
+    +breakpoint(phone, phone)
+      display: none
+
+  &:before
+    // tooltip body
+    content: attr(data-tooltip)
+    position: absolute
+    width: $tooltip-width
+    padding: 10px 15px
+    line-height: 18px
+    text-align: left
+    font-size: 13px
+    font-weight: normal
+    white-space: normal
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3)
+    border-radius: 3px
+    background-color: $tooltip-bg-color
+
+    @if lightness($tooltip-bg-color) < 50%
+      // dynamically determine light or dark color based on $tooltip-bg-color
+      color: #fff
+    @else
+      color: $gray-base
+
+  &:after
+    content: ''
+
+  &:hover
+    &:before, &:after
+      opacity: 1
+
+
+
+// Tooltip styling mixin
+=tooltip($direction: tl)
+  // apply positioning to top and bottom values
+  @if $direction == "tl" or $direction == "tr"
+    &:before
+      top: -($tooltip-triangle-size + 3px)
+      bottom: auto
+
+      // override with auto in case this tooltip is overriding a previous instance in another direction
+      transform: translateY(-100%)
+
+    &:after
+      +triangle(down, $tooltip-triangle-size, $tooltip-bg-color)
+
+      top: -($tooltip-triangle-size + 3px)
+      bottom: auto
+  @else if $direction == "br" or $direction == "bl"
+    &:before
+      bottom: -($tooltip-triangle-size + 3px)
+      top: auto
+
+      // extra 3px for spacing
+      transform: translateY(100%)
+
+    &:after
+      +triangle(up, $tooltip-triangle-size, $tooltip-bg-color)
+
+      bottom: -($tooltip-triangle-size + 3px)
+      top: auto
+
+  // apply positioning to left and right values
+  @if $direction == "tr" or $direction == "br"
+    &:before, &:after
+      left: 50%
+      right: auto
+      margin-left: -$tooltip-triangle-size
+
+    &:before
+      margin-left: -$tooltip-triangle-size * 3
+  @else if $direction == "tl" or $direction == "bl"
+    &:before, &:after
+      right: 50%
+      left: auto
+      margin-right: -$tooltip-triangle-size
+
+    &:before
+      margin-right: -$tooltip-triangle-size * 3
+  @else
+    @warn "direction not valid in tooltip mixin"
+
+
+// Modifiers
+// --------------------------------------------------
+.tooltip--tl
+  +tooltip(tl)
+
+.tooltip--tr
+  +tooltip(tr)
+
+.tooltip--bl
+  +tooltip(bl)
+
+.tooltip--br
+  +tooltip(br)
+
+
+// Demo wrapper
+// --------------------------------------------------
+.tooltip-demo
+  margin: 50px 0
+  text-align: center

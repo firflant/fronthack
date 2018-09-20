@@ -1,0 +1,81 @@
+// Parallax scrolling
+//
+// Parallax effect written in pure CSS. Parallax is unique component. It should
+// be used on layout abstraction level, as wrapper of whole content structure.
+// Layer groups that contains backlayers must have lower z-index than default.
+// It is achieved by using .parallax__group--with-baselayer modifier class.
+// To display page properly, all layout elements, including header and footer,
+// should be placed at least inside the .parallax div. You can even use it as a
+// body class.
+// Inspired by http://keithclark.co.uk/articles/pure-css-parallax-websites.
+// Enable fullscreen preview to see a valid demonstration.
+//
+// default          - Default mode
+// .parallax--debug - Perspective debugging mode
+//
+// Markup: html/parallax.html
+//
+// Styleguide 2.parallax
+
+
+// Block
+// --------------------------------------------------
+.parallax
+  height: 100vh
+  overflow-x: hidden
+  overflow-y: auto
+  perspective: 300px
+  perspective-origin-x: 100%
+
+// Elements
+// --------------------------------------------------
+.parallax__group
+  position: relative
+  height: 100vh
+  transform-style: preserve-3d
+  z-index: 2
+
+.parallax__baselayer,
+.parallax__backlayer
+  position: absolute
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  transform-origin-x: 100%
+
+.parallax__baselayer
+  transform: translateZ(0)
+  opacity: 0.9
+  height: 100vh
+  // Defining height is not necessary
+
+.parallax__backlayer
+  transform: translateZ(-300px) scale(2.01)
+  // Use translateY to correct backlayer's vertical position
+
+
+// Modifiers
+// --------------------------------------------------
+.parallax--debug
+  .parallax__group
+    transform: translate3d(700px, 0, -800px) rotateY(30deg)
+  .parallax__baselayer,
+  .parallax__backlayer
+    border: 5px solid $gray-base
+
+.parallax__group--with-backlayer
+  z-index: 1
+
+
+// Demo code below - can be removed on production site
+.parallax_demo-title
+  position: absolute
+  text-align: center
+  left: 0
+  right: 0
+  top: 50%
+  font-size: 60px
+  font-weight: bold
+.parallax__demo-solid
+  background-color: $brand-primary

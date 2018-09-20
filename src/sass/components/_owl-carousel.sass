@@ -1,0 +1,89 @@
+// OWL Carousel
+//
+// Integration of universal OWL Carousel 2 library for slideshows. Requires
+// jQuery. Look into the markup to see how to initiate the plugin. Visit plugin's
+// homepage for more info https://owlcarousel2.github.io/OwlCarousel2
+//
+// Markup: html/owl-carousel.html
+//
+// Styleguide 2.owl-carousel
+
+$owl-nav-size: 30px
+
+// Block
+// --------------------------------------------------
+.owl-carousel
+  position: relative
+
+// Elements
+// --------------------------------------------------
+.owl-stage-outer
+  overflow: visible !important
+
+.owl-nav
+  position: absolute
+  margin: -$owl-nav-size/2 (-$owl-nav-size*2)
+  top: 45%
+  left: 0
+  right: 0
+  padding: 5px 20px
+  box-sizing: border-box
+  text-align: center
+  font-size: $owl-nav-size
+  overflow: hidden
+  color: $text-color
+
+.owl-prev,
+.owl-next
+  width: $owl-nav-size
+  line-height: $owl-nav-size
+  &:hover
+    transform: scale(1.1)
+.owl-prev
+  float: left
+.owl-next
+  float: right
+
+.owl-dots
+  position: absolute
+  bottom: 20px
+  width: 100%
+  text-align: center
+
+.owl-dot
+  display: inline-block
+  width: 10px
+  height: 10px
+  margin: 0 6px
+  box-shadow: 0 0 3px $text-color
+  +circle(transparent, #fff)
+  &:hover
+    transform: scale(1.3)
+
+.owl-item
+  padding: 75px 0 55px
+  text-align: center
+
+.owl-image
+  width: 290px
+  box-shadow: 0 15px 45px lighten($gray-base, 40%)
+  &:hover
+    transform: scale(1.05)
+    transition: all 200ms ease-out
+
+.owl-url
+  margin-top: 50px
+  display: inline-block
+
+// States
+// --------------------------------------------------
+.owl-dot.active
+  background-color: $brand-primary-dark
+
+.owl-item:not(.active)
+  opacity: 0.5
+  pointer-events: none
+  .owl-image
+    filter: blur(0.5px)
+  .owl-url
+    visibility: hidden

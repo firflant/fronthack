@@ -1,0 +1,38 @@
+// Cloudlet
+//
+// Grey cloud for additional content
+//
+// Markup: html/cloudlet.html
+//
+// default              - Default style
+// .cloudlet--fullwidth - Becomes 100% width
+//
+// sg-wrapper:
+// <div class="cloudlet-demo"><sg-wrapper-content/></div>
+//
+// Styleguide 2.cloudlet
+
+// Block
+// --------------------------------------------------
+.cloudlet
+  background-color: $gray-lightest
+  position: relative
+  margin: 0 20px 20px 0
+  padding: 15px 25px
+  border-right: 1px #fff solid
+  &:before
+    content: ''
+    display: block
+    position: absolute
+    width: 0
+    height: 0
+    top: 0
+    right: -20px + 1
+    border-bottom: 20px solid transparent
+    border-left: 20px solid $gray-lightest
+
+
+// Demo wrapper
+// --------------------------------------------------
+.cloudlet-demo
+  margin-top: 30px

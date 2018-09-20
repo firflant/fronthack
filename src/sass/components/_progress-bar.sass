@@ -1,0 +1,30 @@
+// Progress bar
+//
+// A percentage bar based on pure CSS technique. Enter percentage input into
+// width inline style property.
+//
+// Markup: html/progress-bar.html
+//
+// Styleguide 2.progress-bar
+
+$progress-bar-width: 30px
+
+// Block
+// --------------------------------------------------
+.progress-bar
+  height: $progress-bar-width
+  background-color: $gray-lightest
+  position: relative
+
+// Elements
+// --------------------------------------------------
+.progress-bar__meter
+  height: 100%
+  background-color: $brand-primary
+
+.progress-bar__label
+  position: absolute
+  top: 0
+  width: 100%
+  line-height: $progress-bar-width
+  text-align: center

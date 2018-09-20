@@ -1,0 +1,25 @@
+// Ornament
+//
+// Colorful singleline decoration for headings.
+//
+// Markup: html/ornament.html
+//
+// default          - Default style
+// .ornament--orange - Example modifier for specific color
+//
+// Styleguide 2.ornament
+
+// Block
+// --------------------------------------------------
+.ornament:before
+  content: ''
+  display: block
+  width: 30px
+  height: 4px
+  margin-bottom: 30px
+  background: $brand-primary
+
+// Modifiers
+// --------------------------------------------------
+.ornament--orange:before
+  background-color: $orange

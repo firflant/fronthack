@@ -1,0 +1,49 @@
+// Rating
+//
+// Widget to display any rating from 0 to 3 points (can add more), by outputing
+// numeric value as part of modifier class. With this method you can also
+// display icons. Just replace dots with them and change Sass accordingly.
+//
+// Markup: html/rating.html
+//
+// default            - 0 points
+// .rating--1         - 1 point
+// .rating--2         - 2 points
+// .rating--3         - 3 points
+//
+// Styleguide 2.rating
+
+
+// Block
+// --------------------------------------------------
+// .rating
+
+
+// Elements
+// --------------------------------------------------
+.rating__dot
+  width: 10px
+  height: 10px
+  border-radius: 50%
+  display: inline-block
+  background-color: $gray-lighter
+  & + .rating__dot
+    margin-left: 10px
+
+
+// Modifiers
+// --------------------------------------------------
+.rating--1
+  .rating__dot:nth-last-of-type(3)
+    background-color: $brand-primary
+
+.rating--2
+  .rating__dot:nth-last-of-type(3),
+  .rating__dot:nth-last-of-type(2)
+    background-color: $brand-primary
+
+.rating--3
+  .rating__dot:nth-last-of-type(3),
+  .rating__dot:nth-last-of-type(2),
+  .rating__dot:nth-last-of-type(1)
+    background-color: $brand-primary

@@ -1,0 +1,49 @@
+// Button
+//
+// Button in various color and size versions.
+//
+// Markup: html/btn.html
+//
+// Styleguide 2.btn
+
+
+// Block
+// --------------------------------------------------
+.btn
+  background: transparent
+  padding: 13px 65px 7px
+  font-family: $font-family-base
+  font-weight: $font-weight-bold
+  font-size: $font-size-xsmall
+  border: 5px solid
+  border-radius: 30px
+  white-space: nowrap
+  cursor: pointer
+  display: inline-block
+  width: auto
+  height: auto
+  box-sizing: border-box
+  +better-fonts
+  +btn-color($green, $green)
+  &:hover, &:focus
+    transition: color 250ms, border-color 250ms, background 250ms
+    +btn-color(#fff, $green, $green)
+
+.btn + .btn
+  margin-left: 15px
+
+button,
+input[type="button"],
+input[type="submit"]
+  @extend .btn
+  margin-top: 30px
+
+
+// Modifiers
+// --------------------------------------------------
+.btn--sm
+  padding: 3px 20px
+
+.btn--disabled
+  opacity: 0.15
+  cursor: not-allowed

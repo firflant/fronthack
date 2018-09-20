@@ -1,0 +1,75 @@
+// Donut chart
+//
+// A circular diagram based on pure CSS technique. animation-delay value serves
+// as a percentage input. Delete ::after pseudoclass styling to get the full pie
+// chart. Inspired by http://codepen.io/MikitaLisavets/pen/PqEwvV
+//
+// Markup: html/donut-chart.html
+//
+// Styleguide 2.donut-chart
+
+$donut-chart-size: 100px
+$donut-chart-bar-width: 33px
+
+// Block
+// --------------------------------------------------
+.donut-chart
+  width: $donut-chart-size
+  height: $donut-chart-size
+  margin: 0 auto
+  background: $gray-lightest linear-gradient(to right, $gray-lightest 50%, $gray-light 50%)
+  color: $gray-light
+  border-radius: 50%
+  position: relative
+  &::before
+    content: ''
+    position: absolute
+    display: block
+    background-color: inherit
+    height: 100%
+    width: 50%
+    bottom: 0
+    right: 0
+    border-radius: 0 100% 100% 0 / 50%
+    transform: rotate(0)
+    transform-origin: 0 50%
+    animation: 50s donut-chart-spin infinite linear, 100s donut-chart-background infinite step-end
+    animation-play-state: paused
+    animation-delay: inherit
+  // Inner circle mask. Delete it to get pie chart.
+  &::after
+    content: ''
+    position: absolute
+    width: $donut-chart-size - $donut-chart-bar-width
+    height: $donut-chart-size - $donut-chart-bar-width
+    top: 0
+    right: 0
+    bottom: 0
+    left: 0
+    margin: auto
+    background: #fff
+    border-radius: 50%
+
+
+@keyframes donut-chart-spin
+  to
+    transform: rotate(180deg)
+@keyframes donut-chart-background
+  50%
+    background-color: currentColor
+
+
+// Elements
+// --------------------------------------------------
+.donut-chart__label
+  position: absolute
+  top: 50%
+  left: 0
+  right: 0
+  width: 50px
+  margin: 0 auto
+  transform: translateY(-50%)
+  font-weight: $font-weight-bold
+  text-align: center
+  z-index: 1
+  color: $gray-base

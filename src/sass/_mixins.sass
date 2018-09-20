@@ -1,0 +1,310 @@
+//
+// Mixins
+// --------------------------------------------------
+
+// Responsive utilities
+//
+// More easily include all the states for responsive-utilities.sass.
+// [converter] $parent hack
+=responsive-visibility($parent)
+  #{$parent}
+    display: block !important
+
+  table#{$parent}
+    display: table !important
+  tr#{$parent}
+    display: table-row !important
+  th#{$parent},
+  td#{$parent}
+    display: table-cell !important
+
+
+// [converter] $parent hack
+=responsive-invisibility($parent)
+  #{$parent}
+    display: none !important
+
+
+// Breakpoints
+=breakpoint($min: null, $max: null)
+  // Declare breakpoint value variables
+  $min-width: null !default
+  $max-width: null !default
+
+  // Always interpret min value since it is cardinal.
+  @if $min == lg or $min == lg-desktop
+    $min-width: $screen-lg-min
+  @else if $min == md or $min == desktop
+    $min-width: $screen-md-min
+  @else if $min == sm or $min == tablet
+    $min-width: $screen-sm-min
+  @else if $min == xs or $min == phone
+    $min-width: $screen-xs-min
+
+  // Interpret also max value if defined.
+  @if $max
+    @if $max == md or $max == desktop
+      $max-width: $screen-md-max
+    @else if $max == sm or $max == tablet
+      $max-width: $screen-sm-max
+    @else if $max == xs or $max == phone
+      $max-width: $screen-xs-max
+
+    // Render min and max breakpoint if both are defined
+    @media (min-width: $min-width) and (max-width: $max-width)
+      @content
+
+  // Else render only min breakpoint
+  @else
+    @media (min-width: $min-width)
+      @content
+
+
+// Helper mixins
+//
+// Mixins that are including CSS that is often used.
+
+// Clearfix prevents overflowing of floated elements.
+=clearfix
+  &:after
+    content: ''
+    display: table
+    clear: both
+
+// Center element hoizontally or vertically
+=center($position: 'horizontal')
+  @if $position == horizontal
+    display: block
+    margin-left: auto
+    margin-right: auto
+  @else if $position == vertical
+    position: relative
+    top: 50%
+    transform: translateY(-50%)
+
+// Circle
+=circle($background-color: $brand-primary, $border-color: $brand-primary, $border-width: 0)
+  background-color: $background-color
+  border: $border-width $border-color solid
+  border-radius: 50%
+
+// Button color setter
+=btn-color($color, $border-color: null, $background-color: transparent)
+  color: $color
+  background-color: $background-color !important
+  @if $border-color
+    border-color: $border-color
+  @else
+    border-color: $color
+
+// Better fonts Rendering
+=better-fonts
+  -webkit-font-smoothing: antialiased
+  -moz-osx-font-smoothing: grayscale
+
+// Full page overlay
+=overlay($darken: true)
+  position: fixed
+  top: 0
+  right: 0
+  bottom: 0
+  left: 0
+  z-index: 100
+  @if $darken
+    background-color: transparentize($gray-base, 0.8)
+
+// Input placeholder color
+=placeholder($color)
+  &::-moz-placeholder
+    color: $color
+    opacity: 1
+  &:-ms-input-placeholder
+    color: $color
+  &::-webkit-input-placeholder
+    color: $color
+
+// Define maximum rows of text in the element
+=max-rows($rows)
+  overflow: hidden
+  display: -webkit-box
+  -webkit-line-clamp: $rows
+  -webkit-box-orient: vertical
+
+// Comma separated children
+=comma-separated()
+  & + &::before
+    content: ', '
+
+// Set display of all childrens of the given element to inline.
+=inline()
+  *
+    display: inline !important
+
+// Colours half of a site background with specified color
+=twoface-background($bg: $brand-primary-light, $side: "right")
+  @media (max-width: $screen-xs-max)
+    background-color: $bg
+  +breakpoint(tablet)
+    &:before
+      content: ''
+      position: fixed
+      top: 0
+      width: 50%
+      height: 100%
+      background-color: $bg
+      z-index: -100
+      @if $side == "right"
+        right: 0
+      @else
+        left: 0
+
+// Add triangular arrow to element by pseudoclasses.
+=arrow($border-color: $gray-light, $bg-color: white, $side: "left", $direction: "in", $size: 25px, $distance: 50px)
+  position: relative
+  &:before
+    z-index: 11
+  &:after
+    z-index: 10
+  &:before,
+  &:after
+    content: ''
+    display: block
+    position: absolute
+    width: 0
+    height: 0
+  // Top side
+  @if $side == "top"
+    border-top: 1px solid $border-color
+    @if $direction == "in"
+      // TODO: Top side in
+    @else if $direction == "out"
+      &:before
+        right: $distance
+        top: -$size + 1
+        border-right: $size solid transparent
+        border-left: $size solid transparent
+        border-bottom: $size solid $bg-color
+      &:after
+        right: $distance - 1
+        top: -$size - 1
+        border-right: $size + 1 solid transparent
+        border-left: $size + 1 solid transparent
+        border-bottom: $size + 1 solid $border-color
+  // Right side
+  @if $side == "right"
+    border-right: 1px solid $border-color
+    @if $direction == "in"
+      &:before
+        top: $distance
+        right: -1px
+        border-top: $size solid transparent
+        border-bottom: $size solid transparent
+        border-right: $size solid $bg-color
+      &:after
+        top: $distance - 1
+        right: -1px
+        border-top: $size + 1 solid transparent
+        border-bottom: $size + 1 solid transparent
+        border-right: $size + 1 solid $border-color
+    @else if $direction == "out"
+      &:before
+        top: $distance
+        right: -$size + 1
+        border-top: $size solid transparent
+        border-bottom: $size solid transparent
+        border-left: $size solid $bg-color
+      &:after
+        top: $distance - 1
+        right: -$size - 1
+        border-top: $size + 1 solid transparent
+        border-bottom: $size + 1 solid transparent
+        border-left: $size + 1 solid $border-color
+  // Bottom side
+  @if $side == "bottom"
+    border-bottom: 1px solid $border-color
+    @if $direction == "in"
+      &:before
+        right: $distance
+        bottom: -1px
+        border-right: $size solid transparent
+        border-left: $size solid transparent
+        border-bottom: $size solid $bg-color
+      &:after
+        right: $distance - 1
+        bottom: 0
+        border-right: $size + 1 solid transparent
+        border-left: $size + 1 solid transparent
+        border-bottom: $size + 1 solid $border-color
+    @else if $direction == "out"
+      &:before
+        left: $distance
+        bottom: -$size + 1
+        border-right: $size solid transparent
+        border-left: $size solid transparent
+        border-top: $size solid $bg-color
+      &:after
+        left: $distance - 1
+        bottom: -$size - 1
+        border-right: $size + 1 solid transparent
+        border-left: $size + 1 solid transparent
+        border-top: $size + 1 solid $border-color
+  // Left side
+  @if $side == "left"
+    border-left: 1px solid $border-color
+    @if $direction == "in"
+      &:before
+        top: $distance
+        left: -1px
+        border-top: $size solid transparent
+        border-bottom: $size solid transparent
+        border-left: $size solid $bg-color
+      &:after
+        top: $distance - 1
+        left: -1px
+        border-top: $size + 1 solid transparent
+        border-bottom: $size + 1 solid transparent
+        border-left: $size + 1 solid $border-color
+    @else if $direction == "out"
+      &:before
+        top: $distance
+        left: -$size + 1
+        border-top: $size solid transparent
+        border-bottom: $size solid transparent
+        border-right: $size solid $bg-color
+      &:after
+        top: $distance - 1
+        left: -$size - 1
+        border-top: $size + 1 solid transparent
+        border-bottom: $size + 1 solid transparent
+        border-right: $size + 1 solid $border-color
+
+// Triangle
+// Will be finally a replcement for arrow mixin
+// Copied from UtilityBelt- https://github.com/dmtintner/UtilityBelt
+=triangle($direction, $size: 8px, $color: #222)
+  content: ''
+  display: block
+  position: absolute
+  height: 0
+  width: 0
+
+  @if $direction == "up"
+    border-bottom: $size solid $color
+    border-left: $size solid transparent
+    border-right: $size solid transparent
+    border-top: none
+  @else if $direction == "down"
+    border-top: $size solid $color
+    border-left: $size solid transparent
+    border-right: $size solid transparent
+    border-bottom: none
+  @else if $direction == "left"
+    border-top: $size solid transparent
+    border-bottom: $size solid transparent
+    border-right: $size solid $color
+    border-left: none
+  @else if $direction == "right"
+    border-top: $size solid transparent
+    border-bottom: $size solid transparent
+    border-left: $size solid $color
+    border-right: none

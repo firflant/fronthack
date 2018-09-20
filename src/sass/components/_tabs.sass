@@ -1,0 +1,63 @@
+// Tabs
+//
+// Tabs switched by pure CSS basing on radio inputs, inspired by
+// http://youmightnotneedjs.com/#tabs. Works with up to 7 elements. If you want
+// to use tabs just as a static elements, remove inputs and replace labels with
+// standard divs.
+//
+// Markup: html/tabs.html
+//
+// Styleguide 2.tabs
+
+
+// Block
+// --------------------------------------------------
+.tabs
+  position: relative
+  &::after
+    content: ""
+    display: table
+    clear: both
+
+// Elements
+// --------------------------------------------------
+.tabs__input
+  // Visually hide radio buttons
+  position: absolute
+  opacity: 0
+  display: none
+
+.tabs__label
+  display: block
+  float: left
+  cursor: pointer
+  margin: 0
+  background: $gray-base
+  color: white
+  padding: 5px 10px
+  margin-right: 2px
+  overflow: hidden
+
+.tabs__content
+  top: $line-height-computed + 10
+  left: 0
+  overflow: hidden
+  width: 100%
+  padding: 10px
+  background: $gray-light
+  opacity: 0
+  display: none
+
+// States
+// --------------------------------------------------
+// Open content when clicking label (jQuery mimic)
+$foo : ''
+@for $i from 1 through 7
+  $foo : $foo + '#tabs-toggle-' + $i + ':checked ~ #tabs-content-' + $i + ','
+#{$foo}
+  opacity: 1
+  display: block
+
+// Change styling of active label.
+.tabs__input:checked + .tabs__label
+  background-color: $gray-light

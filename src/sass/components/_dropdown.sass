@@ -1,0 +1,92 @@
+// Dropdown
+//
+// Dropdown menu switched by pure CSS. No jQuery.
+//
+// Markup: html/dropdown.html
+//
+// sg-wrapper:
+// <div class="dropdown-demo"><sg-wrapper-content/></div>
+//
+// Styleguide 2.dropdown
+
+$dropdown-max-width: 230px
+
+// Block
+// --------------------------------------------------
+.dropdown
+  position: relative
+  display: inline-block
+
+
+// Elements
+// --------------------------------------------------
+.dropdown__input
+  // Visually hide checkbox button
+  position: absolute
+  opacity: 0
+
+.dropdown__label
+  cursor: pointer
+
+.dropdown__inner
+  position: absolute !important
+  top: 100%
+  left: 0
+  right: 0
+  margin-top: 15px
+  max-width: $dropdown-max-width
+  padding: 5px 20px 10px
+  display: none
+  overflow: hidden
+  background-color: $gray-lighter
+  text-align: left
+  text-transform: none
+  line-height: $line-height-computed
+  color: $text-color
+  z-index: 101
+  border: 1px solid $gray-light
+  box-shadow: $gray-light 0 0 5px
+
+.dropdown__link
+  display: block
+  margin: 0 -20px
+  padding: 5px 20px
+  &:hover
+    background-color: $gray-light
+
+
+// States
+// --------------------------------------------------
+.dropdown__input:focus ~ .dropdown__inner
+  display: block
+  transform-origin: top center
+  animation:
+    name: dropdown-inner
+    duration: 300ms
+    timing-function: ease-in-out
+    iteration-count: 1
+    fill-mode: forwards
+
+// Prevent closing element when clicking inside.
+.dropdown__inner:hover
+  display: block !important
+
+@keyframes dropdown-inner
+  0%
+    opacity: 0
+    transform: rotateX(90deg)
+  100%
+    transform: rotateX(0)
+    opacity: 1
+
+
+// Depednecies
+// --------------------------------------------------
+.dropdown__nav > .modal
+  display: block
+
+
+// Demo wrapper
+// --------------------------------------------------
+.dropdown-demo
+  margin: 0 0 150px

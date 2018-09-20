@@ -1,0 +1,35 @@
+// Table
+//
+// A basic HTML table. To make table responsive, put it into .table-responsive
+// helper class wrapper.
+//
+// Markup: html/table.html
+//
+// Styleguide 1.2.7
+
+table
+  border-spacing: 0
+  margin-bottom: 60px
+  caption
+    text-align: left
+    padding: 5px 0
+    border-top: 1px solid $gray-base
+    border-bottom: 1px solid $gray-base
+    margin-bottom: 25px
+    dl
+      margin: 0
+  thead,
+  tbody
+    font-size: 12px
+  th,
+  td
+    padding: 10px
+    vertical-align: top
+  thead th
+    background-color: $gray-base
+    color: #fff
+    text-align: left
+  tr:not(:last-child)
+    th,
+    td
+      border-bottom: 1px solid $gray-base

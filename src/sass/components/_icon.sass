@@ -1,0 +1,586 @@
+// Icons
+//
+// Set of WAAT icons for any occasion. Their size and color can be modified same
+// way like for text.
+//
+// Markup: html/icon.html
+//
+// .icon--arrow-right - .icon--arrow-right
+// .icon--arrow-left - .icon--arrow-left
+// .icon--arrow-top - .icon--arrow-top
+// .icon--arrow-bottom - .icon--arrow-bottom
+// .icon--add - .icon--add
+// .icon--remove - .icon--remove
+// .icon--ok - .icon--ok
+// .icon--x - .icon--x
+// .icon--circle-arrow-right - .icon--circle-arrow-right
+// .icon--circle-arrow-left - .icon--circle-arrow-left
+// .icon--circle-arrow-top - .icon--circle-arrow-top
+// .icon--circle-arrow-bottom - .icon--circle-arrow-bottom
+// .icon--circle-add - .icon--circle-add
+// .icon--circle-remove - .icon--circle-remove
+// .icon--circle-ok - .icon--circle-ok
+// .icon--square-right - .icon--square-right
+// .icon--square-left - .icon--square-left
+// .icon--square-add - .icon--square-add
+// .icon--square-remove - .icon--square-remove
+// .icon--square-ok - .icon--square-ok
+// .icon--square-x - .icon--square-x
+// .icon--archive - .icon--archive
+// .icon--arrows - .icon--arrows
+// .icon--at - .icon--at
+// .icon--bell - .icon--bell
+// .icon--bin - .icon--bin
+// .icon--book - .icon--book
+// .icon--books - .icon--books
+// .icon--book-bookmark - .icon--book-bookmark
+// .icon--bookmark - .icon--bookmark
+// .icon--buildings - .icon--buildings
+// .icon--bulb - .icon--bulb
+// .icon--calendar - .icon--calendar
+// .icon--calendar-check - .icon--calendar-check
+// .icon--cam - .icon--cam
+// .icon--carrot - .icon--carrot
+// .icon--chart - .icon--chart
+// .icon--clock - .icon--clock
+// .icon--cloud - .icon--cloud
+// .icon--clusters - .icon--clusters
+// .icon--counter - .icon--counter
+// .icon--cutlery - .icon--cutlery
+// .icon--database - .icon--database
+// .icon--diamond - .icon--diamond
+// .icon--doc - .icon--doc
+// .icon--doc-ok - .icon--doc-ok
+// .icon--doc-edit - .icon--doc-edit
+// .icon--docs - .icon--docs
+// .icon--doc-search - .icon--doc-search
+// .icon--drop - .icon--drop
+// .icon--download - .icon--download
+// .icon--upload - .icon--upload
+// .icon--upload-2 - .icon--upload-2
+// .icon--edit - .icon--edit
+// .icon--envelope - .icon--envelope
+// .icon--envelope-open - .icon--envelope-open
+// .icon--envelope-plus - .icon--envelope-plus
+// .icon--eu - .icon--eu
+// .icon--europe - .icon--europe
+// .icon--eye - .icon--eye
+// .icon--flag - .icon--flag
+// .icon--flag-slat - .icon--flag-slat
+// .icon--glasses - .icon--glasses
+// .icon--globe - .icon--globe
+// .icon--heart - .icon--heart
+// .icon--heart-add - .icon--heart-add
+// .icon--heart-remove - .icon--heart-remove
+// .icon--helpdesk - .icon--helpdesk
+// .icon--indicator - .icon--indicator
+// .icon--info - .icon--info
+// .icon--in - .icon--in
+// .icon--out - .icon--out
+// .icon--open-paper - .icon--open-paper
+// .icon--lighting - .icon--lighting
+// .icon--link - .icon--link
+// .icon--listing - .icon--listing
+// .icon--lock - .icon--lock
+// .icon--unlock - .icon--unlock
+// .icon--megaphone - .icon--megaphone
+// .icon--menu - .icon--menu
+// .icon--pencil - .icon--pencil
+// .icon--phone - .icon--phone
+// .icon--phone-question-mark - .icon--phone-question-mark
+// .icon--pile - .icon--pile
+// .icon--pin - .icon--pin
+// .icon--power - .icon--power
+// .icon--print - .icon--print
+// .icon--printer - .icon--printer
+// .icon--puzzle - .icon--puzzle
+// .icon--question-mark - .icon--question-mark
+// .icon--quotation-mark-start - .icon--quotation-mark-start
+// .icon--quotation-mark-end - .icon--quotation-mark-end
+// .icon--refresh - .icon--refresh
+// .icon--road-signs - .icon--road-signs
+// .icon--scope - .icon--scope
+// .icon--search - .icon--search
+// .icon--send - .icon--send
+// .icon--share - .icon--share
+// .icon--share-2 - .icon--share-2
+// .icon--strategy - .icon--strategy
+// .icon--social-facebook - .icon--social-facebook
+// .icon--social-flickr - .icon--social-flickr
+// .icon--social-gplus - .icon--social-gplus
+// .icon--social-linkedin - .icon--social-linkedin
+// .icon--social-twitter - .icon--social-twitter
+// .icon--social-youtube - .icon--social-youtube
+// .icon--stack - .icon--stack
+// .icon--star - .icon--star
+// .icon--study - .icon--study
+// .icon--sunset - .icon--sunset
+// .icon--target - .icon--target
+// .icon--truck - .icon--truck
+// .icon--umbrela - .icon--umbrela
+// .icon--user - .icon--user
+// .icon--user-add - .icon--user-add
+// .icon--user-remove - .icon--user-remove
+// .icon--user-ok - .icon--user-ok
+// .icon--user-x - .icon--user-x
+// .icon--user-suit - .icon--user-suit
+// .icon--users - .icon--users
+// .icon--users-leader - .icon--users-leader
+// .icon--vector - .icon--vector
+// .icon--woman - .icon--woman
+// .icon--man - .icon--man
+// .icon--world - .icon--world
+// .icon--mime-default - .icon--mime-default
+// .icon--mime-doc - .icon--mime-doc
+// .icon--mime-exe - .icon--mime-exe
+// .icon--mime-jpg - .icon--mime-jpg
+// .icon--mime-pdf - .icon--mime-pdf
+// .icon--mime-png - .icon--mime-png
+// .icon--mime-rar - .icon--mime-rar
+// .icon--mime-xls - .icon--mime-xls
+// .icon--mime-zip - .icon--mime-zip
+//
+// Styleguide 2.icon
+
+$waat-icons-font-path: "../images/fonts/waat-icons"
+
+// Block
+// --------------------------------------------------
+
+// Import the fonts
+@font-face
+  font-family: 'WAAT Icons'
+  src: url("#{$waat-icons-font-path}.eot")
+  src: url("#{$waat-icons-font-path}.eot?#iefix") format("embedded-opentype"), url("#{$waat-icons-font-path}.woff") format("woff"), url("#{$waat-icons-font-path}.ttf") format("truetype"), url("#{$waat-icons-font-path}.svg#icomoon") format("svg")
+
+
+.icon
+  font-family: 'WAAT Icons'
+  speak: none
+  font-style: normal
+  font-weight: normal
+  font-variant: normal
+  text-transform: none
+  position: relative
+  +better-fonts
+
+
+// Modifiers
+// --------------------------------------------------
+.icon--arrow-right:before
+  content: "\e610"
+
+.icon--arrow-left:before
+  content: "\e612"
+
+.icon--arrow-top:before
+  content: "\e611"
+
+.icon--arrow-bottom:before
+  content: "\e60f"
+
+.icon--add:before
+  content: "\e668"
+
+.icon--remove:before
+  content: "\e669"
+
+.icon--ok:before
+  content: "\e66b"
+
+.icon--x:before
+  content: "\e617"
+
+.icon--circle-arrow-right:before
+  content: "\e608"
+
+.icon--circle-arrow-left:before
+  content: "\e606"
+
+.icon--circle-arrow-top:before
+  content: "\e605"
+
+.icon--circle-arrow-bottom:before
+  content: "\e609"
+
+.icon--circle-add:before
+  content: "\e60c"
+
+.icon--circle-remove:before
+  content: "\e60d"
+
+.icon--circle-ok:before
+  content: "\e618"
+
+.icon--square-right:before
+  content: "\e874"
+
+.icon--square-left:before
+  content: "\e873"
+
+.icon--square-add:before
+  content: "\e878"
+
+.icon--square-remove:before
+  content: "\e879"
+
+.icon--square-ok:before
+  content: "\e877"
+
+.icon--square-x:before
+  content: "\e87a"
+
+.icon--archive:before
+  content: "\e672"
+
+.icon--arrows:before
+  content: "\e64b"
+
+.icon--at:before
+  content: "\e88f"
+
+.icon--bell:before
+  content: "\e61a"
+
+.icon--bin:before
+  content: "\e657"
+
+.icon--book:before
+  content: "\e70f"
+
+.icon--books:before
+  content: "\e648"
+
+.icon--book-bookmark:before
+  content: "\e647"
+
+.icon--bookmark:before
+  content: "\e649"
+
+.icon--buildings:before
+  content: "\e627"
+
+.icon--bulb:before
+  content: "\e61c"
+
+.icon--calendar:before
+  content: "\e61b"
+
+.icon--calendar-check:before
+  content: "\e64c"
+
+.icon--cam:before
+  content: "\e79d"
+
+.icon--carrot:before
+  content: "\e844"
+
+.icon--chart:before
+  content: "\e6dd"
+
+.icon--clock:before
+  content: "\e686"
+
+.icon--cloud:before
+  content: "\e77b"
+
+.icon--clusters:before
+  content: "\e607"
+
+.icon--counter:before
+  content: "\e69b"
+
+.icon--cutlery:before
+  content: "\e83d"
+
+.icon--database:before
+  content: "\e884"
+
+.icon--diamond:before
+  content: "\e7e7"
+
+.icon--doc:before
+  content: "\e6f4"
+
+.icon--doc-ok:before
+  content: "\e6f7"
+
+.icon--doc-edit:before
+  content: "\e62d"
+
+.icon--docs:before
+  content: "\e604"
+
+.icon--doc-search:before
+  content: "\e6fd"
+
+.icon--drop:before
+  content: "\e829"
+
+.icon--download:before
+  content: "\e847"
+
+.icon--upload:before
+  content: "\e848"
+
+.icon--upload-2:before
+  content: "\e673"
+
+.icon--edit:before
+  content: "\e6a3"
+
+.icon--envelope:before
+  content: "\e629"
+
+.icon--envelope-open:before
+  content: "\e630"
+
+.icon--envelope-plus:before
+  content: "\e637"
+
+.icon--eu:before
+  content: "\e64d"
+
+.icon--europe:before
+  content: "\e62f"
+
+.icon--eye:before
+  content: "\e7ab"
+
+.icon--flag:before
+  content: "\e67e"
+
+.icon--flag-slat:before
+  content: "\e680"
+
+.icon--globe:before
+  content: "\e602"
+
+.icon--glasses:before
+  content: "\e82a"
+
+.icon--heart:before
+  content: "\e68f"
+
+.icon--heart-add:before
+  content: "\e691"
+
+.icon--heart-remove:before
+  content: "\e692"
+
+.icon--helpdesk:before
+  content: "\e64a"
+
+.icon--indicator:before
+  content: "\e69b"
+
+.icon--info:before
+  content: "\e891"
+
+.icon--in:before
+  content: "\e664"
+
+.icon--out:before
+  content: "\e665"
+
+.icon--open-paper:before
+  content: "\e628"
+
+.icon--lighting:before
+  content: "\e814"
+
+.icon--link:before
+  content: "\e62b"
+
+.icon--listing:before
+  content: "\e724"
+
+.icon--lock:before
+  content: "\e651"
+
+.icon--unlock:before
+  content: "\e652"
+
+.icon--megaphone:before
+  content: "\e6ae"
+
+.icon--menu:before
+  content: "\e601"
+
+.icon--no:before
+  content: "\e66a"
+
+.icon--pencil:before
+  content: "\e63b"
+
+.icon--phone:before
+  content: "\e62c"
+
+.icon--phone-question-mark:before
+  content: "\e638"
+
+.icon--pile:before
+  content: "\e7c6"
+
+.icon--pin:before
+  content: "\e678"
+
+.icon--power:before
+  content: "\e64f"
+
+.icon--print:before
+  content: "\e6c7"
+
+.icon--printer:before
+  content: "\e6c6"
+
+.icon--puzzle:before
+  content: "\e620"
+
+.icon--question-mark:before
+  content: "\e60e"
+
+.icon--quotation-mark-start:before
+  content: "\e734"
+
+.icon--quotation-mark-end:before
+  content: "\e735"
+
+.icon--refresh:before
+  content: "\e864"
+
+.icon--road-signs:before
+  content: "\e681"
+
+.icon--scope:before
+  content: "\e621"
+
+.icon--search:before
+  content: "\e603"
+
+.icon--send:before
+  content: "\e635"
+
+.icon--share:before
+  content: "\e7c5"
+
+.icon--share-2:before
+  content: "\e7a8"
+
+.icon--strategy:before
+  content: "\e6af"
+
+.icon--social-facebook:before
+  content: "\e61f"
+
+.icon--social-flickr:before
+  content: "\e88c"
+
+.icon--social-gplus:before
+  content: "\e88e"
+
+.icon--social-linkedin:before
+  content: "\e623"
+
+.icon--social-twitter:before
+  content: "\e61e"
+
+.icon--social-youtube:before
+  content: "\e88d"
+
+.icon--stack:before
+  content: "\e7c6"
+
+.icon--star:before
+  content: "\e61d"
+
+.icon--study:before
+  content: "\e634"
+
+.icon--sunset:before
+  content: "\e80b"
+
+.icon--target:before
+  content: "\e6b7"
+
+.icon--truck:before
+  content: "\e7e8"
+
+.icon--triangle-right:before
+  content: "\e608"
+
+.icon--triangle-left:before
+  content: "\e608"
+
+.icon--umbrela:before
+  content: "\e619"
+
+.icon--user:before
+  content: "\e60a"
+
+.icon--user-add:before
+  content: "\e747"
+
+.icon--user-remove:before
+  content: "\e748"
+
+.icon--user-ok:before
+  content: "\e74a"
+
+.icon--user-x:before
+  content: "\e749"
+
+.icon--user-suit:before
+  content: "\e60b"
+
+.icon--users:before
+  content: "\e74b"
+
+.icon--users-leader:before
+  content: "\e74c"
+
+.icon--vector:before
+  content: "\e850"
+
+.icon--woman:before
+  content: "\e742"
+
+.icon--man:before
+  content: "\e743"
+
+.icon--world:before
+  content: "\e62e"
+
+// File mime icons:
+.icon--mime-default:before
+  content: "\e645"
+
+.icon--mime-doc:before
+  content: "\e63f"
+
+.icon--mime-exe:before
+  content: "\e644"
+
+.icon--mime-gif:before
+  content: "\e886"
+
+.icon--mime-jpg:before
+  content: "\e642"
+
+.icon--mime-pdf:before
+  content: "\e641"
+
+.icon--mime-png:before
+  content: "\e643"
+
+.icon--mime-ppt:before
+  content: "\e887"
+
+.icon--mime-rar:before
+  content: "\e63e"
+
+.icon--mime-xls:before
+  content: "\e640"
+
+.icon--mime-zip:before
+  content: "\e63d"

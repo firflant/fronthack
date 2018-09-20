@@ -1,0 +1,69 @@
+// Listing item
+//
+// Use listing item components instead of creating single one for whole listing.
+// Each listing item type should be a separated component, because it's markup
+// may be much different. This approach makes also creating multiple collumns
+// layout much easier - just use grid system. If you need to prepare a wrapper
+// for listing, create a separated layout component (in layout directory).
+//
+// Markup: html/listing-item.html
+//
+// Styleguide 2.listing-item
+
+$listing-media-width: 160px
+
+// Block
+// --------------------------------------------------
+.listing-item
+  border-bottom: 1px $gray-lighter solid
+  padding-bottom: 30px
+  padding-top: 30px
+  overflow: hidden
+  &:last-child
+    padding-bottom: 0
+    border-bottom: none
+
+  p
+    margin: 0
+    text-align: justify
+
+
+.listing-item__column-second
+  width: 100%
+  margin-bottom: 10px
+  text-align: center
+
+
+.listing-item__text
+  overflow: hidden
+
+
+.listing-item__title
+  margin-top: 0
+  a
+    color: $gray-base
+
+  h2, h3
+    margin: 0 !important
+
+
+
+.listing-item__meta
+  font-size: $font-size-small
+  color: $gray-light
+  width: 100%
+  margin-bottom: 10px
+  display: block
+
+
+.listing-item__footer
+  margin-top: $line-height-computed / 2
+  overflow: hidden
+
+
++breakpoint(phone)
+  .listing-item__column-second
+    float: left
+    margin-right: 30px
+    max-width: $listing-media-width
+    overflow: hidden

@@ -1,0 +1,42 @@
+// Featured
+//
+// List of featured items for pricing plans and point by point descriptions.
+//
+// Markup: html/featured.html
+//
+// Styleguide 2.featured
+
+// Block
+// --------------------------------------------------
+.featured
+  display: table
+  width: 100%
+  padding-left: 0
+  margin: 0 0 $line-height-computed
+
+// Elements
+// --------------------------------------------------
+.featured__item
+  display: table-row
+  vertical-align: middle
+  &:not(:last-child)
+    .featured__text,
+    .featured__icon
+      border-bottom: 1px solid $gray-light
+
+.featured__text
+  display: table-cell
+  padding: 15px 20px 15px 0
+
+.featured__icon-wrapper
+  display: table-cell
+  vertical-align: middle
+  line-height: 30px
+
+.featured__icon
+  color: #fff
+  width: 30px
+  height: 30px
+  float: right
+  text-align: center
+  +circle($brand-primary)

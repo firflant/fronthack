@@ -1,0 +1,39 @@
+// Pagination
+//
+// Element with minimalistic markup to switch the pages of listings.
+//
+// Markup: html/pagination.html
+//
+// Styleguide 2.pagination
+
+// Block
+// --------------------------------------------------
+.pagination
+  text-align: center
+  display: block
+  font-weight: $font-weight-bold
+  font-size: 13px
+  margin-bottom: 0
+  div
+    pointer-events: none
+
+// Elements
+// --------------------------------------------------
+.pagination__item
+  display: inline-block
+  border: 1px solid $gray-light
+  box-sizing: border-box
+  min-width: 30px
+  height: 30px
+  line-height: 30px
+  padding: 0 10px
+  color: $gray-light
+  &:hover
+    background-color: $gray-lighter
+
+// Modifiers
+// --------------------------------------------------
+.pagination__item--active
+  background: $brand-primary
+  border-color: $brand-primary
+  color: #fff

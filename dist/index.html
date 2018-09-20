@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Fronthack</title>
+    <meta name="description" content="Fronthack home page" />
+
+    <link rel="stylesheet" href="css/style.bundle.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/assets/owl.carousel.min.css" />
+    <style>
+      .typed-cursor{
+          opacity: 1;
+          -webkit-animation: blink 0.7s infinite;
+          -moz-animation: blink 0.7s infinite;
+          animation: blink 0.7s infinite;
+          color: #00ffac
+      }
+      @keyframes blink{
+          0% { opacity:1; }
+          50% { opacity:0; }
+          100% { opacity:1; }
+      }
+      @-webkit-keyframes blink{
+          0% { opacity:1; }
+          50% { opacity:0; }
+          100% { opacity:1; }
+      }
+      @-moz-keyframes blink{
+          0% { opacity:1; }
+          50% { opacity:0; }
+          100% { opacity:1; }
+      }
+    </style>
+  </head>
+
+  <body>
+
+    <section class="layout--hero">
+      <div class="wrapper container-fluid">
+        <img src="images/gif/logo.gif" alt="FH" class="logo" /..>
+        <h1 class="hero__title">
+          Fronthack is<br />
+          <span class="hero__nextline"> a <span class="type-js"></span></span>
+        </h1>
+        <div class="hero__descr">to convert any design into high quality <strong>HTML</strong> and <strong>CSS</strong>.</div>
+        <div class="hero__get-started">
+          <a href="#gettingStarted" class="btn btn--lg">Quick start</a>
+          <div class="hero__version">Current v<span id="version"></span></div>
+        </div>
+        <a href="http://docs.fronthack.com" target="_blank" class="hero__link">
+          Documentation
+        </a>
+        <a href="http://styleguide.fronthack.com" class="hero__link"> Browse components</a>
+      </div>
+    </section>
+
+    <section class="layout--dark">
+      <div class="wrapper container-fluid">
+        <div class="block narrow-container">
+          <h2 class="block__title">Scalable and modular</h2>
+          <div class="block__content">
+            <p>Fronthack has been created for frontend developers. It combines a set of tools and best practices together, answering for question “How to deliver high quality code?“.</p>
+            
+            <p>It is a bolierplate for your projects. Starting frontend from Fronthack will help you implement pixel-perfect designs and will make you sure that your stylesheets will remain modular and scallable.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout--content">
+      <div class="wrapper container-fluid">
+        <div class="block block--margin narrow-container">
+          <h2 class="block__title">Everything what you need</h2>
+          <div class="block__content">
+              <p>It also a commandline tool, which gives you access to library of basic visual components, which you can use on any project instead of writing them every time from scratch. As a result, with Fronthack you can develop applications in faster, better organized way.</p>
+          </div>
+        </div>
+        <div class="row top-sm">
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Livereload</h3>
+                <div class="feature__descr">A localhost server with livereload, that watch for changes in any file and automatically applies them in your browser.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Code on designs</h3>
+                <div class="feature__descr">System that allows you to display designs under HTML code for pixel-perfect implementations.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Image compression</h3>
+                <div class="feature__descr">Build in and configured <a href="https://www.npmjs.com/package/imagemin">imagemin</a> extension for loseless image compression.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Designs slicer</h3>
+                <div class="feature__descr">A tool for visual planning the components structure, before writing any code.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+              <div class="box">
+                <div class="feature">
+                  <h3 class="feature__title">Written in Sass</h3>
+                  <div class="feature__descr"><a href="http://sass-lang.com/" target="_blank">Sass</a> with a power of variables, mixins, nesting and clean syntax.</div>
+                </div>
+              </div>
+            </div>
+
+
+
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">SMACSS and BEM</h3>
+                <div class="feature__descr">Separating files according to <a href="https://smacss.com/" target="_blank">SMACSS</a> methodology and using <a href="http://getbem.com/" target="_blank">BEM</a> naming convention makes your styles scalable and easy to maintain.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Web components library</h3>
+                <div class="feature__descr">Package of ready Sass components that are very basic and boilerplate. Do not reinvent the wheel.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Minimalistic form framework</h3>
+                <div class="feature__descr">Fully operational built in framework to style the forms. Contains validation states.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Gulp</h3>
+                <div class="feature__descr"><a href="http://gulpjs.com/" target="_blank">An automation tool</a> onboard to compile and preview your work in browser on file save.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Built in helpers</h3>
+                <div class="feature__descr">Helper classes and useful mixins to minimize the effort and keep the <a href="https://en.wikipedia.org/wiki/Don%27t_repeat_yourself" target="_blank">DRY</a> rule.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">CSS reset</h3>
+                <div class="feature__descr">Contains <a href="https://necolas.github.io/normalize.css/" target="_blank">Normalize.css</a> to set default appearance on all browsers.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Autoprefixer</h3>
+                <div class="feature__descr">Forget about writing vendor prefixes for CSS3 properties using <a href="https://github.com/postcss/autoprefixer" target="_blank">Autoprefixer</a>.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">Mustache</h3>
+                <div class="feature__descr"><a href="https://mustache.github.io/" target="_blank">A simple and old school templating engine</a> to separate reusable elements like header and footer from the content specific for given page.</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-xs-12 col-sm-6 col-md-4">
+            <div class="box">
+              <div class="feature">
+                <h3 class="feature__title">OWL Carousel</h3>
+                <div class="feature__descr">Universal <a href="https://owlcarousel2.github.io/OwlCarousel2" target="_blank">OWL Carousel 2</a> plugin implemented as one of the components.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="gettingStarted" class="layout--getting-started">
+      <div class="wrapper container-fluid">
+        <div class="block">
+          <h2 class="block__title">Getting started</h2>
+          <div class="block__content">
+            <h3>1. Install the Fronthack Command Line Interface</h3>
+            <pre>npm install -g fronthack</pre>
+            <h3>2. Create a new Fronthack project in current path</h3>
+            <pre>fronthack init</pre>
+            <h3>3. Navigate to a newly created fronthack directory and check available commands</h3>
+            <pre>cd fronthack</pre>
+            <pre>fronthack help</pre>
+            <div class="layout--getting-started__footer">
+              <a href="http://docs.fronthack.com/en/environment">Click here if you encounter any problems during this set up</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout--projects">
+      <div class="wrapper container-fluid">
+        <div class="block">
+          <h2 class="block__title">Sites built with Fronthack</h2>
+          <h3 class="block__subtitle">Examples of realizations which frontend has been built using Fronthack.</h3>
+          <div class="block__content">
+            <div class="owl-carousel owl-theme">
+              <a href="http://eurekanetwork.org" target="_blank">
+                <img src="images/jpg/portfolio-eureka.jpg" class="owl-image" alt="" />
+                <span class="owl-url">eurekanetwork.org</span>
+              </a>
+              <a href="https://clusterone.com" target="_blank">
+                <img src="images/jpg/portfolio-clusterone.jpg" class="owl-image" alt="" />
+                <span class="owl-url">clusterone.com</span>
+              </a>
+              <a href="http://music.uberchord.com" target="_blank">
+                <img src="images/jpg/portfolio-uberchord.jpg" class="owl-image" alt="" />
+                <span class="owl-url">music.uberchord.com</span>
+              </a>
+              <a href="http://smarter-together.eu" target="_blank">
+                <img src="images/jpg/portfolio-smartertogether.jpg" class="owl-image" alt="" />
+                <span class="owl-url">smarter-together.eu</span>
+              </a>
+              <a href="http://mvp-space.com" target="_blank">
+                <img src="images/jpg/portfolio-mvpspace.jpg" class="owl-image" alt="" />
+                <span class="owl-url">mvp-space.com</span>
+              </a>
+              <a href="http://waat.eu" target="_blank">
+                <img src="images/jpg/portfolio-waat.jpg" class="owl-image" alt="" />
+                <span class="owl-url">waat.eu</span>
+              </a>
+              <a href="http://een.ec.europa.eu" target="_blank">
+                <img src="images/jpg/portfolio-een.jpg" class="owl-image" alt="" />
+                <span class="owl-url">een.ec.europa.eu</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="layout--dark">
+        <div class="wrapper container-fluid">
+          <div class="block narrow-container">
+            <h2 class="block__title">Built with passion</h2>
+            <div class="block__content">
+              <br />
+              <div class="row">
+                <div class="col-xs-12 col-sm-4">
+                  <div class="box">
+                    <img src="images/jpg/michal.jpg" class="full-width" alt="" />
+                    <br /><br />
+                  </div>
+                </div>
+                <div class="col-xs-12 col-sm-8">
+                  <div class="box">
+                    <p>Fronthack is developed by <strong>Michał Kokocinski</strong> - a frontend developer associated with <a href="http://waat.eu" target="_blank">WAAT Ltd.</a> and <a href="https://clusterone.com" target="_blank">Good AI Labs Ltd.</a>. Primary focus on HTML, CSS and the React ecosystem.</p>
+                    blog: <a href="https://medium.com/@Frontcraft">medium.com/@Frontcraft</a><br/>
+                    email: <a href="mailto:michal@kokocinski.me">michal@kokocinski.me</a>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    <footer class="layout--footer">
+      <div class="wrapper container-fluid text-center">
+        Development supported by <em>WAAT</em> and <em>God AI Labs</em>.<br />
+        © <span id="year">2018</span> Frontcraft
+      </div>
+    </footer>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typed.js/1.1.4/typed.min.js"></script>
+    <script>
+      $(function(){
+        $(".type-js").typed({
+          strings: [
+            "complete solution",
+            "starterkit",
+            "CLI",
+          ],
+          typeSpeed: 50,
+          startDelay: 250,
+          loop: true,
+          backDelay: 1000,
+        });
+      });
+    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.2.0/owl.carousel.min.js"></script>
+    <script>
+      $(".owl-carousel").owlCarousel({
+        loop: true,
+        items: 1,
+        margin: 50,
+        autoPlay: true,
+        nav: true,
+        navText: [
+          "<i class='icon icon--arrow-left'>",
+          "<i class='icon icon--arrow-right'>"
+        ],
+        responsive : {
+          480: {
+            items: 2,
+          },
+          768: {
+            items: 3,
+            dots: false,
+          },
+          1024: {
+            items: 3,
+            margin: 100,
+            dots: false,
+          }
+        },
+      });
+    </script>
+    <script>
+      document.getElementById('year').innerHTML =  (new Date()).getFullYear()
+    </script>
+    <script>
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+          var data = JSON.parse(xhttp.responseText);
+          document.getElementById('version').innerHTML = data.version;
+        }
+      };
+      xhttp.open("GET", "https://raw.githubusercontent.com/frontcraft/fronthack/master/package.json", true);
+      xhttp.send();
+    </script>
+  </body>
+</html>
