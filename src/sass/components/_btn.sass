@@ -42,7 +42,12 @@ input[type="submit"]
 // Modifiers
 // --------------------------------------------------
 .btn--sm
-  padding: 3px 20px
+  padding: 3px 20px 0
+
+.btn--dark
+  +btn-color($brand-primary-dark, $brand-primary-dark)
+  &:hover, &:focus
+    +btn-color(#fff, $brand-primary-dark, $brand-primary-dark)
 
 .btn--disabled
   opacity: 0.15
