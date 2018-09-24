@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "File structure bootstrapped with Fronthack",
   "scripts": {
-    "dev": "gulp dev",
+    "start": "gulp dev",
     "build": "gulp build",
     "deploy": "gh-pages -d dist"
   },

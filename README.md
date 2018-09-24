@@ -1,10 +1,10 @@
 # Fronthack
-Fronthack is a framework to convert any design into high quality HTML and CSS
-and this is it's commandline generator. For more info visit [fronthack.com](http://fronthack.com/).
+Fronthack is a boilerplate and development tool to convert any design into a
+high quality HTML and CSS. For more info visit [fronthack.com](http://fronthack.com/).
 
 ## Instalation
 ```
-npm install -g fronthack
+yarn global add fronthack
 ```
 
 ## Usage
@@ -31,9 +31,9 @@ development purposes.
 
 | Command               | Description                                                                                          |
 |-----------------------|------------------------------------------------------------------------------------------------------|
-| `npm run dev`         | Run a local dev server with helpfull development scripts and livereload.                             |
-| `npm run build`       | Compiles a production ready "dist" directory with minified files, which is ready to deploy anywhere. |
-| `npm run deploy`      | If your repository is hosted on GitHub, it deploys "dist" directory to Github pages.                 |
+| `yarn start`          | Run a local dev server with helpfull development scripts and livereload.                             |
+| `yarn build`          | Compiles a production ready "dist" directory with minified files, which is ready to deploy anywhere. |
+| `yarn deploy`         | If your repository is hosted on GitHub, it deploys "dist" directory to Github pages.                 |
 
 ## React project scripts
 

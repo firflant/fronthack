@@ -16,7 +16,6 @@
     "image-size": "^0.6.2",
     "ncp": "^2.0.0",
     "node-cmd": "^2.0.0",
-    "npm-install-package": "^2.1.0",
     "openurl": "^1.1.1",
     "pkg-up": "^2.0.0",
     "prompt": "^1.0.0",
