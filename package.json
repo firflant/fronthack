@@ -6,7 +6,7 @@
     "array-back": "^1.0.4",
     "bit-bin": "^13.0.4",
     "case": "^1.5.5",
-    "cli-highlight": "^1.1.4",
+    "cli-highlight": "^1.2.3",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.0.0",
     "fs-extra": "^2.1.2",
