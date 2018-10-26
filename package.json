@@ -1,6 +1,6 @@
 {
   "name": "fronthack",
-  "version": "3.0.1",
+  "version": "3.0.2",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^1.0.4",
@@ -10,9 +10,9 @@
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.1.0",
     "fs-extra": "^2.1.2",
-    "get-installed-path": "^4.0.8",
     "github-get": "^0.3.1",
     "glob": "^7.1.3",
+    "global-modules": "^1.0.0",
     "image-size": "^0.6.3",
     "ncp": "^2.0.0",
     "node-cmd": "^2.0.0",
@@ -20,7 +20,8 @@
     "pkg-up": "^2.0.0",
     "prompt": "^1.0.0",
     "remove-value": "^1.0.0",
-    "shelljs": "^0.8.2"
+    "shelljs": "^0.8.2",
+    "yarn-global-modules": "^1.0.1"
   },
   "main": "index.js",
   "scripts": {
