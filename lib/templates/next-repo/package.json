@@ -5,8 +5,7 @@
   "main": "index.js",
   "license": "MIT",
   "dependencies": {
-    "@zeit/next-css": "^1.0.1",
-    "@zeit/next-sass": "^1.0.1",
+    "@zeit/next-sass": "latest",
     "bem-modifiers" : "latest",
     "copy-webpack-plugin": "^4.5.4",
     "next": "^7.0.2",
