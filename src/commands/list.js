@@ -1,9 +1,7 @@
-'use strict'
+import openUrl from 'openurl'
+import consoleColors from '../helpers/consoleColors'
 
-const openUrl = require('openurl')
-const consoleColors = require('../helpers/consoleColors')
-
-module.exports = () => {
+export default () => {
   const url = 'https://frontcraft.github.io/fronthack-components'
   console.log('')
   console.log(consoleColors.fronthack, 'Browse a library of ready Fronthack components here:')

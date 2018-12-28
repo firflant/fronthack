@@ -1,9 +1,7 @@
-'use strict'
-
-const getUsage = require('command-line-usage')
+import getUsage from 'command-line-usage'
 
 
-module.exports = () => {
+export default () => {
   const sections = [
     {
       header: 'Fronthack CLI',

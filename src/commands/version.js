@@ -1,14 +1,10 @@
-'use strict'
+import * as afs from 'async-file'
+import getFronthackPath from '../helpers/getFronthackPath'
+import consoleColors from '../helpers/consoleColors'
 
-const fs = require('fs')
-const getFronthackPath = require('../helpers/getFronthackPath')
-const consoleColors = require('../helpers/consoleColors')
-
-module.exports = () => {
-  getFronthackPath(fronthackPath => {
-    fs.readFile(`${fronthackPath}/package.json`, 'utf8', (err, content) => {
-      const object = JSON.parse(content)
-      console.log(consoleColors.fronthack, `v${object.version}`)
-    })
-  })
+export default async () => {
+  const fronthackPath = await getFronthackPath()
+  const content = await afs.readFile(`${fronthackPath}/package.json`, 'utf8')
+  const object = JSON.parse(content)
+  console.log(consoleColors.fronthack, `v${object.version}`)
 }
