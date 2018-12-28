@@ -52,21 +52,26 @@ export default async (projectRoot, isReact, isNext, machinename, description) =>
     // Behavior when fetching everything else.
     } else {
       console.log(consoleColors.fronthack, 'Fetching data from a Fronthack components repository...')
-      const { content } = await githubGetSync('frontcraft/fronthack-components', 'src/components')
+      const { content } = await fronthackGet('src/components')
 
       // For React version
       if (isReact) {
         if (content.includes(machinename)) {
           const componentPath = `${projectSrc}/components/${machinename}`
           await fs.ensureDirSync(componentPath)
-          const { content } = await githubGetSync('frontcraft/fronthack-components', `src/components/${machinename}`)
+          const { content } = await fronthackGet(`src/components/${machinename}`)
           const componentFiles = content.filter(file => file!== 'EXAMPLE.js')
-          const saveFiles = new Promise(() => { componentFiles.forEach(async file => {
-            const { content } = await githubGetSync('frontcraft/fronthack-components', `src/components/${machinename}/${file}`)
-            const parsedContent = (isNext && file === `${machinename}.js`) ? content.replace("import React from 'react'\n", '') : content
-            await afs.writeFile(`${componentPath}/${file}`, parsedContent)
-          })})
-          saveFiles
+          await asyncForEach(componentFiles, async (file) => {
+            try {
+              const { content: fileContent } = await fronthackGet(`src/components/${machinename}/${file}`)
+              const parsedContent = (isNext && file === `${machinename}.js`)
+                ? fileContent.replace("import React from 'react'\n", '')
+                : fileContent
+              await afs.writeFile(`${componentPath}/${file}`, parsedContent)
+            } catch (err) {
+              throw new Error(err)
+            }
+          })
           console.log(consoleColors.fronthack, 'Found Fronthack component of given name and imported its code.')
         } else {
           console.log(consoleColors.fronthack, `There is no ready Fronthack component of name ${machinename}.`)
@@ -78,15 +83,15 @@ export default async (projectRoot, isReact, isNext, machinename, description) =>
       } else {
         const pascalCase = changeCase.pascal(machinename)
         if (content.includes(pascalCase)) {
-          const { content } = await githubGetSync('frontcraft/fronthack-components', `src/components/${pascalCase}/style.sass`)
+          const { content } = await fronthackGet(`src/components/${pascalCase}/style.sass`)
           const parsedContent = content
             // Remove imports unnecessary for static version
             .replace(/^.*@import.*\n+/gm, '')
             // Exceptional behavior that fixes icon font path.
             .replace('./fonts/waat-icons', '../fonts/waat-icons')
           await afs.writeFile(`${projectSrc}/sass/components/_${machinename}.sass`, parsedContent)
-          // Read static.html and display it on the screen
-          const { readmeContent } = await githubGetSync('frontcraft/fronthack-components', `src/components/${pascalCase}/README.md`)
+          // Read static.html and display it on the screen.
+          const { content: readmeContent } = await fronthackGet(`src/components/${pascalCase}/README.md`)
           console.log(consoleColors.fronthack, 'Found Fronthack component of given name and imported its code.')
           const markup = readmeContent.match(/(?<=```html\n)[\s\S]*?(?=\n```)+/m)[0]
           console.log(consoleColors.fronthack, '\n------------------------------------------------------------\n')

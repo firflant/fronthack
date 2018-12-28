@@ -8,20 +8,12 @@ import getFronthackPath from '../helpers/getFronthackPath'
 import consoleColors from '../helpers/consoleColors'
 import fetchComponent from '../helpers/fetchComponent'
 import regex from '../helpers/regex'
-
+import userInput from '../helpers/userInput'
 
 export default async () => {
-  prompt.start()
-
-  const userInput = property => new Promise((resolve, reject) => {
-    prompt.get(property, (err, result) => {
-      if (err) reject(err)
-      resolve(result)
-    })
-  })
-
   try {
     // Collect variables.
+    prompt.start()
     const { name } = await userInput({
       name: 'name',
       description: 'Directory of installation',
