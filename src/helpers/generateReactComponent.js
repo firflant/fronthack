@@ -1,4 +1,5 @@
 import * as afs from 'async-file'
+import fs from 'fs-extra'
 import changeCase from 'case'
 import getFronthackPath from '../helpers/getFronthackPath'
 import consoleColors from './consoleColors'
@@ -33,14 +34,14 @@ export default async (projectRoot, isNext, type, machinename, description = null
   }
 
   if (type === 'page') {
-    await afs.ensureDir(`${projectSrc}/${type}s`)
-    const reactScreen = afs.readFile(reactComponentTemplatePath, 'utf8')
-    let parsedReactScreen = reactScreen.replace(/PageName/g, machinename)
-    if (isNext) parsedReactScreen = parsedReactScreen.replace("import React from 'react'\n", '')
-    await afs.writeFile(`${projectSrc}/${type}s/${machinename}.js`, parsedReactScreen)
+    await fs.ensureDirSync(`${projectSrc}/${type}s`)
+    const reactPage = await afs.readFile(reactComponentTemplatePath, 'utf8')
+    let parsedReactPage = reactPage.replace(/PageName/g, machinename)
+    if (isNext) parsedReactPage = parsedReactPage.replace("import React from 'react'\n", '')
+    await afs.writeFile(`${projectSrc}/${type}s/${machinename}.js`, parsedReactPage)
     console.log(consoleColors.fronthack, 'Done!')
   } else {
-    await afs.ensureDir(`${projectSrc}/${type}s/${machinename}`)
+    await fs.ensureDirSync(`${projectSrc}/${type}s/${machinename}`)
     // Fetch React component template
     const reactComponent = await afs.readFile(reactComponentTemplatePath, 'utf8')
     const kebabCase = changeCase.kebab(machinename)

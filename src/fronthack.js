@@ -38,94 +38,83 @@ const { command, argv } = commandLineCommands(validCommands)
  * Defines root path of the project
  * @param {function} cb Callback after success
  */
-const defineProjectRoot = (cb) => {
-  pkgUp()
-    .then(packagePath => {
-      if (packagePath) {
-        return cb(packagePath.replace('/package.json', ''))
+const defineProjectRoot = async () => {
+  try {
+    const packagePath = await pkgUp.sync()
+    if (packagePath) {
+      return packagePath.replace('/package.json', '')
+    } else {
+      throw true
+    }
+  } catch (err) {
+    console.log(consoleColors.error, 'Error: You are not in a Fronthack project scope.')
+  }
+}
+
+
+const runCommands = async () => {
+  let projectRoot, isReact, isNext
+
+  switch (command) {
+    case 'init':
+      commandInit()
+      break
+
+    case 'create-react-app':
+      commandCreateReactApp()
+      break
+
+    case 'init-next':
+      commandInitNext()
+      break
+
+    case 'component':
+      projectRoot = await defineProjectRoot()
+      isReact = await isReactApp(projectRoot)
+      isNext = await isNextApp(projectRoot)
+      commandComponent(projectRoot, isReact, isNext)
+      break
+
+    case 'layout':
+      projectRoot = await defineProjectRoot()
+      isReact = await isReactApp(projectRoot)
+      isNext = await isNextApp(projectRoot)
+      commandLayout(projectRoot, isReact, isNext)
+      break
+
+    case 'page':
+      projectRoot = await defineProjectRoot()
+      isReact = await isReactApp(projectRoot)
+      isNext = await isNextApp(projectRoot)
+      commandPage(projectRoot, isReact, isNext)
+      break
+
+    case 'design':
+      projectRoot = await defineProjectRoot()
+      isReact = await isReactApp(projectRoot)
+      if (isReact) {
+        commandReactDesign(projectRoot)
       } else {
-        console.log(consoleColors.error, 'Error: You are not in a Fronthack project scope.')
+        commandDesign(projectRoot)
       }
-    })
-    .catch(() => { console.log(consoleColors.error, 'Error: You are not in a Fronthack project scope.') })
+      break
+
+    case 'list':
+      commandList()
+      break
+
+    case 'help':
+      commandHelp()
+      break
+
+    case 'version':
+      commandVersion()
+      break
+
+    case null:
+      console.log(consoleColors.fronthack, 'You did not passed any operation. Type \'fronthack help\' for help.')
+      break
+  }
 }
 
-
-switch (command) {
-  case 'init':
-    commandInit()
-    break
-
-  case 'create-react-app':
-    commandCreateReactApp()
-    break
-
-  case 'init-next':
-    commandInitNext()
-    break
-
-  case 'component':
-    defineProjectRoot((projectRoot) => {
-      isReactApp(projectRoot, (err, isReact) => {
-        if (err) throw err
-        isNextApp(projectRoot, (err, isNext) => {
-          if (err) throw err
-          commandComponent(projectRoot, isReact, isNext)
-        })
-      })
-    })
-    break
-
-  case 'layout':
-    defineProjectRoot((projectRoot) => {
-      isReactApp(projectRoot, (err, isReact) => {
-        if (err) throw err
-        isNextApp(projectRoot, (err, isNext) => {
-          if (err) throw err
-          commandLayout(projectRoot, isReact, isNext)
-        })
-      })
-    })
-    break
-
-  case 'page':
-    defineProjectRoot((projectRoot) => {
-      isReactApp(projectRoot, (err, isReact) => {
-        if (err) throw err
-        isNextApp(projectRoot, (err, isNext) => {
-          if (err) throw err
-          commandPage(projectRoot, isReact, isNext)
-        })
-      })
-    })
-    break
-
-  case 'design':
-    defineProjectRoot((projectRoot) => {
-      isReactApp(projectRoot, (err, isReact) => {
-        if (err) throw err
-        if (isReact) {
-          commandReactDesign(projectRoot)
-        } else {
-          commandDesign(projectRoot)
-        }
-      })
-    })
-    break
-
-  case 'list':
-    commandList()
-    break
-
-  case 'help':
-    commandHelp()
-    break
-
-  case 'version':
-    commandVersion()
-    break
-
-  case null:
-    console.log(consoleColors.fronthack, 'You did not passed any operation. Type \'fronthack help\' for help.')
-    break
-}
+runCommands()

@@ -1,9 +1,7 @@
-'use strict'
-
 /**
  * Colors for console output.
  */
-module.exports = {
+export default {
   fronthack: '\x1b[36m%s\x1b[0m',
   green: '\x1b[32m',
   warning: '\x1b[33m%s\x1b[0m',

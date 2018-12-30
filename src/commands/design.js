@@ -35,7 +35,7 @@ export default async (projectRoot) => {
     design.pattern = new RegExp(design.patternArray.join('|'))
     design.description = `${design.description}Select number from the list above`
 
-    // // Collect variables.
+    // Collect variables.
     prompt.start()
     const { htmlIndex, designIndex } = await userInput([
       {
@@ -62,16 +62,17 @@ export default async (projectRoot) => {
     // Apply new design as a background CSS property
     const path = `${projectRoot}/src/designs/connect-designs.css`
     await fs.ensureFileSync(path)
-    let data = await fs.readFile(path, 'utf8')
+    const data = await afs.readFile(path, 'utf8')
     let dimensions = sizeOf(`${projectRoot}/src/designs/${selectedDesign}`)
 
-    // If width is bigger than 2000px, it means that it is doublesized.
+    // If width is bigger than 2000px, that means that it is doublesize.
     if (dimensions.width >= 2000) {
       dimensions.width = dimensions.width / 2
     }
-    data = typeof data === 'undefined' ? '' : data
-    data = `${data}.show-designs .designs--${selectedHtmlName}, .show-code-designs .designs--${selectedHtmlName} { background-image: url('../designs/${selectedDesign}'); width: ${dimensions.width}px; margin: 0 ${dimensions.width / -2}px; }\n`
-    await afs.writeFile(path, data)
+    const newData = `${data}.show-designs .designs--${selectedHtmlName}, .show-code-designs .designs--${selectedHtmlName} { background-image: url('../designs/${selectedDesign}'); width: ${dimensions.width}px; margin: 0 ${dimensions.width / -2}px; }\n`
+    await afs.writeFile(path, newData)
+
+    // Display output.
     console.log(`Done! ${selectedDesign} attached to ${selectedHtml} page.`)
   } catch (err) {
     throw new Error(err)

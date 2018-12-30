@@ -3,7 +3,7 @@ import './style.sass'
 
 
 const ComponentName = () =>
-  <div className="component-name">
+  <div className='component-name'>
   </div>
 
 export default ComponentName

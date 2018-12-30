@@ -1,15 +1,14 @@
-'use strict'
-const fs = require('fs-extra')
+import * as afs from 'async-file'
 
 /**
  * Checks whether current dir is a React project.
  * @argument {string} projectRoot root path of the current project
- * @argument {function} cb callback to perform after success 
  */
-module.exports = function (projectRoot, cb) {
-  fs.readFile(`${projectRoot}/package.json`, 'utf8', (err, content) => {
-    if (err) throw err
-    if (content.includes('\"react\": \"')) return cb(false, true)
-    return cb(false, false)
-  })
+export default async (projectRoot) => {
+  try {
+    const content = await afs.readFile(`${projectRoot}/package.json`, 'utf8')
+    return content.includes('\"react\": \"')
+  } catch (err) {
+    throw new Error(err)
+  }
 }
