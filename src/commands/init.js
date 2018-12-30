@@ -38,9 +38,8 @@ export default async () => {
     // .gitignore is named .gitignore_template to not be ignored during the insstalation.
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
-    await shell.cd(projectRoot)
-
     // Install dependencies.
+    await shell.cd(projectRoot)
     console.log(consoleColors.fronthack, 'Installing node dependencies...')
     await shell.exec('yarn install')
 
