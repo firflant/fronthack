@@ -81,6 +81,9 @@ export default async () => {
     // Fetch base styles.
     await fetchComponent(currentPath, true, false, 'style', null)
 
+    // Fix all linting issues. Mainly semicolons and quotation marks.
+    await shell.exec('npx eslint src --fix')
+
     // Do initial git commit.
     await shell.exec('git add .', { silent: true })
     await shell.exec('git commit -m "Added fronthack stuff"', { silent: true})
