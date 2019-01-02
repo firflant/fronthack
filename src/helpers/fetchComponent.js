@@ -8,6 +8,8 @@ import consoleColors from './consoleColors'
 import generateSassComponent from './generateSassComponent'
 import generateReactComponent from './generateReactComponent'
 import addImportToApp from './addImportToApp'
+import userInput from '../helpers/userInput'
+
 
 const fronthackGet = (path) => new Promise((resolve, reject) => {
   githubGet('frontcraft/fronthack-components', path, (err, data, content) => {
@@ -29,9 +31,8 @@ const asyncForEach = async (array, callback) => {
  * @argument {bool} isReact whether current project is based on React
  * @argument {bool} isNext whether current project is based on Next JS
  * @argument {string} machinename unique name identifier of the component
- * @argument {string} description optional description of the component
  */
-export default async (projectRoot, isReact, isNext, machinename, description) => {
+export default async (projectRoot, isReact, isNext, machinename) => {
   try {
     const projectSrc = `${projectRoot}${isNext ? '' : '/src'}`
 
@@ -76,6 +77,11 @@ export default async (projectRoot, isReact, isNext, machinename, description) =>
         } else {
           console.log(consoleColors.fronthack, `There is no ready Fronthack component of name ${machinename}.`)
           console.log(consoleColors.fronthack, 'Generating a new blank one...')
+          const { description } = await userInput({
+            name: 'description',
+            description: 'Write short component description',
+            type: 'string',
+          })
           await generateReactComponent(projectRoot, isNext, 'component', machinename, description)
         }
 
@@ -101,6 +107,11 @@ export default async (projectRoot, isReact, isNext, machinename, description) =>
         } else {
           console.log(consoleColors.fronthack, `There is no ready Fronthack component of name ${machinename}.`)
           console.log(consoleColors.fronthack, 'Generating a new blank one...')
+          const { description } = await userInput({
+            name: 'description',
+            description: 'Write short component description',
+            type: 'string',
+          })
           await generateSassComponent(projectSrc, 'component', machinename, description)
         }
       }
