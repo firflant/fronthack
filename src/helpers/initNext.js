@@ -3,12 +3,12 @@ import fs from 'fs-extra'
 import prompt from 'prompt'
 import shell from 'shelljs'
 import copy from 'recursive-copy'
-import getFronthackPath from '../helpers/getFronthackPath'
+import getFronthackPath from './getFronthackPath'
 
-import consoleColors from '../helpers/consoleColors'
-import fetchComponent from '../helpers/fetchComponent'
-import regex from '../helpers/regex'
-import userInput from '../helpers/userInput'
+import consoleColors from './consoleColors'
+import fetchComponent from './fetchComponent'
+import regex from './regex'
+import userInput from './userInput'
 
 
 export default async () => {
@@ -26,7 +26,6 @@ export default async () => {
     if (name === 'fronthack') {
       throw new Error('Name should be different than fronthack')
     }
-    console.log(consoleColors.fronthack, 'Initiating Fronthack directory for new project...')
     const projectRoot = `${process.cwd()}/${name}`
     const fronthackPath = await getFronthackPath()
 
@@ -66,7 +65,7 @@ export default async () => {
     await shell.exec('git commit -m "Repository initiated by fronthack"', { silent: true})
 
     // Display output.
-    console.log(consoleColors.fronthack, 'Opinionated Fronthack Next project is ready for hacking! Begin by typing:')
+    console.log(consoleColors.fronthack, 'Opinionated Fronthack Next project is ready for hacking!\nBegin by typing:')
     console.log('')
     console.log(consoleColors.fronthack, `  cd ${name}`)
     console.log(consoleColors.fronthack, '  yarn dev')

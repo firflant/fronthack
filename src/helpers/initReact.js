@@ -3,11 +3,11 @@ import shell from 'shelljs'
 import * as afs from 'async-file'
 import fs from 'fs-extra'
 
-import getFronthackPath from '../helpers/getFronthackPath'
-import consoleColors from '../helpers/consoleColors'
-import fetchComponent from '../helpers/fetchComponent'
-import regex from '../helpers/regex'
-import userInput from '../helpers/userInput'
+import getFronthackPath from './getFronthackPath'
+import consoleColors from './consoleColors'
+import fetchComponent from './fetchComponent'
+import regex from './regex'
+import userInput from './userInput'
 
 
 export default async () => {
@@ -24,24 +24,20 @@ export default async () => {
     })
     const fronthackPath = await getFronthackPath()
 
-    // Display output.
-    console.log(consoleColors.fronthack, 'Creating React app with Fronthack utilities...')
-    console.log(consoleColors.fronthack, 'This command is a wrapper of the "Create React App" project.')
-    console.log('')
-    console.log(consoleColors.fronthack, 'Fronhack philosophy is to generate and hack - automate boilerplate, expose everything for developer, leave nothing under the hood.')
-    console.log('')
-
     // Create React app.
+    console.log(consoleColors.fronthack, 'Running create-react-app command...')
     await shell.exec(`npx create-react-app ${name}`)
     await shell.cd(name)
     const currentPath = process.cwd()
 
     // Install additional dependencies.
+    console.log(consoleColors.fronthack, 'Not yet. Installing additional dependencies...')
     await shell.exec('yarn add copy-webpack-plugin node-sass bem-modifiers', { silent: true })
     await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard', {  silent: true })
     await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
 
     // Eject webpack config.
+    console.log(consoleColors.fronthack, 'Customizing a project for Fronthack...')
     await shell.exec('echo y | yarn eject')
 
     // Apply changes in App.js file.
@@ -89,7 +85,7 @@ export default async () => {
     await shell.exec('git commit -m "Added fronthack stuff"', { silent: true})
 
     // Display output.
-    console.log(consoleColors.fronthack, 'Opinionated Fronthack React project is ready for hacking! Begin by typing:')
+    console.log(consoleColors.fronthack, 'Opinionated Fronthack React project is ready for hacking!\nBegin by typing:')
     console.log('')
     console.log(consoleColors.fronthack, `  cd ${name}`)
     console.log(consoleColors.fronthack, '  yarn start')

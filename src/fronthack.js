@@ -2,8 +2,6 @@ import commandLineCommands from 'command-line-commands'
 import pkgUp from 'pkg-up'
 
 import commandInit from './commands/init'
-import commandInitNext from './commands/initNext'
-import commandCreateReactApp from './commands/createReactApp'
 import commandComponent from './commands/component'
 import commandLayout from './commands/layout'
 import commandPage from './commands/page'
@@ -22,8 +20,6 @@ import "@babel/polyfill"
 const validCommands = [
   null,
   'init',
-  'init-next',
-  'create-react-app',
   'component',
   'layout',
   'page',
@@ -58,14 +54,6 @@ const runCommands = async () => {
   switch (command) {
     case 'init':
       commandInit()
-      break
-
-    case 'create-react-app':
-      commandCreateReactApp()
-      break
-
-    case 'init-next':
-      commandInitNext()
       break
 
     case 'component':
