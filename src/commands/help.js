@@ -6,94 +6,100 @@ export default () => {
     {
       header: 'Fronthack CLI',
       content: [
-        'A generator tool for the Fronthack',
+        'A generator tool for the Fronthack projects',
         '[underline]{http://fronthack.com}'
-      ]
+      ],
     },
     {
       header: 'Generator commands',
       content: [
         {
           name: '[cyan]{fronthack init}',
-          summary: 'create a new Fronthack project in current directory.'
-        },
-        {
-          name: '[cyan]{fronthack create-react-app}',
-          summary: 'create new React project with Fronthack included'
-        },
-        {
-          name: '[cyan]{fronthack init-next}',
-          summary: 'create new NextJS project with Fronthack included'
+          summary: 'Initiate a new Fronthack project in picked technology.'
         },
         {
           name: '[cyan]{fronthack component}',
-          summary: 'generate new empty Sass component or receives the ready one if it exists in Fronthack\'s database.\n'
+          summary: 'Generate a new blank component or fetch the exists one of that name from Fronthack repository.'
         },
         {
           name: '[cyan]{fronthack layout}',
-          summary: 'generate new empty Sass file for layout section.'
+          summary: 'Generate a new blank component of layout type.'
         },
         {
           name: '[cyan]{fronthack page}',
-          summary: 'generate new empty html page.'
+          summary: 'Generate a new page.'
         },
         {
           name: '[cyan]{fronthack design}',
-          summary: 'attach file with design to given page.'
+          summary: 'Pair design file with given page.'
         },
         {
           name: '[cyan]{fronthack list}',
-          summary: 'display list of ready components available in Fronthack repository.'
+          summary: 'Display a list of components available in Fronthack repository.'
         },
         {
           name: '[cyan]{fronthack help}',
-          summary: 'display this help.'
+          summary: 'Display this help.'
         },
         {
           name: '[cyan]{fronthack version}',
-          summary: 'display currently installed version of Fronthack.'
-        }
-      ]
+          summary: 'Display currently installed version of Fronthack.'
+        },
+      ],
     },
     {
-      content: 'These are only the generator commands usefull to generate new project and Sass files, but for development you need also the local scripts from below. They compile Sass and Mustache files into ready output, run local dev server etc.'
-    },
-    {
-      header: 'Static project scripts',
+      header: 'Static HTML project scripts',
       content: [
         {
           name: '[cyan]{yarn start}',
-          summary: 'run a local dev server with helpfull development scripts and livereload.'
+          summary: 'Run a local dev server with helpfull development scripts and livereload.'
         },
         {
           name: '[cyan]{yarn build}',
-          summary: 'compiles a standalone "dist" directory with minified files, which is ready to deploy to any production envirnoment.'
+          summary: 'Compiles a standalone "dist" directory with minified files, that are ready to deploy.'
         },
         {
           name: '[cyan]{yarn deploy}',
-          summary: 'if your repository is hosted on GitHub, it deploys "dist" directory to Github pages.'
-        }
-      ]
+          summary: 'If your repository is hosted on GitHub, it deploys compiled "dist" directory to GitHub pages.'
+        },
+      ],
     },
     {
       header: 'React project scripts',
       content: [
         {
           name: '[cyan]{yarn start}',
-          summary: 'run a local dev server with helpfull development scripts.'
+          summary: 'Run a local dev server.'
         },
         {
           name: '[cyan]{yarn build}',
-          summary: 'compiles a production build.'
+          summary: 'Compiles a production build.'
         },
         {
           summary: 'More at [underline]{https://github.com/facebook/create-react-app}'
         }
-      ]
+      ],
+    },
+    {
+      header: 'Next.js project scripts',
+      content: [
+        {
+          name: '[cyan]{yarn dev}',
+          summary: 'Run a local dev server.'
+        },
+        {
+          name: '[cyan]{yarn build}',
+          summary: 'Compiles a production build.'
+        },
+        {
+          name: '[cyan]{yarn start}',
+          summary: 'Starts a production build.'
+        },
+      ],
     },
     {
       content: [
-        'You still need more help? Check the Fronthack docs: [underline]{http://docs.fronthack.com/}'
+        'You still need more help? Check out the official Fronthack docs:\n[underline]{https://frontcraft.github.io/fronthack-components/index.html?selectedKind=Docs%2FIntroduction&selectedStory=default}'
       ]
     }
   ]

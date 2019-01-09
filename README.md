@@ -11,38 +11,35 @@ yarn global add fronthack
 
 ### Generator commands
 
-| Command                      | Description                                                             |
-|------------------------------|-------------------------------------------------------------------------|
-| `fronthack init`             | Creates a new Fronthack project in current directory.                   |
-| `fronthack create-react-app` | Creates new React project with Fronthack included.                      |
-| `fronthack component`        | Fetches a component from a Fronthack repository or generates a new one. |
-| `fronthack layout`           | Generates a boilerplate for layout section.                             |
-| `fronthack page`             | Generates new empty page.                                               |
-| `fronthack design`           | Attach file with design to given page.                                  |
-| `fronthack list`             | Displays a list of ready components available in Fronthack repository.  |
-| `fronthack help`             | Displays help.                                                          |
-| `fronthack version`          | Displays currently installed version.                                   |
+| Command               | Description                                                                                    |
+|-----------------------|------------------------------------------------------------------------------------------------|
+| `fronthack init`      | Initiate a new Fronthack project in picked technology.                                         |
+| `fronthack component` | Generate a new blank component or fetch the exists one of that name from Fronthack repository. |
+| `fronthack layout`    | Generate a new blank component of layout type.                                                 |
+| `fronthack page`      | Generate a new page.                                                                           |
+| `fronthack design`    | Pair design file with given page.                                                              |
+| `fronthack list`      | Display a list of components available in Fronthack repository.                                |
+| `fronthack help`      | Display help.                                                                                  |
+| `fronthack version`   | Display currently installed version of Fronthack.                                              |
 
-These are only the generator commands usefull to generate new projects, React
-components or Sass files, but you need also the local scripts from below for
-development purposes.
 
 ## Static project scripts
 
-| Command               | Description                                                                                          |
-|-----------------------|------------------------------------------------------------------------------------------------------|
-| `yarn start`          | Run a local dev server with helpfull development scripts and livereload.                             |
-| `yarn build`          | Compiles a production ready "dist" directory with minified files, which is ready to deploy anywhere. |
-| `yarn deploy`         | If your repository is hosted on GitHub, it deploys "dist" directory to Github pages.                 |
+| Command               | Description                                                                                   |
+|-----------------------|-----------------------------------------------------------------------------------------------|
+| `yarn start`          | Run a local dev server with helpfull development scripts and livereload.                      |
+| `yarn build`          | Compiles a standalone "dist" directory with minified files, that are ready to deploy.         |
+| `yarn deploy`         | If your repository is hosted on GitHub, it deploys compiled "dist" directory to GitHub pages. |
+
 
 ## React project scripts
 
-| Command               | Description                                               |
-|-----------------------|-----------------------------------------------------------|
-| `yarn start`          | Run a local dev server with helpfull development scripts. |
-| `yarn build`          | Compiles a production build.                              |
-
-More at [Create React App docs](https://github.com/facebook/create-react-app)
+| Command               | Description                  |
+|-----------------------|------------------------------|
+| `yarn dev`            | Run a local dev server.      |
+| `yarn build`          | Compiles a production build. |
+| `yarn build`          | Starts a production build.   |
 
 --------------------------------------------------
-Fronthack has been founded thanks to project development in [WAAT ltd.](http://waat.eu/)
+Fronthack has been founded thanks to project development in
+[WAAT ltd.](http://waat.eu/) and [MVP-Space](http://mvp-space.com/)
