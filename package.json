@@ -1,6 +1,6 @@
 {
   "name": "fronthack",
-  "version": "3.4.0",
+  "version": "3.4.1",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "@babel/polyfill": "^7.2.5",
@@ -11,6 +11,7 @@
     "cli-highlight": "^1.2.3",
     "command-line-commands": "^2.0.0",
     "command-line-usage": "^4.1.0",
+    "core-js": "^2.6.5",
     "fs-extra": "^2.1.2",
     "github-get": "^0.3.1",
     "glob": "^7.1.3",
