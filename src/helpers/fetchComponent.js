@@ -99,7 +99,7 @@ export default async (projectRoot, isReact, isNext, machinename) => {
           // Read static.html and display it on the screen.
           const { content: readmeContent } = await fronthackGet(`src/components/${pascalCase}/README.md`)
           console.log(consoleColors.fronthack, 'Found Fronthack component of given name and imported its code.')
-          const markup = readmeContent.match(/(?<=```html\n)[\s\S]*?(?=\n```)+/m)[0]
+          const markup = readmeContent.match(/(?<=```html\n)[\s\S]*?(?=\n```)/m)[0]
           console.log(consoleColors.fronthack, '\n------------------------------------------------------------\n')
           console.log(highlight(markup, { language: 'html' }))
           console.log(consoleColors.fronthack, '\n------------------------------------------------------------\n')
