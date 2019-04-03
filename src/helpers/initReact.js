@@ -32,7 +32,7 @@ export default async () => {
 
     // Install additional dependencies.
     console.log(consoleColors.fronthack, 'Not yet. Installing additional dependencies...')
-    await shell.exec('yarn add copy-webpack-plugin node-sass bem-modifiers', { silent: true })
+    await shell.exec('yarn add @babel/plugin-transform-react-jsx-source copy-webpack-plugin node-sass bem-modifiers', { silent: true })
     await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard', {  silent: true })
     await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
 
