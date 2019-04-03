@@ -50,6 +50,11 @@ export default async (projectRoot, isReact, isNext, machinename) => {
         }
       })
 
+    // Exceptional behavior when trying to fetch a Form component.
+    } else if (isReact && machinename === 'Form') {
+      console.log(consoleColors.fronthack, 'The advanced Fronthack Form component has been promoted to a standalone npm package. To use it on a project, do following:')
+      console.log(consoleColors.fronthack, 'yarn add react-standalone-form')
+
     // Behavior when fetching everything else.
     } else {
       console.log(consoleColors.fronthack, 'Fetching data from a Fronthack components repository...')
