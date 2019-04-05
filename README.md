@@ -15,7 +15,6 @@ yarn global add fronthack
 |-----------------------|------------------------------------------------------------------------------------------------|
 | `fronthack init`      | Initiate a new Fronthack project in picked technology.                                         |
 | `fronthack component` | Generate a new blank component or fetch the exists one of that name from Fronthack repository. |
-| `fronthack layout`    | Generate a new blank component of layout type.                                                 |
 | `fronthack page`      | Generate a new page.                                                                           |
 | `fronthack design`    | Pair design file with given page.                                                              |
 | `fronthack list`      | Display a list of components available in Fronthack repository.                                |
@@ -36,9 +35,8 @@ yarn global add fronthack
 
 | Command               | Description                  |
 |-----------------------|------------------------------|
-| `yarn dev`            | Run a local dev server.      |
+| `yarn start`          | Run a local dev server.      |
 | `yarn build`          | Compiles a production build. |
-| `yarn build`          | Starts a production build.   |
 
 --------------------------------------------------
 Fronthack has been founded thanks to project development in

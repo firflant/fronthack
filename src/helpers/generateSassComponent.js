@@ -17,15 +17,14 @@ export default async (projectSrc, type, machinename, description = null) => {
   const fronthackPath = await getFronthackPath()
   const sassContent = await afs.readFile(`${fronthackPath}/templates/sass-component.sass`, 'utf8')
   const humanCase = changeCase.sentence(machinename)
-  const checkedMachinename = (type === 'layout') ? `layout-${machinename}` : machinename
   let parsedSassContent = sassContent
     .replace('Name', humanCase)
-    .replace(/name/g, checkedMachinename)
+    .replace(/name/g, machinename)
   if (description) parsedSassContent = parsedSassContent.replace('Description', description)
-  await afs.writeFile(`${projectSrc}/sass/${type}s/_${checkedMachinename}.sass`, parsedSassContent)
-  await addImportToApp(projectSrc, type, checkedMachinename)
+  await afs.writeFile(`${projectSrc}/sass/${type}s/_${machinename}.sass`, parsedSassContent)
+  await addImportToApp(projectSrc, type, machinename)
   console.log(consoleColors.fronthack, '\n--------------------------------------------------\n')
   console.log(consoleColors.fronthack, `New element can have folowing initial HTML markup:\n`)
-  console.log(highlight(`<div class="${checkedMachinename}"></div>`, { language: 'html' }))
+  console.log(highlight(`<div class="${machinename}"></div>`, { language: 'html' }))
   console.log(consoleColors.fronthack, '\n--------------------------------------------------\n')
 }

@@ -22,10 +22,6 @@ export default () => {
           summary: 'Generate a new blank component or fetch the exists one of that name from Fronthack repository.'
         },
         {
-          name: '[cyan]{fronthack layout}',
-          summary: 'Generate a new blank component of layout type.'
-        },
-        {
           name: '[cyan]{fronthack page}',
           summary: 'Generate a new page.'
         },

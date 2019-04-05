@@ -24,10 +24,6 @@ export default async (projectRoot, isNext, type, machinename, description = null
       reactComponentTemplatePath = `${fronthackPath}/templates/react-page.js`
       break;
 
-    case 'layout':
-      reactComponentTemplatePath = `${fronthackPath}/templates/react-component-functional.js`
-      break;
-
     default:
       if (!isNext) {
         const { componentType } = await userInput({

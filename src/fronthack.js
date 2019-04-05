@@ -3,7 +3,6 @@ import pkgUp from 'pkg-up'
 
 import commandInit from './commands/init'
 import commandComponent from './commands/component'
-import commandLayout from './commands/layout'
 import commandPage from './commands/page'
 import commandDesign from './commands/design'
 import commandReactDesign from './commands/reactDesign'
@@ -21,7 +20,6 @@ const validCommands = [
   null,
   'init',
   'component',
-  'layout',
   'page',
   'design',
   'list',
@@ -62,13 +60,6 @@ const runCommands = async () => {
       isReact = await isReactApp(projectRoot)
       isNext = await isNextApp(projectRoot)
       commandComponent(projectRoot, isReact, isNext, name)
-      break
-
-    case 'layout':
-      projectRoot = await defineProjectRoot()
-      isReact = await isReactApp(projectRoot)
-      isNext = await isNextApp(projectRoot)
-      commandLayout(projectRoot, isReact, isNext)
       break
 
     case 'page':
