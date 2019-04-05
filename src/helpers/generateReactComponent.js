@@ -52,7 +52,7 @@ export default async (projectRoot, isNext, type, machinename, description = null
     let parsedReactPage = reactPage.replace(/PageName/g, machinename)
     if (isNext) parsedReactPage = parsedReactPage.replace("import React from 'react'\n", '')
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}.js`, parsedReactPage)
-    console.log(consoleColors.fronthack, 'Done!')
+    console.log(consoleColors.fronthack, 'Created new page.')
   } else {
     await fs.ensureDirSync(`${projectSrc}/${type}s/${machinename}`)
     // Fetch React component template
@@ -77,6 +77,6 @@ export default async (projectRoot, isNext, type, machinename, description = null
     const indexFile = await afs.readFile(`${fronthackPath}/templates/react-component-index.js`, 'utf8')
     const parsedIndexFile = indexFile.replace('ComponentName', machinename)
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}/index.js`, parsedIndexFile)
-    console.log(consoleColors.fronthack, 'Done!')
+    console.log(consoleColors.fronthack, 'Component created.')
   }
 }

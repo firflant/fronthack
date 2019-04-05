@@ -10,18 +10,21 @@ import regex from './regex'
 import userInput from './userInput'
 
 
-export default async () => {
+export default async name => {
   try {
     // Collect variables.
-    prompt.start()
-    const { name } = await userInput({
-      name: 'name',
-      description: 'Directory of installation',
-      type: 'string',
-      pattern: regex.projectName,
-      message: 'Name must be only letters, numbers dashes or underscores',
-      default: 'fronthack-react'
-    })
+    if (!name) {
+      prompt.start()
+      const { namePrompt } = await userInput({
+        name: 'namePrompt',
+        description: 'Directory of installation',
+        type: 'string',
+        pattern: regex.projectName,
+        message: 'Name must be only letters, numbers dashes or underscores',
+        default: 'fronthack-react'
+      })
+      name = namePrompt
+    }
     const fronthackPath = await getFronthackPath()
 
     // Create React app.

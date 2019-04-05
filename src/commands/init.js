@@ -6,7 +6,7 @@ import initNext from '../helpers/initNext'
 import userInput from '../helpers/userInput'
 import consoleColors from '../helpers/consoleColors'
 
-export default async () => {
+export default async nameParam => {
   try {
     // Collect variables.
     prompt.start()
@@ -21,17 +21,17 @@ export default async () => {
     switch (technology) {
       case 1:
         console.log(consoleColors.fronthack, 'Initializing a Static HTML project with Fronthack boilerplate...')
-        initStatic()
+        initStatic(nameParam)
         break
 
       case 2:
         console.log(consoleColors.fronthack, 'Initializing a React app with Fronthack boilerplate...')
-        initReact()
+        initReact(nameParam)
         break
 
       case 3:
         console.log(consoleColors.fronthack, 'Initializing a Next.js app with Fronthack boilerplate...')
-        initNext()
+        initNext(nameParam)
         break
 
       default:

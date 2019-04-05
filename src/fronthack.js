@@ -29,6 +29,8 @@ const validCommands = [
   'version',
 ]
 const { command, argv } = commandLineCommands(validCommands)
+// Tread first param as a name.
+const name = argv.length ? argv[0] : null
 
 /**
  * Defines root path of the project
@@ -50,17 +52,16 @@ const defineProjectRoot = async () => {
 
 const runCommands = async () => {
   let projectRoot, isReact, isNext
-
   switch (command) {
     case 'init':
-      commandInit()
+      commandInit(name)
       break
 
     case 'component':
       projectRoot = await defineProjectRoot()
       isReact = await isReactApp(projectRoot)
       isNext = await isNextApp(projectRoot)
-      commandComponent(projectRoot, isReact, isNext)
+      commandComponent(projectRoot, isReact, isNext, name)
       break
 
     case 'layout':
@@ -74,7 +75,7 @@ const runCommands = async () => {
       projectRoot = await defineProjectRoot()
       isReact = await isReactApp(projectRoot)
       isNext = await isNextApp(projectRoot)
-      commandPage(projectRoot, isReact, isNext)
+      commandPage(projectRoot, isReact, isNext, name)
       break
 
     case 'design':
