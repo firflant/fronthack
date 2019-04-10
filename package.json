@@ -23,7 +23,8 @@
     "node": ">=0.10.0"
   },
   "scripts": {
-    "start": "gulp dev",
+    "dev": "gulp dev",
+    "start": "yarn dev",
     "build": "gulp build",
     "deploy": "gh-pages -d dist"
   },
