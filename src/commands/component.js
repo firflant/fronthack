@@ -1,4 +1,5 @@
 import prompt from 'prompt'
+import changeCase from 'case'
 import fetchComponent from '../helpers/fetchComponent'
 import regex from '../helpers/regex'
 import userInput from '../helpers/userInput'
@@ -12,13 +13,14 @@ export default async (projectRoot, isReact, isNext, name) => {
         name: 'namePrompt',
         description: 'Machine name of a new component',
         type: 'string',
-        pattern: isReact ? regex.pascalCase : regex.kebabCase,
-        message: `Name of the ${isReact ? 'react ' : ''}component must be in ${isReact ? 'PascalCase' : 'kebab-case'}.`,
+        pattern: regex.validName,
+        message: 'It must contain only alphanumeric characters, dashes, underscores or slashes.',
         required: true,
       })
       name = namePrompt
     }
-    await fetchComponent(projectRoot, isReact, isNext, name)
+    const parsedName = isReact ? changeCase.pascal(name) : changeCase.kebab(name)
+    await fetchComponent(projectRoot, isReact, isNext, parsedName)
   } catch (err) {
     throw new Error(err)
   }

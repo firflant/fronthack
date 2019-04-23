@@ -37,7 +37,7 @@ export default async (projectRoot) => {
         name: 'url',
         description: 'Enter the url of the page you want to pair (example: "company/about-us"). Enter "index" for the base url path.\n',
         type: 'string',
-        pattern: regex.pageUrl,
+        pattern: regex.validName,
         message: 'It must contain only alphanumeric characters, dashes, underscores or slashes.',
         required: true
       },
