@@ -66,7 +66,7 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack"', { silent: true})
 
     // Display output.
-    console.log(consoleColors.fronthack, 'Opinionated Fronthack Next project is ready for hacking!\nBegin by typing:')
+    console.log(consoleColors.fronthack, 'Fronthack static site is ready for hacking!\nBegin by typing:')
     console.log('')
     console.log(consoleColors.fronthack, `  cd ${name}`)
     console.log(consoleColors.fronthack, '  yarn dev')
