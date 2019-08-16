@@ -78,7 +78,7 @@ export default async name => {
     await afs.writeFile(`${currentPath}/designs/README.md`, readmeContent)
 
     // Fetch base styles.
-    await fetchComponent(currentPath, true, false, 'style', null)
+    await fetchComponent(currentPath, 'react', 'style')
 
     // Fix all linting issues. Mainly semicolons and quotation marks.
     await shell.exec('npx eslint src --fix')

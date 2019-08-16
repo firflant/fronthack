@@ -3,8 +3,8 @@ import fs from 'fs-extra'
 import prompt from 'prompt'
 import shell from 'shelljs'
 import copy from 'recursive-copy'
-import getFronthackPath from '../helpers/getFronthackPath'
 
+import getFronthackPath from '../helpers/getFronthackPath'
 import consoleColors from '../helpers/consoleColors'
 import fetchComponent from '../helpers/fetchComponent'
 import regex from '../helpers/regex'
@@ -41,8 +41,9 @@ export default async name => {
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
     await afs.writeFile(`${projectRoot}/designs/README.md`, content)
 
-    // Download global styles.
-    await fetchComponent(`${projectRoot}`, false, true, 'style', null)
+    // Arrange place for Sass and download global styles.
+    await copy(`${fronthackPath}/templates/static-repo/src/sass`, `${projectRoot}/sass`)
+    await fetchComponent(`${projectRoot}`, 'jekyll', 'style')
 
     // Do initial git commit.
     await shell.exec('git init')

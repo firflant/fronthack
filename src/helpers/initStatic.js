@@ -46,7 +46,7 @@ export default async name => {
     await shell.exec('yarn install')
 
     // Download global styles.
-    await fetchComponent(projectRoot, false, false, 'style', null)
+    await fetchComponent(projectRoot, 'static', 'style')
 
     // Do initial git commit.
     await shell.exec('git init')

@@ -58,7 +58,7 @@ export default async name => {
     await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
 
     // Fetch base styles.
-    await fetchComponent(projectRoot, true, true, 'style', null)
+    await fetchComponent(projectRoot, 'react-next', 'style')
 
     // Do initial git commit.
     await shell.exec('git init')

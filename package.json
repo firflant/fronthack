@@ -1,27 +1,26 @@
 {
   "name": "fronthack",
-  "version": "3.6.0",
+  "version": "3.6.1",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
-    "@babel/polyfill": "^7.2.5",
-    "array-back": "^1.0.4",
+    "array-back": "^3.1.0",
     "async-file": "^2.0.2",
-    "bit-bin": "^13.0.4",
     "case": "^1.5.5",
-    "cli-highlight": "^1.2.3",
+    "cli-highlight": "^2.1.1",
     "command-line-commands": "^2.0.0",
-    "command-line-usage": "^4.1.0",
-    "core-js": "^2.6.5",
+    "command-line-usage": "^6.0.2",
+    "core-js": "^3.2.1",
     "find-up": "^4.1.0",
-    "fs-extra": "^2.1.2",
+    "fs-extra": "^8.1.0",
     "github-get": "^0.3.1",
     "glob": "^7.1.3",
-    "global-modules": "^1.0.0",
-    "image-size": "^0.6.3",
-    "node-cmd": "^2.0.0",
+    "global-modules": "^2.0.0",
+    "image-size": "^0.7.4",
+    "node-cmd": "^3.0.0",
     "openurl": "^1.1.1",
     "prompt": "^1.0.0",
     "recursive-copy": "^2.0.9",
+    "regenerator-runtime": "^0.13.3",
     "remove-value": "^1.0.0",
     "shelljs": "^0.8.2",
     "yarn-global-modules": "^1.0.1"
@@ -29,7 +28,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "dev": "npm run build && npm install -g ./",
+    "dev": "npm uninstall -g fronthack && npm install -g ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -56,9 +55,9 @@
     "bin": "./bin"
   },
   "devDependencies": {
-    "@babel/cli": "^7.2.3",
-    "@babel/code-frame": "^7.0.0",
-    "@babel/core": "^7.2.2",
-    "@babel/preset-env": "^7.2.3"
+    "@babel/cli": "^7.5.5",
+    "@babel/code-frame": "^7.5.5",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5"
   }
 }

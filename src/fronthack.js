@@ -12,7 +12,8 @@ import commandVersion from './commands/version'
 import recognizeProjectType from './helpers/recognizeProjectType'
 import consoleColors from './helpers/consoleColors'
 
-import "@babel/polyfill"
+import 'core-js/stable'
+import 'regenerator-runtime/runtime'
 
 
 const validCommands = [
