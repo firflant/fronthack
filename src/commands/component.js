@@ -5,7 +5,7 @@ import regex from '../helpers/regex'
 import userInput from '../helpers/userInput'
 
 
-export default async (projectRoot, isReact, isNext, name) => {
+export default async (projectRoot, projectType, name) => {
   try {
     if (!name) {
       prompt.start()
@@ -19,8 +19,8 @@ export default async (projectRoot, isReact, isNext, name) => {
       })
       name = namePrompt
     }
-    const parsedName = isReact ? changeCase.pascal(name) : changeCase.kebab(name)
-    await fetchComponent(projectRoot, isReact, isNext, parsedName)
+    const parsedName = projectType.includes('react') ? changeCase.pascal(name) : changeCase.kebab(name)
+    await fetchComponent(projectRoot, projectType, parsedName)
   } catch (err) {
     throw new Error(err)
   }

@@ -6,7 +6,7 @@ import generateReactComponent from '../helpers/generateReactComponent'
 import userInput from '../helpers/userInput'
 
 
-export default async (projectRoot, isReact, isNext, name) => {
+export default async (projectRoot, projectType, name) => {
   try {
     if (!name) {
       prompt.start()
@@ -14,15 +14,15 @@ export default async (projectRoot, isReact, isNext, name) => {
         name: 'namePrompt',
         description: 'Name of new page (ex. contact, articles, about )',
         type: 'string',
-        pattern: isReact ? regex.pascalCase : regex.kebabCase,
-        message: `Name must be in ${isReact ? 'PascalCase' : 'kebab-case'}.`,
+        pattern: projectType.includes('react') ? regex.pascalCase : regex.kebabCase,
+        message: `Name must be in ${projectType.includes('react') ? 'PascalCase' : 'kebab-case'}.`,
         required: true,
       })
       name = namePrompt
     }
 
-    if (isReact) {
-      if (!isNext) {
+    if (projectType.includes('react')) {
+      if (projectType !== 'react-next') {
         generateReactComponent(projectRoot, isNext, 'page', name)
       } else {
         console.log('Nothing happened! In NextJS please add new pages that manually, by creating a file in "/pages" directory.')

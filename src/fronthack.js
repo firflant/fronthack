@@ -1,5 +1,5 @@
 import commandLineCommands from 'command-line-commands'
-import pkgUp from 'pkg-up'
+import findUp from 'find-up'
 
 import commandInit from './commands/init'
 import commandComponent from './commands/component'
@@ -9,8 +9,7 @@ import commandReactDesign from './commands/reactDesign'
 import commandList from './commands/list'
 import commandHelp from './commands/help'
 import commandVersion from './commands/version'
-import isReactApp from './helpers/isReactApp'
-import isNextApp from './helpers/isNextApp'
+import recognizeProjectType from './helpers/recognizeProjectType'
 import consoleColors from './helpers/consoleColors'
 
 import "@babel/polyfill"
@@ -32,24 +31,23 @@ const name = argv.length ? argv[0] : null
 
 /**
  * Defines root path of the project
- * @param {function} cb Callback after success
  */
 const defineProjectRoot = async () => {
   try {
-    const packagePath = await pkgUp.sync()
+    const packagePath = await findUp.sync(['Gemfile', 'package.json'])
     if (packagePath) {
-      return packagePath.replace('/package.json', '')
+      return packagePath.replace('/package.json', '').replace('/Gemfile', '')
     } else {
       throw true
     }
   } catch (err) {
-    console.log(consoleColors.error, 'Error: You are not in a Fronthack project scope.')
+    console.log(consoleColors.error, 'You are not in a scope of Fronthack project.')
   }
 }
 
 
 const runCommands = async () => {
-  let projectRoot, isReact, isNext
+  let projectRoot, projectType
   switch (command) {
     case 'init':
       commandInit(name)
@@ -57,22 +55,20 @@ const runCommands = async () => {
 
     case 'component':
       projectRoot = await defineProjectRoot()
-      isReact = await isReactApp(projectRoot)
-      isNext = await isNextApp(projectRoot)
-      commandComponent(projectRoot, isReact, isNext, name)
+      projectType = await recognizeProjectType(projectRoot)
+      commandComponent(projectRoot, projectType, name)
       break
 
     case 'page':
       projectRoot = await defineProjectRoot()
-      isReact = await isReactApp(projectRoot)
-      isNext = await isNextApp(projectRoot)
-      commandPage(projectRoot, isReact, isNext, name)
+      projectType = await recognizeProjectType(projectRoot)
+      commandPage(projectRoot, projectType, name)
       break
 
     case 'design':
       projectRoot = await defineProjectRoot()
-      isReact = await isReactApp(projectRoot)
-      if (isReact) {
+      projectType = await recognizeProjectType(projectRoot)
+      if (projectType.includes('react')) {
         commandReactDesign(projectRoot)
       } else {
         commandDesign(projectRoot)

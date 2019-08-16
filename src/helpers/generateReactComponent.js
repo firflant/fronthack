@@ -7,16 +7,8 @@ import consoleColors from './consoleColors'
 import userInput from './userInput'
 
 
-/**
- * Generate blank React component from template.
- * @argument {string} projectRoot path to the directory of current project
- * @argument {bool} isNext whether current project is based on Next JS
- * @argument {string} type can be 'component' or 'global'
- * @argument {string} machinename unique name identifier of the component
- * @argument {string} description optional description of the component
- */
-export default async (projectRoot, isNext, type, machinename, description = null) => {
-  const projectSrc = `${projectRoot}${isNext ? '' : '/src'}`
+export default async (projectRoot, projectType, type, machinename, description = null) => {
+  const projectSrc = `${projectRoot}${projectType === 'react-next' ? '' : '/src'}`
   const fronthackPath = await getFronthackPath()
   let reactComponentTemplatePath
   switch (type) {
@@ -25,7 +17,7 @@ export default async (projectRoot, isNext, type, machinename, description = null
       break;
 
     default:
-      if (!isNext) {
+      if (projectType !== 'react-next') {
         const { componentType } = await userInput({
           name: 'componentType',
           description: `Choose a type of component?\n1 - Stateless ( const ${machinename} = () => )\n2 - Class     ( class ${machinename} extends React.Component )\n`,
@@ -46,7 +38,7 @@ export default async (projectRoot, isNext, type, machinename, description = null
     await fs.ensureDirSync(`${projectSrc}/${type}s`)
     const reactPage = await afs.readFile(reactComponentTemplatePath, 'utf8')
     let parsedReactPage = reactPage.replace(/PageName/g, machinename)
-    if (isNext) parsedReactPage = parsedReactPage.replace("import React from 'react'\n", '')
+    if (projectType === 'react-next') parsedReactPage = parsedReactPage.replace("import React from 'react'\n", '')
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}.js`, parsedReactPage)
     console.log(consoleColors.fronthack, 'Created new page.')
   } else {
@@ -58,7 +50,7 @@ export default async (projectRoot, isNext, type, machinename, description = null
     let parsedReactComponent = reactComponent
       .replace(/ComponentName/g, machinename)
       .replace('component-name', kebabCase)
-    if (isNext) parsedReactComponent = parsedReactComponent.replace("import React from 'react'\n", '')
+    if (projectType === 'react-next') parsedReactComponent = parsedReactComponent.replace("import React from 'react'\n", '')
     if (description) parsedReactComponent = parsedReactComponent.replace('Description', description)
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}/${machinename}.js`, parsedReactComponent)
     // Fetch sass template
