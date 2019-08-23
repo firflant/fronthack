@@ -3,12 +3,14 @@ import fs from 'fs-extra'
 import prompt from 'prompt'
 import shell from 'shelljs'
 import copy from 'recursive-copy'
+import download from 'download'
 
 import getFronthackPath from '../helpers/getFronthackPath'
 import consoleColors from '../helpers/consoleColors'
 import fetchComponent from '../helpers/fetchComponent'
 import regex from '../helpers/regex'
 import userInput from '../helpers/userInput'
+
 
 export default async name => {
   try {
@@ -44,6 +46,19 @@ export default async name => {
     // Arrange place for Sass and download global styles.
     await copy(`${fronthackPath}/templates/static-repo/src/sass`, `${projectRoot}/sass`)
     await fetchComponent(`${projectRoot}`, 'jekyll', 'style')
+
+    // Include fronthack-scripts.
+    await fs.ensureDirSync(`${projectRoot}/dev-assets`)
+    await fs.ensureDirSync(`${projectRoot}/dev-assets/icons`)
+    const fronthackScriptsUrl = 'https://raw.githubusercontent.com/frontcraft/fronthack-scripts/master/'
+    const indexJs = await download(`${fronthackScriptsUrl}index.js`)
+    await afs.writeFile(`${projectRoot}/dev.js`, indexJs)
+    const styles = await download(`${fronthackScriptsUrl}dev-assets/styles.css`)
+    await afs.writeFile(`${projectRoot}/dev-assets/styles.css`, styles)
+    const codeIcon = await download(`${fronthackScriptsUrl}dev-assets/icons/code.png`)
+    await afs.writeFile(`${projectRoot}/dev-assets/icons/code.png`, codeIcon)
+    const pictureIcon = await download(`${fronthackScriptsUrl}dev-assets/icons/picture-o.png`)
+    await afs.writeFile(`${projectRoot}/dev-assets/icons/picture-o.png`, pictureIcon)
 
     // Do initial git commit.
     await shell.exec('git init')

@@ -72,7 +72,7 @@ const runCommands = async () => {
       if (projectType.includes('react')) {
         commandReactDesign(projectRoot)
       } else {
-        commandDesign(projectRoot)
+        commandDesign(projectRoot, projectType)
       }
       break
 

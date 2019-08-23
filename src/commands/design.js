@@ -5,12 +5,14 @@ import sizeOf from 'image-size'
 import userInput from '../helpers/userInput'
 
 
-export default async (projectRoot) => {
+export default async (projectRoot, projectType) => {
   try {
+    console.log('projectType: ', projectType);
     // Load list of avaliable html pages and prepare prompt data.
-    const pageFiles = await afs.readdir(`${projectRoot}/src`)
+    const projectSrc = `${projectRoot}${projectType === 'jekyll' ? '' : '/src'}`
+    const pageFiles = await afs.readdir(projectSrc)
     let html = {
-      files: pageFiles.filter((n) => n.includes('.html')),
+      files: pageFiles.filter(n => n.includes('.html') ||  n.includes('.md')),
       description: 'For which page you would like attach design to?\n',
       patternArray: [],
     }
@@ -22,7 +24,7 @@ export default async (projectRoot) => {
     html.description = `${html.description}Select number from the list above`
 
     // Load list of avaliable design files
-    const designFiles = await afs.readdir(`${projectRoot}/src/designs`)
+    const designFiles = await afs.readdir(`${projectSrc}/designs`)
     let design = {
       files: designFiles.filter((n) => n.endsWith('.jpg') || n.endsWith('.jpeg') || n.endsWith('.png')),
       description: 'Which design you would like to apply to this page?\n',
@@ -60,10 +62,10 @@ export default async (projectRoot) => {
     const selectedDesign = design.files[designIndex]
 
     // Apply new design as a background CSS property
-    const path = `${projectRoot}/src/designs/connect-designs.css`
+    const path = `${projectSrc}/designs/connect-designs.css`
     await fs.ensureFileSync(path)
     const data = await afs.readFile(path, 'utf8')
-    let dimensions = sizeOf(`${projectRoot}/src/designs/${selectedDesign}`)
+    let dimensions = sizeOf(`${projectSrc}/designs/${selectedDesign}`)
 
     // If width is bigger than 2000px, that means that it is doublesize.
     if (dimensions.width >= 2000) {
