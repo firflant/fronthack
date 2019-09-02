@@ -48,7 +48,7 @@ export default async name => {
 
     // Install dependencies
     console.log(consoleColors.fronthack, 'Installing node dependencies...')
-    await shell.exec('yarn install && yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard', { silent: false })
+    await shell.exec('yarn install && yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard sass-lint', { silent: false })
 
     // Inject Fronthack development tools to a Webpack config.
     const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
@@ -57,9 +57,13 @@ export default async name => {
       .replace('  render () {', `  componentDidMount() {${scriptsImportTemplate}\n  }\n\n  render () {`)
     await afs.writeFile(`${projectRoot}/pages/_app.js`, newAppContent)
 
-    // Add eslint config.
+    // Add Eslint configuration file.
     const eslintContent = await afs.readFile(`${fronthackPath}/templates/.eslintrc`, 'utf8')
     await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
+
+    // Add Sass Lint configuration file.
+    const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
+    await afs.writeFile(`${projectRoot}/.sasslintrc`, sassLintRc)
 
     // Fetch base styles.
     await fetchComponent(projectRoot, config, 'style')

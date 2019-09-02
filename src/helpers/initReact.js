@@ -37,7 +37,7 @@ export default async name => {
     // Install additional dependencies.
     console.log(consoleColors.fronthack, 'Installing additional dependencies...')
     await shell.exec('yarn add @babel/plugin-transform-react-jsx-source copy-webpack-plugin node-sass bem-modifiers', { silent: true })
-    await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard', {  silent: true })
+    await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard sass-lint', {  silent: true })
     await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
 
     // Eject webpack config.
@@ -60,9 +60,13 @@ export default async name => {
       .concat(scriptsImportTemplate)
     await afs.writeFile(`${projectRoot}/src/index.js`, newIndexContent)
 
-    // Attach eslint config.
+    // Add Eslint configuration file.
     const eslintContent = await afs.readFile(`${fronthackPath}/templates/.eslintrc`, 'utf8')
     await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
+
+    // Add Sass Lint configuration file.
+    const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
+    await afs.writeFile(`${projectRoot}/.sasslintrc`, sassLintRc)
 
     // Remove files that are not required anymore.
     await fs.unlinkSync(`${projectRoot}/src/index.css`)

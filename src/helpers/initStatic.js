@@ -37,6 +37,14 @@ export default async name => {
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'static')
 
+    // Add Sass Lint configuration file.
+    const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
+    await afs.writeFile(`${projectRoot}/.sasslintrc`, sassLintRc)
+
+    // Add HTMLHint  configuration file.
+    const htmlHintRc = await afs.readFile(`${fronthackPath}/templates/.htmlhintrc`, 'utf8')
+    await afs.writeFile(`${projectRoot}/.htmlhintrc`, htmlHintRc)
+
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/src/designs`)
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')

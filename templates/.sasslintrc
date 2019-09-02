@@ -1,0 +1,52 @@
+#########################
+## Sass Lint Config File
+#########################
+# Linter Options
+options:
+  # Don't merge default rules
+  merge-default-rules: false
+# File Options
+files:
+  include:
+    - 'src/**/*.s+(a|c)ss'
+    - '_site/sass/**/*.s+(a|c)ss'
+    - 'components/**/*.s+(a|c)ss'
+    - 'style/**/*.s+(a|c)ss'
+# Rule Configuration
+rules:
+  attribute-quotes: 2
+  bem-depth: 2
+  border-zero:
+    - 2
+    -
+      convention: 'none'
+  clean-import-paths: 1
+  declarations-before-nesting: 2
+  empty-line-between-blocks: 2
+  final-newline: 2
+  indentation: 2
+  mixin-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: hyphenatedlowercase
+  nesting-depth: 1
+  no-duplicate-properties: 2
+  no-ids: 1
+  no-invalid-hex: 2
+  no-misspelled-properties: 2
+  pseudo-element: 2
+  space-after-bang: 2
+  space-after-colon: 2
+  space-after-comma: 2
+  space-around-operator: 2
+  space-before-bang: 2
+  space-before-colon: 2
+  space-between-parens: 2
+  variable-name-format:
+    - 2
+    -
+      allow-leading-underscore: false
+      convention: hyphenatedlowercase
+  quotes: 2
+  zero-unit: 2
