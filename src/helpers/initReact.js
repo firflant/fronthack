@@ -8,6 +8,7 @@ import consoleColors from './consoleColors'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
+import saveConfigFile from './saveConfigFile'
 
 
 export default async name => {
@@ -31,7 +32,7 @@ export default async name => {
     console.log(consoleColors.fronthack, 'Running create-react-app command...')
     await shell.exec(`npx create-react-app ${name}`)
     await shell.cd(name)
-    const currentPath = process.cwd()
+    const projectRoot = process.cwd()
 
     // Install additional dependencies.
     console.log(consoleColors.fronthack, 'Installing additional dependencies...')
@@ -43,42 +44,45 @@ export default async name => {
     console.log(consoleColors.fronthack, 'Customizing a project for Fronthack...')
     await shell.exec('echo y | yarn eject')
 
+    // Add fronthack configuration file.
+    const config = await saveConfigFile(fronthackPath, projectRoot, 'react')
+
     // Apply changes in App.js file.
-    const content = await afs.readFile(`${currentPath}/src/App.js`, 'utf8')
+    const content = await afs.readFile(`${projectRoot}/src/App.js`, 'utf8')
     const newContent = content.replace('./App.css', './style/index.sass')
-    await afs.writeFile(`${currentPath}/src/App.js`, newContent)
+    await afs.writeFile(`${projectRoot}/src/App.js`, newContent)
 
     // Apply changes in index.js file.
     const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
-    const indexContent = await afs.readFile(`${currentPath}/src/index.js`, 'utf8')
+    const indexContent = await afs.readFile(`${projectRoot}/src/index.js`, 'utf8')
     const newIndexContent = indexContent
       .replace("import './index.css';\n", '')
       .concat(scriptsImportTemplate)
-    await afs.writeFile(`${currentPath}/src/index.js`, newIndexContent)
+    await afs.writeFile(`${projectRoot}/src/index.js`, newIndexContent)
 
     // Attach eslint config.
     const eslintContent = await afs.readFile(`${fronthackPath}/templates/.eslintrc`, 'utf8')
-    await afs.writeFile(`${currentPath}/.eslintrc`, eslintContent)
+    await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
 
     // Remove files that are not required anymore.
-    await fs.unlinkSync(`${currentPath}/src/index.css`)
-    await fs.unlinkSync(`${currentPath}/src/App.css`)
+    await fs.unlinkSync(`${projectRoot}/src/index.css`)
+    await fs.unlinkSync(`${projectRoot}/src/App.css`)
 
     // Inject Fronthack development tools to a Webpack config.
     const WebpackFronthackScripts = await afs.readFile(`${fronthackPath}/templates/webpack.config.fronthack-scripts.js`, 'utf8')
-    const webpackConfContent = await afs.readFile(`${currentPath}/config/webpack.config.js`, 'utf8')
+    const webpackConfContent = await afs.readFile(`${projectRoot}/config/webpack.config.js`, 'utf8')
     const newWebpackConfContent = webpackConfContent
       .replace("require('webpack');", "require('webpack');\nconst CopyWebpackPlugin = require('copy-webpack-plugin');")
       .replace('WatchMissingNodeModulesPlugin(paths.appNodeModules),', `WatchMissingNodeModulesPlugin(paths.appNodeModules),\n${WebpackFronthackScripts}`)
-    await afs.writeFile(`${currentPath}/config/webpack.config.js`, newWebpackConfContent)
+    await afs.writeFile(`${projectRoot}/config/webpack.config.js`, newWebpackConfContent)
 
     // Prepare designs directory.
-    await fs.ensureDirSync(`${currentPath}/designs`)
+    await fs.ensureDirSync(`${projectRoot}/designs`)
     const readmeContent = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
-    await afs.writeFile(`${currentPath}/designs/README.md`, readmeContent)
+    await afs.writeFile(`${projectRoot}/designs/README.md`, readmeContent)
 
     // Fetch base styles.
-    await fetchComponent(currentPath, 'react', 'style')
+    await fetchComponent(projectRoot, config, 'style')
 
     // Fix all linting issues. Mainly semicolons and quotation marks.
     await shell.exec('npx eslint src --fix')

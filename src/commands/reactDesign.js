@@ -31,15 +31,16 @@ export default async (projectRoot) => {
         type: 'string',
         pattern: design.pattern,
         message: 'It must be a number from the list',
-        required: true
+        required: true,
       },
       {
         name: 'url',
-        description: 'Enter the url of the page you want to pair (example: "company/about-us"). Enter "index" for the base url path.\n',
+        description: 'Type a route of the page to pair (eg. index, news, about)\n',
         type: 'string',
         pattern: regex.validName,
         message: 'It must contain only alphanumeric characters, dashes, underscores or slashes.',
-        required: true
+        required: true,
+        default: 'index',
       },
     ])
 

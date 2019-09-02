@@ -25,14 +25,13 @@ const asyncForEach = async (array, callback) => {
 }
 
 
-export default async (projectRoot, projectType, machinename) => {
+export default async (projectRoot, config, machinename) => {
   try {
-    const projectSrc = `${projectRoot}${['react-next', 'jekyll'].includes(projectType) ? '' : '/src'}`
-
+    const projectSrc = `${projectRoot}${config.src}`
     // Exceptional behavior when fetching global styles.
     if (machinename === 'style') {
       const { content } = await fronthackGet('src/style')
-      const baseStylesPath = `${projectSrc}/${projectType.includes('react') ? 'style' : 'sass/base'}`
+      const baseStylesPath = `${projectSrc}/${config.type.includes('react') ? 'style' : 'sass/base'}`
       await fs.ensureDirSync(baseStylesPath)
       await asyncForEach(content, async (file) => {
         try {
@@ -44,7 +43,7 @@ export default async (projectRoot, projectType, machinename) => {
       })
 
     // Exceptional behavior when trying to fetch a Form component.
-    } else if (projectType.includes('react') && machinename === 'Form') {
+    } else if (config.type.includes('react') && machinename === 'Form') {
       console.log(consoleColors.fronthack, 'The advanced Fronthack Form component has been promoted to a standalone npm package. To use it on a project, do following:')
       console.log(consoleColors.fronthack, 'yarn add react-standalone-form')
 
@@ -54,7 +53,7 @@ export default async (projectRoot, projectType, machinename) => {
       const { content } = await fronthackGet('src/components')
 
       // For React version
-      if (projectType.includes('react')) {
+      if (config.type.includes('react')) {
         if (content.includes(machinename)) {
           const componentPath = `${projectSrc}/components/${machinename}`
           await fs.ensureDirSync(componentPath)
@@ -63,7 +62,7 @@ export default async (projectRoot, projectType, machinename) => {
           await asyncForEach(componentFiles, async (file) => {
             try {
               const { content: fileContent } = await fronthackGet(`src/components/${machinename}/${file}`)
-              const parsedContent = (projectType === 'react-next' && file === `${machinename}.js`)
+              const parsedContent = (config.type === 'react-next' && file === `${machinename}.js`)
                 ? fileContent.replace("import React from 'react'\n", '')
                 : fileContent
               await afs.writeFile(`${componentPath}/${file}`, parsedContent)
@@ -80,7 +79,7 @@ export default async (projectRoot, projectType, machinename) => {
             description: 'Write short component description',
             type: 'string',
           })
-          await generateReactComponent(projectRoot, projectType, 'component', machinename, description)
+          await generateReactComponent(projectRoot, config, 'component', machinename, description)
         }
 
       // For Static HTML version

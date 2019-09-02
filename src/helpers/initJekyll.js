@@ -5,11 +5,12 @@ import shell from 'shelljs'
 import copy from 'recursive-copy'
 import download from 'download'
 
-import getFronthackPath from '../helpers/getFronthackPath'
-import consoleColors from '../helpers/consoleColors'
-import fetchComponent from '../helpers/fetchComponent'
-import regex from '../helpers/regex'
-import userInput from '../helpers/userInput'
+import getFronthackPath from './getFronthackPath'
+import consoleColors from './consoleColors'
+import fetchComponent from './fetchComponent'
+import regex from './regex'
+import userInput from './userInput'
+import saveConfigFile from './saveConfigFile'
 
 
 export default async name => {
@@ -38,6 +39,9 @@ export default async name => {
     await copy(`${fronthackPath}/templates/jekyll-suite`, projectRoot, { overwrite: true })
     await shell.cd(projectRoot)
 
+    // Add fronthack configuration file.
+    const config = await saveConfigFile(fronthackPath, projectRoot, 'jekyll')
+
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/designs`)
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
@@ -45,7 +49,7 @@ export default async name => {
 
     // Arrange place for Sass and download global styles.
     await copy(`${fronthackPath}/templates/static-repo/src/sass`, `${projectRoot}/sass`)
-    await fetchComponent(`${projectRoot}`, 'jekyll', 'style')
+    await fetchComponent(projectRoot, config, 'style')
 
     // Include fronthack-scripts.
     await fs.ensureDirSync(`${projectRoot}/dev-assets`)

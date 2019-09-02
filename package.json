@@ -1,6 +1,6 @@
 {
   "name": "fronthack",
-  "version": "3.6.3",
+  "version": "3.7.0",
   "description": "The complete set of tools to convert designs into scalable, modular HTML and CSS",
   "dependencies": {
     "array-back": "^3.1.0",
@@ -29,7 +29,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "dev": "npm uninstall -g fronthack && npm install -g ./",
+    "dev": "npm run build && npm uninstall -g fronthack && npm install -g ./",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {

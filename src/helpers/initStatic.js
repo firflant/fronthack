@@ -3,12 +3,14 @@ import fs from 'fs-extra'
 import prompt from 'prompt'
 import shell from 'shelljs'
 import copy from 'recursive-copy'
-import getFronthackPath from '../helpers/getFronthackPath'
 
-import consoleColors from '../helpers/consoleColors'
-import fetchComponent from '../helpers/fetchComponent'
-import regex from '../helpers/regex'
-import userInput from '../helpers/userInput'
+import getFronthackPath from './getFronthackPath'
+import consoleColors from './consoleColors'
+import fetchComponent from './fetchComponent'
+import regex from './regex'
+import userInput from './userInput'
+import saveConfigFile from './saveConfigFile'
+
 
 export default async name => {
   try {
@@ -32,6 +34,9 @@ export default async name => {
     // Copy static-repo file tree from template.
     await copy(`${fronthackPath}/templates/static-repo`, projectRoot, { dot: true })
 
+    // Add fronthack configuration file.
+    const config = await saveConfigFile(fronthackPath, projectRoot, 'static')
+
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/src/designs`)
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
@@ -46,7 +51,7 @@ export default async name => {
     await shell.exec('yarn install')
 
     // Download global styles.
-    await fetchComponent(projectRoot, 'static', 'style')
+    await fetchComponent(projectRoot, config, 'style')
 
     // Do initial git commit.
     await shell.exec('git init')

@@ -9,6 +9,7 @@ import consoleColors from './consoleColors'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
+import saveConfigFile from './saveConfigFile'
 
 
 export default async name => {
@@ -34,6 +35,9 @@ export default async name => {
     await copy(`${fronthackPath}/templates/next-repo`, projectRoot, { dot: true })
     await shell.cd(projectRoot)
 
+    // Add fronthack configuration file.
+    const config = await saveConfigFile(fronthackPath, projectRoot, 'react-next')
+
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/designs`)
     const readmeContent = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
@@ -58,7 +62,7 @@ export default async name => {
     await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
 
     // Fetch base styles.
-    await fetchComponent(projectRoot, 'react-next', 'style')
+    await fetchComponent(projectRoot, config, 'style')
 
     // Do initial git commit.
     await shell.exec('git init')

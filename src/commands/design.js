@@ -5,14 +5,15 @@ import sizeOf from 'image-size'
 import userInput from '../helpers/userInput'
 
 
-export default async (projectRoot, projectType) => {
+export default async (projectRoot, config) => {
   try {
-    console.log('projectType: ', projectType);
     // Load list of avaliable html pages and prepare prompt data.
-    const projectSrc = `${projectRoot}${projectType === 'jekyll' ? '' : '/src'}`
+    const projectSrc = `${projectRoot}${config.src}`
     const pageFiles = await afs.readdir(projectSrc)
     let html = {
-      files: pageFiles.filter(n => n.includes('.html') ||  n.includes('.md')),
+      files: pageFiles.filter(n =>
+        n.includes('.html') || n.includes('.md') || n.includes('.markdown')
+      ),
       description: 'For which page you would like attach design to?\n',
       patternArray: [],
     }

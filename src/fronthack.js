@@ -9,7 +9,7 @@ import commandReactDesign from './commands/reactDesign'
 import commandList from './commands/list'
 import commandHelp from './commands/help'
 import commandVersion from './commands/version'
-import recognizeProjectType from './helpers/recognizeProjectType'
+import readConfig from './helpers/readConfig'
 import consoleColors from './helpers/consoleColors'
 
 import 'core-js/stable'
@@ -48,7 +48,7 @@ const defineProjectRoot = async () => {
 
 
 const runCommands = async () => {
-  let projectRoot, projectType
+  let projectRoot, config
   switch (command) {
     case 'init':
       commandInit(name)
@@ -56,23 +56,23 @@ const runCommands = async () => {
 
     case 'component':
       projectRoot = await defineProjectRoot()
-      projectType = await recognizeProjectType(projectRoot)
-      commandComponent(projectRoot, projectType, name)
+      config = await readConfig(projectRoot)
+      commandComponent(projectRoot, config, name)
       break
 
     case 'page':
       projectRoot = await defineProjectRoot()
-      projectType = await recognizeProjectType(projectRoot)
-      commandPage(projectRoot, projectType, name)
+      config = await readConfig(projectRoot)
+      commandPage(projectRoot, config, name)
       break
 
     case 'design':
       projectRoot = await defineProjectRoot()
-      projectType = await recognizeProjectType(projectRoot)
-      if (projectType.includes('react')) {
+      config = await readConfig(projectRoot)
+      if (config.type.includes('react')) {
         commandReactDesign(projectRoot)
       } else {
-        commandDesign(projectRoot, projectType)
+        commandDesign(projectRoot, config)
       }
       break
 
