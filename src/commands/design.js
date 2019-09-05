@@ -3,6 +3,7 @@ import fs from 'fs-extra'
 import prompt from 'prompt'
 import sizeOf from 'image-size'
 import userInput from '../helpers/userInput'
+import output from '../helpers/output'
 
 
 export default async (projectRoot, config) => {
@@ -76,7 +77,7 @@ export default async (projectRoot, config) => {
     await afs.writeFile(path, newData)
 
     // Display output.
-    console.log(`Done! ${selectedDesign} attached to ${selectedHtml} page.`)
+    output(`Done! ${selectedDesign} attached to ${selectedHtml} page.`)
   } catch (err) {
     throw new Error(err)
   }

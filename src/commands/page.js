@@ -4,6 +4,7 @@ import getFronthackPath from '../helpers/getFronthackPath'
 import regex from '../helpers/regex'
 import generateReactComponent from '../helpers/generateReactComponent'
 import userInput from '../helpers/userInput'
+import output from '../helpers/output'
 
 
 export default async (projectRoot, config, name) => {
@@ -25,20 +26,20 @@ export default async (projectRoot, config, name) => {
       if (config.type !== 'react-next') {
         generateReactComponent(projectRoot, config, 'page', name)
       } else {
-        console.log('Nothing happened! In NextJS please add new pages that manually, by creating a file in "/pages" directory.')
+        output('Nothing happened! In NextJS please add new pages that manually, by creating a file in "/pages" directory.')
       }
     } else {
       const fronthackPath = await getFronthackPath()
       if (config.type === 'static') {
         const content = await afs.readFile(`${fronthackPath}/templates/page.html`, 'utf8')
         await afs.writeFile(`${projectRoot}/src/${name}.html`, content)
-        console.log('Done!')
+        output('Done!')
       } else if (config.type === 'jekyll') {
         const content = await afs.readFile(`${fronthackPath}/templates/jekyll-suite/index.markdown`, 'utf8')
         await afs.writeFile(`${projectRoot}${config.src}/${name}.markdown`, content)
-        console.log('Done!')
+        output('Done!')
       } else {
-        console.log(`Error! Wrong action for the project of type "${config.type}".`)
+        output(`Error! Wrong action for the project of type "${config.type}".`)
       }
     }
   } catch (err) {

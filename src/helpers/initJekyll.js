@@ -6,7 +6,7 @@ import copy from 'recursive-copy'
 import download from 'download'
 
 import getFronthackPath from './getFronthackPath'
-import consoleColors from './consoleColors'
+import output from '../helpers/output'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
@@ -70,10 +70,10 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack init command"', { silent: true })
 
     // Output success messages.
-    console.log(consoleColors.fronthack, 'Fronthack Jekyll site is ready for hacking!\nBegin by typing:')
-    console.log('')
-    console.log(consoleColors.fronthack, `  cd ${name}\n  jekyll serve`)
-    console.log('')
+    output('Fronthack Jekyll site is ready for hacking!\nBegin by typing:')
+    output('')
+    output(`  cd ${name}\n  jekyll serve`)
+    output('')
   } catch (err) {
     throw new Error(err)
   }

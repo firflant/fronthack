@@ -1,5 +1,5 @@
 import * as afs from 'async-file'
-import consoleColors from './consoleColors'
+import output from './output'
 
 
 export default async (fronthackPath, projectRoot, type) => {
@@ -13,7 +13,7 @@ export default async (fronthackPath, projectRoot, type) => {
     await afs.writeFile(`${projectRoot}/.fronthack`, filledConfig)
     return JSON.parse(filledConfig)
   } catch (err) {
-    console.log(consoleColors.error, 'Could not save the .fronthack configuration file.')
+    output('Could not save the .fronthack configuration file.', 'error')
     throw true
   }
 }

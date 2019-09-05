@@ -4,7 +4,7 @@ import * as afs from 'async-file'
 import fs from 'fs-extra'
 
 import getFronthackPath from './getFronthackPath'
-import consoleColors from './consoleColors'
+import output from './output'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
@@ -29,19 +29,19 @@ export default async name => {
     const fronthackPath = await getFronthackPath()
 
     // Create React app.
-    console.log(consoleColors.fronthack, 'Running create-react-app command...')
+    output('Running create-react-app command...')
     await shell.exec(`npx create-react-app ${name}`)
     await shell.cd(name)
     const projectRoot = process.cwd()
 
     // Install additional dependencies.
-    console.log(consoleColors.fronthack, 'Installing additional dependencies...')
+    output('Installing additional dependencies...')
     await shell.exec('yarn add @babel/plugin-transform-react-jsx-source copy-webpack-plugin node-sass bem-modifiers', { silent: true })
     await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard sass-lint', {  silent: true })
     await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
 
     // Eject webpack config.
-    console.log(consoleColors.fronthack, 'Customizing a project for Fronthack...')
+    output('Customizing a project for Fronthack...')
     await shell.exec('echo y | yarn eject')
 
     // Add fronthack configuration file.
@@ -96,11 +96,11 @@ export default async name => {
     await shell.exec('git commit -m "Added fronthack stuff"', { silent: true})
 
     // Display output.
-    console.log(consoleColors.fronthack, 'Opinionated Fronthack React project is ready for hacking!\nBegin by typing:')
-    console.log('')
-    console.log(consoleColors.fronthack, `  cd ${name}`)
-    console.log(consoleColors.fronthack, '  yarn start')
-    console.log('')
+    output('Opinionated Fronthack React project is ready for hacking!\nBegin by typing:')
+    output('')
+    output(`  cd ${name}`)
+    output('  yarn start')
+    output('')
   } catch (err) {
     throw new Error(err)
   }

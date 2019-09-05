@@ -1,4 +1,5 @@
 import * as afs from 'async-file'
+import output from './output'
 
 
 /**
@@ -12,7 +13,7 @@ export default async (projectSrc, type, machinename) => {
     const data = await afs.readFile(`${projectSrc}/sass/app.sass`, 'utf8')
     const newData = data.replace(`New ${type}s`, `New ${type}s\n@import "${type}s/${machinename}"`)
     await afs.writeFile(`${projectSrc}/sass/app.sass`, newData)
-    console.log('Import added to app.sass')
+    output('Import added to app.sass')
   } catch (err) {
     throw new Error(err)
   }

@@ -3,7 +3,7 @@ import fs from 'fs-extra'
 import changeCase from 'case'
 
 import getFronthackPath from './getFronthackPath'
-import consoleColors from './consoleColors'
+import output from '../helpers/output'
 import userInput from './userInput'
 
 
@@ -40,7 +40,7 @@ export default async (projectRoot, config, type, machinename, description = null
     let parsedReactPage = reactPage.replace(/PageName/g, machinename)
     if (config.type === 'react-next') parsedReactPage = parsedReactPage.replace("import React from 'react'\n", '')
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}.js`, parsedReactPage)
-    console.log(consoleColors.fronthack, 'Created new page.')
+    output('Created new page.')
   } else {
     await fs.ensureDirSync(`${projectSrc}/${type}s/${machinename}`)
     // Fetch React component template
@@ -65,6 +65,6 @@ export default async (projectRoot, config, type, machinename, description = null
     const indexFile = await afs.readFile(`${fronthackPath}/templates/react-component-index.js`, 'utf8')
     const parsedIndexFile = indexFile.replace('ComponentName', machinename)
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}/index.js`, parsedIndexFile)
-    console.log(consoleColors.fronthack, 'Component created.')
+    output('Component created.')
   }
 }

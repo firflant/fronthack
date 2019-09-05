@@ -1,5 +1,5 @@
 import * as afs from 'async-file'
-import consoleColors from './consoleColors'
+import output from './output'
 
 /**
  * Checks whether current dir is a React project.
@@ -10,7 +10,7 @@ export default async projectRoot => {
     const config = await afs.readFile(`${projectRoot}/.fronthack`, 'utf8')
     return JSON.parse(config)
   } catch (err) {
-    console.log(consoleColors.error, 'Could not read the "type" variable in .fronthack configuration file of this project.')
+    output('Could not read the "type" variable in .fronthack configuration file of this project.', 'error')
     throw true
   }
 }

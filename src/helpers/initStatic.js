@@ -5,7 +5,7 @@ import shell from 'shelljs'
 import copy from 'recursive-copy'
 
 import getFronthackPath from './getFronthackPath'
-import consoleColors from './consoleColors'
+import output from './output'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
@@ -55,7 +55,7 @@ export default async name => {
 
     // Install dependencies.
     await shell.cd(projectRoot)
-    console.log(consoleColors.fronthack, 'Installing node dependencies...')
+    output('Installing node dependencies...')
     await shell.exec('yarn install')
 
     // Download global styles.
@@ -67,10 +67,10 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack init command"', { silent: true })
 
     // Output success messages.
-    console.log(consoleColors.fronthack, 'Fronthack Static HTML+jQuery project is ready for hacking!\nBegin by typing:')
-    console.log('')
-    console.log(consoleColors.fronthack, `  cd ${name}\n  yarn start`)
-    console.log('')
+    output('Fronthack Static HTML+jQuery project is ready for hacking!\nBegin by typing:')
+    output('')
+    output(`  cd ${name}\n  yarn start`)
+    output('')
   } catch (err) {
     throw new Error(err)
   }

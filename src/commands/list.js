@@ -1,11 +1,11 @@
 import openUrl from 'openurl'
-import consoleColors from '../helpers/consoleColors'
+import output from '../helpers/output'
 
 export default () => {
-  const url = 'https://frontcraft.github.io/fronthack-components/?selectedKind=Components%2FBasic%20styles&selectedStory=default'
-  console.log('')
-  console.log(consoleColors.fronthack, 'Browse a library of ready Fronthack components here:')
-  console.log(consoleColors.fronthack, url)
-  console.log('')
+  const url = 'https://docs.fronthack.com/?path=/story/components-basic-styles--default'
+  output('')
+  output('Browse a library of ready Fronthack components here:')
+  output(url)
+  output('')
   openUrl.open(url)
 }

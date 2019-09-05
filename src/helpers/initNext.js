@@ -5,7 +5,7 @@ import shell from 'shelljs'
 import copy from 'recursive-copy'
 import getFronthackPath from './getFronthackPath'
 
-import consoleColors from './consoleColors'
+import output from './output'
 import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
@@ -47,7 +47,7 @@ export default async name => {
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
     // Install dependencies
-    console.log(consoleColors.fronthack, 'Installing node dependencies...')
+    output('Installing node dependencies...')
     await shell.exec('yarn install && yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard sass-lint', { silent: false })
 
     // Inject Fronthack development tools to a Webpack config.
@@ -74,11 +74,11 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack"', { silent: true})
 
     // Display output.
-    console.log(consoleColors.fronthack, 'Fronthack static site is ready for hacking!\nBegin by typing:')
-    console.log('')
-    console.log(consoleColors.fronthack, `  cd ${name}`)
-    console.log(consoleColors.fronthack, '  yarn dev')
-    console.log('')
+    output('Fronthack static site is ready for hacking!\nBegin by typing:')
+    output('')
+    output(`  cd ${name}`)
+    output('  yarn dev')
+    output('')
   } catch (err) {
     throw new Error(err)
   }

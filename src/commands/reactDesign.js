@@ -4,6 +4,7 @@ import prompt from 'prompt'
 import sizeOf from 'image-size'
 import regex from '../helpers/regex'
 import userInput from '../helpers/userInput'
+import output from '../helpers/output'
 
 
 export default async (projectRoot) => {
@@ -61,7 +62,7 @@ export default async (projectRoot) => {
     await afs.writeFile(devCss, newData)
 
     // Display output.
-    console.log(`Done! ${selectedDesign} attached to ${selectedHtml} page.`)
+    output(`Done! ${selectedDesign} attached to ${selectedHtml} page.`)
   } catch (err) {
     throw new Error(err)
   }

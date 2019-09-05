@@ -2,7 +2,7 @@ import * as afs from 'async-file'
 import changeCase from 'case'
 import { highlight } from 'cli-highlight'
 import getFronthackPath from '../helpers/getFronthackPath'
-import consoleColors from './consoleColors'
+import output from '../helpers/output'
 import addImportToApp from './addImportToApp'
 
 
@@ -23,8 +23,8 @@ export default async (projectSrc, type, machinename, description = null) => {
   if (description) parsedSassContent = parsedSassContent.replace('Description', description)
   await afs.writeFile(`${projectSrc}/sass/${type}s/_${machinename}.sass`, parsedSassContent)
   await addImportToApp(projectSrc, type, machinename)
-  console.log(consoleColors.fronthack, '\n--------------------------------------------------\n')
-  console.log(consoleColors.fronthack, `New element can have folowing initial HTML markup:\n`)
+  output('\n--------------------------------------------------\n')
+  output(`New element can have folowing initial HTML markup:\n`)
   console.log(highlight(`<div class="${machinename}"></div>`, { language: 'html' }))
-  console.log(consoleColors.fronthack, '\n--------------------------------------------------\n')
+  output('\n--------------------------------------------------\n')
 }

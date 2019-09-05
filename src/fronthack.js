@@ -10,7 +10,7 @@ import commandList from './commands/list'
 import commandHelp from './commands/help'
 import commandVersion from './commands/version'
 import readConfig from './helpers/readConfig'
-import consoleColors from './helpers/consoleColors'
+import output from './helpers/output'
 
 import 'core-js/stable'
 import 'regenerator-runtime/runtime'
@@ -42,7 +42,7 @@ const defineProjectRoot = async () => {
       throw true
     }
   } catch (err) {
-    console.log(consoleColors.error, 'You are not in a scope of Fronthack project.')
+    output('You are not in a scope of Fronthack project.', 'error')
   }
 }
 
@@ -88,8 +88,8 @@ const runCommands = async () => {
       commandVersion()
       break
 
-    case null:
-      console.log(consoleColors.fronthack, 'You did not passed any operation. Type \'fronthack help\' for help.')
+    default:
+      output('This is not a valid command. Type \'fronthack help\' for help.', 'warn')
       break
   }
 }

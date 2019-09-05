@@ -5,7 +5,7 @@ import initJekyll from '../helpers/initJekyll'
 import initReact from '../helpers/initReact'
 import initNext from '../helpers/initNext'
 import userInput from '../helpers/userInput'
-import consoleColors from '../helpers/consoleColors'
+import output from '../helpers/output'
 
 export default async nameParam => {
   try {
@@ -21,27 +21,27 @@ export default async nameParam => {
 
     switch (technology) {
       case 1:
-        console.log(consoleColors.fronthack, 'Initializing a static site on Gulp with Fronthack boilerplate...')
+        output('Initializing a static site on Gulp with Fronthack boilerplate...')
         initStatic(nameParam)
         break
 
       case 2:
-        console.log(consoleColors.fronthack, 'Initializing a static site on Jekyll with Fronthack boilerplate...')
+        output('Initializing a static site on Jekyll with Fronthack boilerplate...')
         initJekyll(nameParam)
         break
 
       case 3:
-        console.log(consoleColors.fronthack, 'Initializing a React app with Fronthack boilerplate...')
+        output('Initializing a React app with Fronthack boilerplate...')
         initReact(nameParam)
         break
 
       case 4:
-        console.log(consoleColors.fronthack, 'Initializing a Next.js app with Fronthack boilerplate...')
+        output('Initializing a Next.js app with Fronthack boilerplate...')
         initNext(nameParam)
         break
 
       default:
-        console.log(consoleColors.error, 'Select one from numbers above.')
+        output('Select one from the numbers above.', 'error')
         break
     }
 

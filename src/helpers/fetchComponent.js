@@ -4,7 +4,7 @@ import githubGet from 'github-get'
 import changeCase from 'case'
 import { highlight } from 'cli-highlight'
 
-import consoleColors from './consoleColors'
+import output from '../helpers/output'
 import generateSassComponent from './generateSassComponent'
 import generateReactComponent from './generateReactComponent'
 import addImportToApp from './addImportToApp'
@@ -44,12 +44,12 @@ export default async (projectRoot, config, machinename) => {
 
     // Exceptional behavior when trying to fetch a Form component.
     } else if (config.type.includes('react') && machinename === 'Form') {
-      console.log(consoleColors.fronthack, 'The advanced Fronthack Form component has been promoted to a standalone npm package. To use it on a project, do following:')
-      console.log(consoleColors.fronthack, 'yarn add react-standalone-form')
+      output('The advanced Fronthack Form component has been promoted to a standalone npm package. To use it on a project, do following:')
+      output('yarn add react-standalone-form')
 
     // Behavior when fetching everything else.
     } else {
-      console.log(consoleColors.fronthack, 'Fetching data from a Fronthack components repository...')
+      output('Fetching data from a Fronthack components repository...')
       const { content } = await fronthackGet('src/components')
 
       // For React version
@@ -70,10 +70,10 @@ export default async (projectRoot, config, machinename) => {
               throw new Error(err)
             }
           })
-          console.log(consoleColors.fronthack, 'Found Fronthack component of given name and imported its code.')
+          output('Found Fronthack component of given name and imported its code.')
         } else {
-          console.log(consoleColors.fronthack, `There is no ready Fronthack component of name ${machinename}.`)
-          console.log(consoleColors.fronthack, 'Generating a new blank one...')
+          output(`There is no ready Fronthack component of name ${machinename}.`)
+          output('Generating a new blank one...')
           const { description } = await userInput({
             name: 'description',
             description: 'Write short component description',
@@ -95,15 +95,15 @@ export default async (projectRoot, config, machinename) => {
           await afs.writeFile(`${projectSrc}/sass/components/_${machinename}.sass`, parsedContent)
           // Read static.html and display it on the screen.
           const { content: readmeContent } = await fronthackGet(`src/components/${pascalCase}/README.md`)
-          console.log(consoleColors.fronthack, 'Found Fronthack component of given name and imported its code.')
+          output('Found Fronthack component of given name and imported its code.')
           const markup = readmeContent.match(/(?<=```html\n)[\s\S]*?(?=\n```)/m)[0]
-          console.log(consoleColors.fronthack, '\n------------------------------------------------------------\n')
+          output('\n------------------------------------------------------------\n')
           console.log(highlight(markup, { language: 'html' }))
-          console.log(consoleColors.fronthack, '\n------------------------------------------------------------\n')
+          output('\n------------------------------------------------------------\n')
           await addImportToApp(projectSrc, 'component', machinename)
         } else {
-          console.log(consoleColors.fronthack, `There is no ready Fronthack component of name ${machinename}.`)
-          console.log(consoleColors.fronthack, 'Generating a new blank one...')
+          output(`There is no ready Fronthack component of name ${machinename}.`)
+          output('Generating a new blank one...')
           const { description } = await userInput({
             name: 'description',
             description: 'Write short component description',
