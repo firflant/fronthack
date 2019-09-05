@@ -7,4 +7,8 @@ export default (message, type) => {
       ? consoleColors.warning
       : consoleColors.fronthack
   console.log(color, message)
+  if (type === 'error') {
+    console.log(consoleColors.error, 'Exiting.')
+    process.exit(1)
+  }
 }

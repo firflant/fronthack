@@ -15,7 +15,7 @@ export default async nameParam => {
       name: 'technology',
       description: 'Pick a technology:\n1. Basic static site\n2. Jekyll\n3. React\n4. Next.js\n',
       type: 'number',
-      pattern: '1|2|3',
+      pattern: '1|2|3|4',
       message: 'Select one from numbers above.',
     })
 
@@ -41,7 +41,7 @@ export default async nameParam => {
         break
 
       default:
-        output('Select one from the numbers above.', 'error')
+        output('Select one from the numbers above.', 'warn')
         break
     }
 

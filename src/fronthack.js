@@ -47,51 +47,53 @@ const defineProjectRoot = async () => {
 }
 
 
-const runCommands = async () => {
-  let projectRoot, config
-  switch (command) {
-    case 'init':
-      commandInit(name)
-      break
+(async () => {
+  try {
+    let projectRoot, config
+    switch (command) {
+      case 'init':
+        await commandInit(name)
+        break
 
-    case 'component':
-      projectRoot = await defineProjectRoot()
-      config = await readConfig(projectRoot)
-      commandComponent(projectRoot, config, name)
-      break
+      case 'component':
+        projectRoot = await defineProjectRoot()
+        config = await readConfig(projectRoot)
+        await commandComponent(projectRoot, config, name)
+        break
 
-    case 'page':
-      projectRoot = await defineProjectRoot()
-      config = await readConfig(projectRoot)
-      commandPage(projectRoot, config, name)
-      break
+      case 'page':
+        projectRoot = await defineProjectRoot()
+        config = await readConfig(projectRoot)
+        await commandPage(projectRoot, config, name)
+        break
 
-    case 'design':
-      projectRoot = await defineProjectRoot()
-      config = await readConfig(projectRoot)
-      if (config.type.includes('react')) {
-        commandReactDesign(projectRoot)
-      } else {
-        commandDesign(projectRoot, config)
-      }
-      break
+      case 'design':
+        projectRoot = await defineProjectRoot()
+        config = await readConfig(projectRoot)
+        if (config.type.includes('react')) {
+          await commandReactDesign(projectRoot)
+        } else {
+          await commandDesign(projectRoot, config)
+        }
+        break
 
-    case 'list':
-      commandList()
-      break
+      case 'list':
+        commandList()
+        break
 
-    case 'help':
-      commandHelp()
-      break
+      case 'help':
+        commandHelp()
+        break
 
-    case 'version':
-      commandVersion()
-      break
+      case 'version':
+        commandVersion()
+        break
 
-    default:
-      output('This is not a valid command. Type \'fronthack help\' for help.', 'warn')
-      break
+      default:
+        output('This is not a valid command. Type \'fronthack help\' for help.', 'warn')
+        break
+    }
+  } catch (err) {
+    output('Action cancelled.')
   }
-}
-
-runCommands()
+})()

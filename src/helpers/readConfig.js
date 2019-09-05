@@ -10,7 +10,7 @@ export default async projectRoot => {
     const config = await afs.readFile(`${projectRoot}/.fronthack`, 'utf8')
     return JSON.parse(config)
   } catch (err) {
-    output('Could not read the "type" variable in .fronthack configuration file of this project.', 'error')
+    output('Could not parse the "type" variable in .fronthack configuration file of this project.', 'error')
     throw true
   }
 }
