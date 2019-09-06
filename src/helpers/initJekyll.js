@@ -42,6 +42,9 @@ export default async name => {
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'jekyll')
 
+    // Install jekyll-babel gem.
+    await shell.exec('gem install jekyll-babel')
+
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/designs`)
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')

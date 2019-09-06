@@ -56,3 +56,6 @@ plugins:
 
 sass:
   sass_dir: sass
+
+gems:
+  - jekyll-babel
