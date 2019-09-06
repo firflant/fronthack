@@ -70,7 +70,7 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack init command"', { silent: true })
 
     // Output success messages.
-    output('Fronthack Jekyll site is ready for hacking!\nBegin by typing:')
+    output('Fronthack project with Jekyll features is ready for hacking!\nBegin by typing:')
     output('')
     output(`  cd ${name}\n  jekyll serve`)
     output('')

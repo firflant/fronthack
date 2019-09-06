@@ -74,7 +74,7 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack"', { silent: true})
 
     // Display output.
-    output('Fronthack static site is ready for hacking!\nBegin by typing:')
+    output('Fronthack React project with Next.js features is ready for hacking!\nBegin by typing:')
     output('')
     output(`  cd ${name}`)
     output('  yarn dev')

@@ -96,7 +96,7 @@ export default async name => {
     await shell.exec('git commit -m "Added fronthack stuff"', { silent: true})
 
     // Display output.
-    output('Opinionated Fronthack React project is ready for hacking!\nBegin by typing:')
+    output('Fronthack React project is ready for hacking!\nBegin by typing:')
     output('')
     output(`  cd ${name}`)
     output('  yarn start')
