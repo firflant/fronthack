@@ -22,5 +22,5 @@ fronthack help
 ## File structure explanation
 
 Confused about file structure of this directory?
-Visit [Fronthack wiki](https://github.com/frontcraft/fronthack-repo/wiki/2.-File-structure-explanation)
+Visit [Fronthack Docs](https://docs.fronthack.com/?path=/story/docs-file-structure--static-html)
 for explanation.
