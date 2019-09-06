@@ -1,1 +1,0 @@
-Store all javascript files here.

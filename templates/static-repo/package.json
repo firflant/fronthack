@@ -1,20 +1,24 @@
 {
   "name": "fronthack-static",
   "version": "0.0.1",
-  "description": "File structure bootstrapped with Fronthack",
+  "description": "Project boilerplate initiated by Fronthack",
   "scripts": {
-    "start": "gulp dev",
-    "build": "gulp build",
+    "start": "gulp",
+    "build": "gulp --production",
     "deploy": "gh-pages -d dist"
   },
   "devDependencies": {
-    "fronthack-scripts": "0.0.10",
+    "@babel/core": "^7.5.5",
+    "@babel/preset-env": "^7.5.5",
+    "fronthack-scripts": "^0.0.10",
     "gh-pages": "^1.0.0",
     "gulp": "~3.9.1",
     "gulp-autoprefixer": "^3.1.1",
+    "gulp-babel": "^8.0.0",
     "gulp-delete-lines": "0.0.7",
     "gulp-imagemin": "^3.4.0",
     "gulp-jsmin": "^0.1.5",
+    "gulp-mode": "^1.0.2",
     "gulp-mustache": "~2.3.0",
     "gulp-rename": "~1.2.2",
     "gulp-sass": "~3.1.0",
@@ -29,26 +33,5 @@
     "node": ">=0.10.0"
   },
   "main": "gulpfile.js",
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/frontcraft/fronthack.git"
-  },
-  "keywords": [
-    "css",
-    "sass",
-    "html",
-    "bem",
-    "smacss",
-    "ui",
-    "framework",
-    "styleguide",
-    "gulp"
-  ],
-  "author": "Michal Kokocinski <michal@kokocinski.me> (http://kokocinski.me)",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/frontcraft/fronthack/issues"
-  },
-  "homepage": "http://fronthack.com",
   "dependencies": {}
 }
