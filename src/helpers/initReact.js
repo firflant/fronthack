@@ -34,15 +34,17 @@ export default async name => {
     await shell.cd(name)
     const projectRoot = process.cwd()
 
+    // Eject webpack config.
+    await shell.exec('git add -A && git commit -m "Created React app"', { silent: true })
+    output('Customizing a project for Fronthack...')
+    await shell.exec('echo y | yarn eject')
+
     // Install additional dependencies.
     output('Installing additional dependencies...')
     await shell.exec('yarn add @babel/plugin-transform-react-jsx-source copy-webpack-plugin node-sass bem-modifiers', { silent: true })
-    await shell.exec('yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard sass-lint', {  silent: true })
+    // TODO: write own React boilerplate with correct dependency tree instead of using CRAP.
+    await shell.exec('yarn add fronthack-scripts eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-standard sass-lint', {  silent: true })
     await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
-
-    // Eject webpack config.
-    output('Customizing a project for Fronthack...')
-    await shell.exec('echo y | yarn eject')
 
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'react')
