@@ -1,5 +1,5 @@
 
-// This is an entrypoint for the Fronthack development scripts. If you remove
-// it, you will loose the ability to use a following tools: design overlay and
-// canvas, which are described here: http://docs.fronthack.com/en/recognition
-(process.env.NODE_ENV === 'development') && import('fronthack-scripts')
+// This is an entrypoint for the Fronthack development scripts - design overlay
+// and canvas planning tool.
+/// https://docs.fronthack.com/?path=/story/docs-recognition-of-designs--read
+process.env.NODE_ENV === 'development' && import('fronthack-scripts')

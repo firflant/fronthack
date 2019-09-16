@@ -31,7 +31,7 @@ export default async name => {
     const projectRoot = `${process.cwd()}/${name}`
     const fronthackPath = await getFronthackPath()
 
-    // Copy static-repo file tree template
+    // Copy next-repo file tree template
     await copy(`${fronthackPath}/templates/next-repo`, projectRoot, { dot: true })
     await shell.cd(projectRoot)
 
