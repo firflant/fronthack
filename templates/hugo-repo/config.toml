@@ -1,0 +1,4 @@
+languageCode = "en-us"
+title = "Fronthack Hugo Site"
+baseurl = "http://example.org/"
+publishDir = "dist"

@@ -4,6 +4,7 @@ import initStatic from '../helpers/initStatic'
 import initJekyll from '../helpers/initJekyll'
 import initReact from '../helpers/initReact'
 import initNext from '../helpers/initNext'
+import initHugo from '../helpers/initHugo'
 import userInput from '../helpers/userInput'
 import output from '../helpers/output'
 
@@ -13,9 +14,9 @@ export default async nameParam => {
     prompt.start()
     const { technology } = await userInput({
       name: 'technology',
-      description: 'Pick a technology:\n1. Basic static site\n2. Jekyll\n3. React\n4. Next.js\n',
+      description: 'Pick a technology:\n1. Basic static site\n2. Jekyll\n3. React\n4. Next.js\n5. Hugo\n',
       type: 'number',
-      pattern: '1|2|3|4',
+      pattern: '1|2|3|4|5',
       message: 'Select one from numbers above.',
     })
 
@@ -38,6 +39,11 @@ export default async nameParam => {
       case 4:
         output('Initializing a Next.js app with Fronthack boilerplate...')
         initNext(nameParam)
+        break
+
+      case 5:
+        output('Initializing a static site on Hugo with Fronthack boilerplate...')
+        initHugo(nameParam)
         break
 
       default:

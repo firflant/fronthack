@@ -1,0 +1,16 @@
+{
+  "name": "fronthack-hugo",
+  "version": "0.0.1",
+  "description": "File structure bootstrapped with Fronthack",
+  "scripts": {
+    "start": "hugo server -D",
+    "build": "hugo",
+    "deploy": "gh-pages -d dist"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "devDependencies": {
+    "gh-pages": "latest"
+  }
+}

@@ -11,7 +11,7 @@ import output from './output'
 export default async (projectSrc, type, machinename) => {
   try {
     const data = await afs.readFile(`${projectSrc}/sass/app.sass`, 'utf8')
-    const newData = data.replace(`New ${type}s`, `New ${type}s\n@import "${type}s/${machinename}"`)
+    const newData = data.replace(`New ${type}s`, `New ${type}s\n@import '${type}s/${machinename}'`)
     await afs.writeFile(`${projectSrc}/sass/app.sass`, newData)
     output('Import added to app.sass')
   } catch (err) {

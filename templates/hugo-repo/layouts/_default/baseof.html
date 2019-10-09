@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="/assets/fronthack.css" />
+    <link type="application/atom+xml" rel="alternate" href="http://localhost:4000/feed.xml" title="Your awesome title" />
+    {{ block "head" . }}
+    {{ end }}
+  </head>
+
+  <body>
+    {{ block "main" . }}
+    {{ end }}
+
+    <!-- Development script - ignored on production build -->
+    <script type="text/javascript" src="/dev.js"></script>
+    <!-- Main JS file -->
+    <script type="text/javascript" src="/assets/js/index.js"></script>
+    {{ block "scripts" . }}
+    {{ end }}
+  </body>
+</html>
