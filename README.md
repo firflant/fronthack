@@ -1,6 +1,9 @@
 # Fronthack
-Fronthack is a boilerplate and development tool to convert any design into a
-high quality HTML and CSS. For more info visit [fronthack.com](http://fronthack.com/).
+
+Fronthack has been founded to convert any design into a high quality, modular frontend. It is a generator tool in form of a commandline, that ships initial codebases (boilerplates) for **React**, **Next**, **Jekyll** and **Static site** projects. It contains a [variety of UI elements](https://docs.fronthack.com/?path=/story/components-basic-styles--default) that works very well with these boilerplates. It proposes an opinionated worflow for creating [JAMstack](https://jamstack.org/) projects.
+
+#### [Visit website](http://fronthack.com)
+#### [Read the docs](https://docs.fronthack.com/)
 
 ## Instalation
 ```
@@ -22,21 +25,14 @@ yarn global add fronthack
 | `fronthack version`   | Display currently installed version of Fronthack.                                              |
 
 
-## Static project scripts
+## Project scripts
 
 | Command               | Description                                                                                   |
 |-----------------------|-----------------------------------------------------------------------------------------------|
-| `yarn start`          | Run a local dev server with helpfull development scripts and livereload.                      |
+| `yarn start`          | Runs a local dev server with helpfull development scripts and livereload.                     |
 | `yarn build`          | Compiles a standalone "dist" directory with minified files, that are ready to deploy.         |
 | `yarn deploy`         | If your repository is hosted on GitHub, it deploys compiled "dist" directory to GitHub pages. |
 
-
-## React project scripts
-
-| Command               | Description                  |
-|-----------------------|------------------------------|
-| `yarn start`          | Run a local dev server.      |
-| `yarn build`          | Compiles a production build. |
 
 --------------------------------------------------
 Fronthack has been founded thanks to project development in
