@@ -1,0 +1,17 @@
+{
+  "name": "fronthack-jekyll",
+  "version": "0.0.1",
+  "description": "File structure bootstrapped with Fronthack",
+  "scripts": {
+    "start": "jekyll serve",
+    "build": "JEKYLL_ENV=production jekyll build",
+    "deploy": "gh-pages -d _site",
+    "preinstall": "gem install jekyll bundler && bundle install"
+  },
+  "engines": {
+    "node": ">=0.10.0"
+  },
+  "devDependencies": {
+    "gh-pages": "latest"
+  }
+}

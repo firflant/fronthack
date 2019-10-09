@@ -63,8 +63,8 @@ export default async name => {
     // Fetch base styles.
     await fetchComponent(projectRoot, config, 'style')
 
-    // Fix all linting issues. Mainly semicolons and quotation marks.
-    // await shell.exec('npx eslint src --fix')
+    // Rename .gitignore template.
+    await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
     // Install dependencies.
     await shell.exec('yarn install')

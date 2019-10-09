@@ -11,6 +11,7 @@ import fetchComponent from './fetchComponent'
 import regex from './regex'
 import userInput from './userInput'
 import saveConfigFile from './saveConfigFile'
+import consoleColors from './consoleColors'
 
 
 export default async name => {
@@ -35,15 +36,16 @@ export default async name => {
     // Create new Jekyll project
     await shell.exec(`jekyll new ${name}`)
 
-    // Copy static-repo file tree from template.
-    await copy(`${fronthackPath}/templates/jekyll-suite`, projectRoot, { overwrite: true })
+    // Copy jekyll-suite file tree from template.
+    await copy(
+      `${fronthackPath}/templates/jekyll-suite`,
+      projectRoot,
+      { overwrite: true, dot: true }
+    )
     await shell.cd(projectRoot)
 
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'jekyll')
-
-    // Install jekyll-babel gem.
-    await shell.exec('gem install jekyll-babel')
 
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/designs`)
@@ -67,6 +69,9 @@ export default async name => {
     const pictureIcon = await download(`${fronthackScriptsUrl}dev-assets/icons/picture-o.png`)
     await afs.writeFile(`${projectRoot}/dev-assets/icons/picture-o.png`, pictureIcon)
 
+    // Rename .gitignore template.
+    await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
+
     // Do initial git commit.
     await shell.exec('git init')
     await shell.exec('git add .', { silent: true })
@@ -75,7 +80,7 @@ export default async name => {
     // Output success messages.
     output('Fronthack project with Jekyll features is ready for hacking!\nBegin by typing:')
     output('')
-    output(`  cd ${name}\n  jekyll serve`)
+    output(`  cd ${name}\n  yarn start`)
     output('')
   } catch (err) {
     throw new Error(err)

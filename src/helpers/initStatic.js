@@ -50,7 +50,7 @@ export default async name => {
     const content = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
     await afs.writeFile(`${projectRoot}/src/designs/README.md`, content)
 
-    // .gitignore is named .gitignore_template to not be ignored during the insstalation.
+    // Rename .gitignore template.
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
     // Install dependencies.
