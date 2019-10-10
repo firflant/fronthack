@@ -45,21 +45,22 @@ export default async name => {
     await afs.writeFile(`${projectRoot}/designs/README.md`, content)
 
     // Arrange place for Sass and download global styles.
-    await copy(`${fronthackPath}/templates/static-repo/src/sass`, `${projectRoot}/sass`)
+    await copy(`${fronthackPath}/templates/static-repo/src/sass`, `${projectRoot}/assets/sass`)
     await fetchComponent(projectRoot, config, 'style')
 
     // Include fronthack-scripts.
-    await fs.ensureDirSync(`${projectRoot}/dev-assets`)
-    await fs.ensureDirSync(`${projectRoot}/dev-assets/icons`)
+    await fs.ensureDirSync(`${projectRoot}/static`)
+    await fs.ensureDirSync(`${projectRoot}/static/dev-assets`)
+    await fs.ensureDirSync(`${projectRoot}/static/dev-assets/icons`)
     const fronthackScriptsUrl = 'https://raw.githubusercontent.com/frontcraft/fronthack-scripts/master/'
     const indexJs = await download(`${fronthackScriptsUrl}index.js`)
-    await afs.writeFile(`${projectRoot}/dev.js`, indexJs)
+    await afs.writeFile(`${projectRoot}/static/dev.js`, indexJs)
     const styles = await download(`${fronthackScriptsUrl}dev-assets/styles.css`)
-    await afs.writeFile(`${projectRoot}/dev-assets/styles.css`, styles)
+    await afs.writeFile(`${projectRoot}/static/dev-assets/styles.css`, styles)
     const codeIcon = await download(`${fronthackScriptsUrl}dev-assets/icons/code.png`)
-    await afs.writeFile(`${projectRoot}/dev-assets/icons/code.png`, codeIcon)
+    await afs.writeFile(`${projectRoot}/static/dev-assets/icons/code.png`, codeIcon)
     const pictureIcon = await download(`${fronthackScriptsUrl}dev-assets/icons/picture-o.png`)
-    await afs.writeFile(`${projectRoot}/dev-assets/icons/picture-o.png`, pictureIcon)
+    await afs.writeFile(`${projectRoot}/static/dev-assets/icons/picture-o.png`, pictureIcon)
 
     // Rename .gitignore template.
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
