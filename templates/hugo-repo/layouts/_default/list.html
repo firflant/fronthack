@@ -1,3 +1,5 @@
 {{ define "main" }}
-  This is the list template.
+  {{ range .Pages }}
+    <h3>{{ .Title }}</h3>
+  {{ end }}
 {{ end }}
