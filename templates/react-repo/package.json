@@ -11,6 +11,9 @@
     "presets": [
       "@babel/preset-env",
       "@babel/preset-react"
+    ],
+    "plugins": [
+      "@babel/plugin-transform-runtime"
     ]
   },
   "browserslist": {
@@ -32,6 +35,7 @@
   },
   "devDependencies": {
     "@babel/core": "latest",
+    "@babel/plugin-transform-runtime": "latest",
     "@babel/preset-env": "latest",
     "@babel/preset-react": "latest",
     "autoprefixer": "latest",

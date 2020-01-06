@@ -19,13 +19,13 @@ module.exports = {
     rules: [
 
       {
-        test: /\.(js|jsx)$/,
+        test: /\.s[ac]ss|css$/i,
         include: path.join(__dirname, '/src'),
         use: ['babel-loader'],
       },
 
       {
-        test: /\.s[ac]ss$/i,
+        test: /\.s[ac]ss|css$/i,
         use: [
           'style-loader',
           'css-loader',
@@ -35,11 +35,18 @@ module.exports = {
               ident: 'postcss',
               plugins: [
                 require('autoprefixer'),
-                require('cssnano')
+                require('cssnano'),
               ],
             },
           },
           'sass-loader',
+        ],
+      },
+
+      {
+        test: /\.(png|svg|jpg|gif)$/,
+        use: [
+          'file-loader',
         ],
       },
 
@@ -61,7 +68,13 @@ module.exports = {
     ]),
 
     new ManifestPlugin({
-      fileName: 'asset-manifest.json',
+      seed: {
+        short_name: 'Fronthack React App',
+        name: 'Fronthack React App',
+        theme_color: '#1fc59c',
+        background_color: '#1fc59c',
+        display: 'standalone',
+      },
     }),
 
     new GenerateSW({
