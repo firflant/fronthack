@@ -19,9 +19,9 @@ module.exports = {
     rules: [
 
       {
-        test: /\.s[ac]ss|css$/i,
-        include: path.join(__dirname, '/src'),
-        use: ['babel-loader'],
+        test: /\.(js|jsx)$/,
+        include: path.join(__dirname, 'src'),
+        use: 'babel-loader',
       },
 
       {
