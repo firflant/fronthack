@@ -31,7 +31,8 @@
   "dependencies": {
     "bem-modifiers": "latest",
     "react": "latest",
-    "react-dom": "latest"
+    "react-dom": "latest",
+    "workbox-window": "latest"
   },
   "devDependencies": {
     "@babel/core": "latest",
@@ -65,7 +66,6 @@
     "webpack-cleanup-plugin": "latest",
     "webpack-cli": "latest",
     "webpack-dev-server": "latest",
-    "webpack-manifest-plugin": "latest",
     "webpack-merge": "latest",
     "workbox-webpack-plugin": "latest"
   }

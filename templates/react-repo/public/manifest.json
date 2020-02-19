@@ -1,0 +1,8 @@
+{
+  "short_name": "Fronthack React App",
+  "name": "Fronthack React App",
+  "start_url": ".",
+  "theme_color": "#1fc59c",
+  "background_color": "#1fc59c",
+  "display": "standalone"
+}

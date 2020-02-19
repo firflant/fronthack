@@ -1,8 +1,7 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
-const ManifestPlugin = require('webpack-manifest-plugin')
-const { GenerateSW } = require('workbox-webpack-plugin')
+const { InjectManifest } = require('workbox-webpack-plugin')
 const WebpackCleanupPlugin = require('webpack-cleanup-plugin')
 
 
@@ -11,7 +10,8 @@ module.exports = {
 
   output: {
     path: path.join(__dirname, '/build'),
-    filename: 'main.js',
+    filename: '[name].bundle.js',
+    chunkFilename: '[name].bundle.js',
     publicPath: '/',
   },
 
@@ -20,7 +20,7 @@ module.exports = {
 
       {
         test: /\.(js|jsx)$/,
-        include: path.join(__dirname, 'src'),
+        include: path.join(__dirname, '/src'),
         use: 'babel-loader',
       },
 
@@ -67,19 +67,9 @@ module.exports = {
       },
     ]),
 
-    new ManifestPlugin({
-      seed: {
-        short_name: 'Fronthack React App',
-        name: 'Fronthack React App',
-        theme_color: '#1fc59c',
-        background_color: '#1fc59c',
-        display: 'standalone',
-      },
-    }),
-
-    new GenerateSW({
-      clientsClaim: true,
-      exclude: [/asset-manifest\.json$/],
+    new InjectManifest({
+      swSrc: './src/serviceWorker.js',
+      swDest: 'service-worker.js',
     }),
 
     new WebpackCleanupPlugin(),
