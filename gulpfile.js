@@ -42,6 +42,11 @@ var paths = {
     output: './dist/images',
     outputDev: './.dev/images'
   },
+  redirects: {
+    input: './src/_redirects',
+    output: './dist',
+    outputDev: './.dev'
+  },
   devScripts: {
     input: './node_modules/fronthack-scripts/**/*',
     output: './.dev',
@@ -130,6 +135,12 @@ gulp.task('images-dev', function() {
   gulp.src(paths.images.input)
     .pipe(gulp.dest(paths.images.outputDev));
 });
+
+// Define Netlify redirects file copying.
+gulp.task('redirects', function() {
+  gulp.src(paths.redirects.input)
+    .pipe(gulp.dest(paths.redirects.output));
+});
 // Define creating of symlink to designs
 gulp.task('designs', function() {
   vfs.src('src/designs', {followSymlinks: false})
@@ -154,6 +165,7 @@ gulp.task('dev', [
     'images-dev',
     'designs',
     'dev-scripts',
+    'redirects',
     'devserver'
   ], function() {
   gulp.watch([
@@ -161,7 +173,7 @@ gulp.task('dev', [
     paths.mustache.allfiles,
     paths.images.input,
     paths.js.input,
-    paths.devScripts.input
+    paths.devScripts.input,
   ], [
     'sass-dev',
     'js-dev',
@@ -169,7 +181,8 @@ gulp.task('dev', [
     'fonts-dev',
     'images-dev',
     'designs',
-    'dev-scripts'
+    'redirects',
+    'dev-scripts',
   ]);
 });
 
@@ -179,5 +192,6 @@ gulp.task('build', [
     'js',
     'mustache',
     'fonts',
-    'images'
+    'images',
+    'redirects',
 ]);
