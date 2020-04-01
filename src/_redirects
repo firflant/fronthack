@@ -1,0 +1,4 @@
+https://docs.fronthack.com/* https://frontcraft.github.io/fronthack-components/:splat 200
+https://docs.fronthack.com https://frontcraft.github.io/fronthack-components/index.html 200
+/docs/* https://frontcraft.github.io/fronthack-components/:splat 200
+/docs https://frontcraft.github.io/fronthack-components 200
