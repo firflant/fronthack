@@ -30,9 +30,9 @@
   },
   "dependencies": {
     "bem-modifiers": "latest",
-    "react": "latest",
-    "react-dom": "latest",
-    "workbox-window": "latest"
+    "react": "^16.13.1",
+    "react-dom": "^16.13.1",
+    "workbox-window": "^4.3.1"
   },
   "devDependencies": {
     "@babel/core": "latest",
@@ -67,6 +67,6 @@
     "webpack-cli": "latest",
     "webpack-dev-server": "latest",
     "webpack-merge": "latest",
-    "workbox-webpack-plugin": "latest"
+    "workbox-webpack-plugin": "^4.3.1"
   }
 }

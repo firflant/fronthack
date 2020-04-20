@@ -60,7 +60,7 @@ module.exports = {
 
     new CopyWebpackPlugin([
       {
-        from: '**/*.*',
+        from: '**/*',
         to: './',
         context: './public/',
         ignore: ['index.html'],
@@ -70,6 +70,9 @@ module.exports = {
     new InjectManifest({
       swSrc: './src/serviceWorker.js',
       swDest: 'service-worker.js',
+      exclude: [
+        /_redirects$/,
+      ],
     }),
 
     new WebpackCleanupPlugin(),
