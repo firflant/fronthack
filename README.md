@@ -14,8 +14,6 @@ yarn global add fronthack
 
 ### Generator commands
 
-| Command               | Description                                                                                    |
-|-----------------------|------------------------------------------------------------------------------------------------|
 | `fronthack init`      | Initiate a new Fronthack project in picked technology.                                         |
 | `fronthack component` | Generate a new blank component or fetch the exists one of that name from Fronthack repository. |
 | `fronthack page`      | Generate a new page.                                                                           |
