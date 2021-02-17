@@ -8,9 +8,6 @@
     "deploy": "gh-pages -d _site",
     "preinstall": "gem install jekyll bundler && bundle install"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "devDependencies": {
     "gh-pages": "latest"
   }

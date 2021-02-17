@@ -23,8 +23,5 @@
     "presets": [
       "@babel/preset-env"
     ]
-  },
-  "engines": {
-    "node": ">=0.10.0"
   }
 }

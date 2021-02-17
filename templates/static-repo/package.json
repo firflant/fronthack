@@ -29,9 +29,6 @@
     "sass-lint": "^1.13.1",
     "vinyl-fs": "^2.4.4"
   },
-  "engines": {
-    "node": ">=0.10.0"
-  },
   "main": "gulpfile.js",
   "dependencies": {}
 }
