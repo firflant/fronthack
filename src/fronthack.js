@@ -94,6 +94,7 @@ const defineProjectRoot = async () => {
         break
     }
   } catch (err) {
+    console.log('err: ', err);
     output('Action cancelled.')
   }
 })()
