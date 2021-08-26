@@ -4,7 +4,6 @@ import changeCase from 'case'
 
 import getFronthackPath from './getFronthackPath'
 import output from '../helpers/output'
-import userInput from './userInput'
 
 
 export default async (projectRoot, config, type, machinename, description = null) => {
@@ -17,20 +16,7 @@ export default async (projectRoot, config, type, machinename, description = null
       break;
 
     default:
-      if (config.type !== 'react-next') {
-        const { componentType } = await userInput({
-          name: 'componentType',
-          description: `Choose a type of component?\n1 - Stateless ( const ${machinename} = () => )\n2 - Class     ( class ${machinename} extends React.Component )\n`,
-          pattern: '1|2',
-          message: 'Choose option "1" or "2"',
-          type: 'number',
-        })
-        reactComponentTemplatePath = (componentType === 1)
-          ? `${fronthackPath}/templates/react-component-functional.js`
-          : `${fronthackPath}/templates/react-component-class.js`
-      } else {
-        reactComponentTemplatePath = `${fronthackPath}/templates/react-component-functional.js`
-      }
+      reactComponentTemplatePath = `${fronthackPath}/templates/react-component-functional.js`
       break;
   }
 
