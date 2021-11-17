@@ -1,7 +1,8 @@
 /src
 node_modules
 .babelrc
-.eslintrc
+/.eslintrc
 .gitignore
+.nvmrc
 npm-debug.log
 yarn-error.log

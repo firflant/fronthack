@@ -35,8 +35,6 @@ export default async name => {
     await copy(`${fronthackPath}/templates/react-repo`, projectRoot, { dot: true })
     await shell.cd(projectRoot)
 
-    // await shell.exec('git add . && git commit -m "Added fronthack dependencies"', { silent: true })
-
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'react')
 
