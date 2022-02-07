@@ -1,5 +1,5 @@
 const { merge } = require('webpack-merge')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const common = require('./webpack.common.js')
 
 module.exports = merge(common, {
@@ -22,9 +22,11 @@ module.exports = merge(common, {
 
   plugins: [
     // Copy Fronthack scripts and designs.
-    new CopyWebpackPlugin([
-      { from: 'designs', to: 'designs' },
-      { from: 'node_modules/fronthack-scripts/dev-assets', to: 'dev-assets' },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        { from: 'designs', to: 'designs' },
+        { from: 'node_modules/fronthack-scripts/dev-assets', to: 'dev-assets' },
+      ],
+    }),
   ],
 })

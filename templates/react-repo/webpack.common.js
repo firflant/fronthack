@@ -1,8 +1,8 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const CopyPlugin = require('copy-webpack-plugin')
 const { InjectManifest } = require('workbox-webpack-plugin')
-const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 
 module.exports = {
@@ -32,11 +32,12 @@ module.exports = {
           {
             loader: 'postcss-loader',
             options: {
-              ident: 'postcss',
-              plugins: [
-                require('autoprefixer'),
-                require('cssnano'),
-              ],
+              postcssOptions: {
+                plugins: [
+                  require('autoprefixer'),
+                  require('cssnano'),
+                ],
+              },
             },
           },
           'sass-loader',
@@ -58,14 +59,18 @@ module.exports = {
       template: './public/index.html',
     }),
 
-    new CopyWebpackPlugin([
-      {
-        from: '**/*',
-        to: './',
-        context: './public/',
-        ignore: ['index.html'],
-      },
-    ]),
+    new CopyPlugin({
+      patterns: [
+        {
+          from: '**/*',
+          to: './',
+          context: './public/',
+          globOptions: {
+            ignore: ['**/index.html'],
+          },
+        },
+      ],
+    }),
 
     new InjectManifest({
       swSrc: './src/serviceWorker.js',

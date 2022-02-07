@@ -1,16 +1,15 @@
-import prompt from 'prompt'
-import shell from 'shelljs'
-import copy from 'recursive-copy'
 import * as afs from 'async-file'
-import fs from 'fs-extra'
 
+import copy from 'recursive-copy'
+import fetchComponent from './fetchComponent'
+import fs from 'fs-extra'
 import getFronthackPath from './getFronthackPath'
 import output from './output'
-import fetchComponent from './fetchComponent'
+import prompt from 'prompt'
 import regex from './regex'
-import userInput from './userInput'
 import saveConfigFile from './saveConfigFile'
-
+import shell from 'shelljs'
+import userInput from './userInput'
 
 export default async name => {
   try {
@@ -44,10 +43,6 @@ export default async name => {
     const newIndexContent = indexContent
       .concat(scriptsImportTemplate)
     await afs.writeFile(`${projectRoot}/src/index.js`, newIndexContent)
-
-    // Add Eslint configuration file.
-    const eslintContent = await afs.readFile(`${fronthackPath}/templates/.eslintrc`, 'utf8')
-    await afs.writeFile(`${projectRoot}/.eslintrc`, eslintContent)
 
     // Add Sass Lint configuration file.
     const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
