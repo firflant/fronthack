@@ -29,7 +29,7 @@
   "main": "index.js",
   "scripts": {
     "build": "babel src -d lib",
-    "dev": "npm run build && npm uninstall -g fronthack && npm install -g ./",
+    "dev": "yarn build && yarn global remove fronthack && yarn global add file:/Users/michal/Projects/fronthack/fronthack",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
