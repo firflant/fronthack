@@ -10,8 +10,16 @@ module.exports = merge(common, {
     historyApiFallback: true,
   },
 
+  devtool: 'source-map',
+
   module: {
     rules: [
+      {
+        enforce: 'pre',
+        test: /\.js$/,
+        exclude: /node_modules/,
+        loader: 'source-map-loader',
+      },
       // Enable support for loading fronthack-scripts.
       {
         test: /\.exec\.js$/,

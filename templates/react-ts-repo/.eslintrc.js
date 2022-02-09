@@ -1,13 +1,14 @@
-const path = require('path')
-
 module.exports = {
-  parser: '@babel/eslint-parser',
-  parserOptions: {
-    babelOptions: {
-      configFile: path.join(__dirname, '.babelrc'),
-    },
-  },
-  extends: ['standard', 'standard-jsx', 'standard-react'],
+  root: true,
+  parser: '@typescript-eslint/parser',
+  plugins: [
+    '@typescript-eslint',
+    'react-hooks',
+  ],
+  extends: [
+    'plugin:react/recommended',
+    'plugin:@typescript-eslint/recommended',
+  ],
   rules: {
     'comma-dangle': ['warn', {
       arrays: 'always-multiline',
@@ -34,5 +35,11 @@ module.exports = {
     'react/no-did-update-set-state': 'warn',
     'react/prop-types': 'off',
     'react/react-in-jsx-scope': 'off',
+  },
+  settings: {
+    react: {
+      pragma: 'React',
+      version: 'detect',
+    },
   },
 }

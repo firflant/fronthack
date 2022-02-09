@@ -6,7 +6,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 
 module.exports = {
-  entry: './src/index.ts',
+  entry: './src/index.tsx',
 
   output: {
     path: path.join(__dirname, '/build'),
@@ -25,7 +25,7 @@ module.exports = {
       {
         test: /\.(ts|tsx|js|jsx)$/,
         include: path.join(__dirname, '/src'),
-        use: 'babel-loader',
+        use: 'ts-loader',
       },
 
       {
