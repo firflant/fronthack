@@ -22,7 +22,7 @@ export default async name => {
         type: 'string',
         pattern: regex.projectName,
         message: 'Name must be only letters, numbers dashes or underscores',
-        default: 'fronthack-next'
+        default: 'fronthack-react-ts'
       })
       name = namePrompt
     }
@@ -31,37 +31,36 @@ export default async name => {
     const fronthackPath = await getFronthackPath()
 
     // Copy next-repo file tree template
-    await copy(`${fronthackPath}/templates/next-repo`, projectRoot, { dot: true })
+    await copy(`${fronthackPath}/templates/react-ts-repo`, projectRoot, { dot: true })
     await shell.cd(projectRoot)
 
     // Add fronthack configuration file.
-    const config = await saveConfigFile(fronthackPath, projectRoot, 'react-next')
+    const config = await saveConfigFile(fronthackPath, projectRoot, 'react')
+
+    // Apply changes in index.js file.
+    const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
+    const indexContent = await afs.readFile(`${projectRoot}/src/index.ts`, 'utf8')
+    const newIndexContent = indexContent
+      .concat(scriptsImportTemplate)
+    await afs.writeFile(`${projectRoot}/src/index.ts`, newIndexContent)
+
+    // Add Sass Lint configuration file.
+    const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
+    await afs.writeFile(`${projectRoot}/.sasslintrc`, sassLintRc)
 
     // Prepare designs directory.
     await fs.ensureDirSync(`${projectRoot}/designs`)
     const readmeContent = await afs.readFile(`${fronthackPath}/templates/designs-readme.md`, 'utf8')
     await afs.writeFile(`${projectRoot}/designs/README.md`, readmeContent)
 
+    // Fetch base styles.
+    await fetchComponent(projectRoot, config, 'style')
+
     // Rename .gitignore template.
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
-    // Install dependencies
-    output('Installing node dependencies...')
-    await shell.exec('yarn install && yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard sass-lint', { silent: false })
-
-    // Inject Fronthack development tools to a Webpack config.
-    const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
-    const appContent = await afs.readFile(`${projectRoot}/pages/_app.js`, 'utf8')
-    const newAppContent = appContent
-      .replace('  render () {', `  componentDidMount() {${scriptsImportTemplate}\n  }\n\n  render () {`)
-    await afs.writeFile(`${projectRoot}/pages/_app.js`, newAppContent)
-
-    // Add Sass Lint configuration file.
-    const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
-    await afs.writeFile(`${projectRoot}/.sasslintrc`, sassLintRc)
-
-    // Fetch base styles.
-    await fetchComponent(projectRoot, config, 'style')
+    // Install dependencies.
+    await shell.exec('yarn install')
 
     // Do initial git commit.
     await shell.exec('git init')
@@ -69,10 +68,10 @@ export default async name => {
     await shell.exec('git commit -m "Repository initiated by fronthack"', { silent: true})
 
     // Display output.
-    output('Fronthack React project with Next.js features is ready for hacking!\nBegin by typing:')
+    output('Fronthack React project is ready for hacking!\nBegin by typing:')
     output('')
     output(`  cd ${name}`)
-    output('  yarn dev')
+    output('  yarn start')
     output('')
   } catch (err) {
     throw new Error(err)
