@@ -16,14 +16,14 @@ module.exports = {
   },
 
   resolve: {
-    extensions: ['.ts', '.js'],
+    extensions: ['.ts', '.tsx', '.js', '.jsx'],
   },
 
   module: {
     rules: [
 
       {
-        test: /\.(ts|js)$/,
+        test: /\.(ts|tsx|js|jsx)$/,
         include: path.join(__dirname, '/src'),
         use: 'babel-loader',
       },
