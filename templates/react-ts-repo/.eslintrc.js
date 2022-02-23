@@ -30,7 +30,6 @@ module.exports = {
     'react/jsx-closing-bracket-location': ['error', 'line-aligned'],
     'react/jsx-closing-tag-location': 'off',
     'react/jsx-curly-newline': 'off',
-    'react/jsx-no-bind': 'warn',
     'react/jsx-no-undef': 'off',
     'react/no-did-update-set-state': 'warn',
     'react/prop-types': 'off',
