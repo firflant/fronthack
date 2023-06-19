@@ -39,10 +39,10 @@ export default async name => {
 
     // Apply changes in index.js file.
     const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
-    const indexContent = await afs.readFile(`${projectRoot}/src/index.ts`, 'utf8')
+    const indexContent = await afs.readFile(`${projectRoot}/src/index.tsx`, 'utf8')
     const newIndexContent = indexContent
       .concat(scriptsImportTemplate)
-    await afs.writeFile(`${projectRoot}/src/index.ts`, newIndexContent)
+    await afs.writeFile(`${projectRoot}/src/index.tsx`, newIndexContent)
 
     // Add Sass Lint configuration file.
     const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
