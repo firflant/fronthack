@@ -8,7 +8,7 @@ export default async (fronthackPath, projectRoot, type) => {
     const config = await afs.readFile(`${fronthackPath}/templates/.fronthack`, 'utf8')
     const filledConfig = config
       .replace('TYPE_UNDEFINED', type)
-      .replace('SRC_UNDEFINED', ['react', 'static'].includes(type) ? '/src' : type === 'hugo' ? '/assets' : '')
+      .replace('SRC_UNDEFINED', ['react', 'static'].includes(type) ? '/src' : '')
       .replace('VERSION_UNDEFINED', JSON.parse(fronthackJson).version)
     await afs.writeFile(`${projectRoot}/.fronthack`, filledConfig)
     return JSON.parse(filledConfig)
