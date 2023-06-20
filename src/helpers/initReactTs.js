@@ -37,7 +37,7 @@ export default async name => {
     // Add fronthack configuration file.
     const config = await saveConfigFile(fronthackPath, projectRoot, 'react')
 
-    // Apply changes in index.js file.
+    // Add fronthack scripts import.
     const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
     const indexContent = await afs.readFile(`${projectRoot}/src/index.tsx`, 'utf8')
     const newIndexContent = indexContent

@@ -1,16 +1,24 @@
-const withSass = require('@zeit/next-sass')
-const CopyWebpackPlugin = require('copy-webpack-plugin')
+const path = require('path')
+const CopyPlugin = require('copy-webpack-plugin')
 
-module.exports = withSass({
-  webpack(config, { dev, isServer }) {
+module.exports = {
+  sassOptions: {
+    includePaths: [path.join(__dirname, 'styles')],
+  },
+  webpack: (
+    config,
+    { dev, isServer }
+  ) => {
     // Webpack configuration for fronthack-scripts assets.
     if (dev && !isServer) {
-      config.plugins.push(new CopyWebpackPlugin([
-        { from: 'designs', to: 'static/designs' },
-        { from: 'node_modules/fronthack-scripts/dev-assets', to: 'static/dev-assets' },
-      ]))
+      config.plugins.push(new CopyPlugin({
+        patterns: [
+          { from: 'designs', to: 'public/designs' },
+          { from: 'node_modules/fronthack-scripts/dev-assets', to: 'public/dev-assets' },
+        ],
+      }))
     }
     // Further custom configuration here
     return config
-  }
-})
+  },
+}

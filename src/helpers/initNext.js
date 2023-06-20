@@ -45,16 +45,12 @@ export default async name => {
     // Rename .gitignore template.
     await fs.renameSync(`${projectRoot}/.gitignore_template`, `${projectRoot}/.gitignore`)
 
-    // Install dependencies
-    output('Installing node dependencies...')
-    await shell.exec('yarn install && yarn add --dev fronthack-scripts eslint babel-eslint eslint-config-standard eslint-config-standard-react eslint-plugin-node eslint-plugin-promise eslint-plugin-react eslint-plugin-standard sass-lint', { silent: false })
-
-    // Inject Fronthack development tools to a Webpack config.
+    // Add fronthack scripts import.
     const scriptsImportTemplate = await afs.readFile(`${fronthackPath}/templates/fronthack-scripts-import.js`, 'utf8')
-    const appContent = await afs.readFile(`${projectRoot}/pages/_app.js`, 'utf8')
+    const appContent = await afs.readFile(`${projectRoot}/src/pages/_app.tsx`, 'utf8')
     const newAppContent = appContent
-      .replace('  render () {', `  componentDidMount() {${scriptsImportTemplate}\n  }\n\n  render () {`)
-    await afs.writeFile(`${projectRoot}/pages/_app.js`, newAppContent)
+      .concat(scriptsImportTemplate)
+    await afs.writeFile(`${projectRoot}/src/pages/_app.tsx`, newAppContent)
 
     // Add Sass Lint configuration file.
     const sassLintRc = await afs.readFile(`${fronthackPath}/templates/.sasslintrc`, 'utf8')
@@ -62,6 +58,9 @@ export default async name => {
 
     // Fetch base styles.
     await fetchComponent(projectRoot, config, 'style')
+
+    // Install dependencies.
+    await shell.exec('yarn install')
 
     // Do initial git commit.
     await shell.exec('git init')

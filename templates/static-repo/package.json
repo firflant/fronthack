@@ -1,6 +1,6 @@
 {
   "name": "fronthack-static",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "Project boilerplate initiated by Fronthack",
   "scripts": {
     "start": "gulp",
