@@ -5,6 +5,7 @@
   "devDependencies": {
     "flexboxgrid-sass": "^8.0.5",
     "fronthack-scripts": "0.0.10",
+    "gh-pages": "1.2.0",
     "gulp": "~3.9.1",
     "gulp-autoprefixer": "^3.1.1",
     "gulp-delete-lines": "0.0.7",
@@ -24,7 +25,8 @@
   "scripts": {
     "dev": "gulp dev",
     "start": "yarn dev",
-    "build": "gulp build"
+    "build": "gulp build",
+    "deploy": "yarn build && gh-pages -d dist"
   },
   "main": "gulpfile.js",
   "repository": {
