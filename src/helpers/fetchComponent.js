@@ -57,7 +57,7 @@ export default async (projectRoot, config, machinename) => {
           const componentPath = `${projectSrc}/components/${machinename}`
           await fs.ensureDirSync(componentPath)
           const { content } = await fronthackGet(`src/components/${machinename}`)
-          const componentFiles = content.filter(file => file!== 'EXAMPLE.js')
+          const componentFiles = content.filter(file => !['EXAMPLE.js', 'README.md'].includes(file))
           await asyncForEach(componentFiles, async (file) => {
             try {
               const { content: fileContent } = await fronthackGet(`src/components/${machinename}/${file}`)
