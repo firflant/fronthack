@@ -1,7 +1,6 @@
 const path = require('path')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const CopyPlugin = require('copy-webpack-plugin')
-const { InjectManifest } = require('workbox-webpack-plugin')
 const { CleanWebpackPlugin } = require('clean-webpack-plugin')
 
 
@@ -73,14 +72,6 @@ module.exports = {
             ignore: ['**/index.html'],
           },
         },
-      ],
-    }),
-
-    new InjectManifest({
-      swSrc: './src/serviceWorker.js',
-      swDest: 'service-worker.js',
-      exclude: [
-        /_redirects$/,
       ],
     }),
 

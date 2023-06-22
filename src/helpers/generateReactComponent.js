@@ -6,7 +6,7 @@ import getFronthackPath from './getFronthackPath'
 import output from '../helpers/output'
 
 
-export default async (projectRoot, config, type, machinename, description = null) => {
+export default async (projectRoot, config, type, machinename) => {
   const fronthackPath = await getFronthackPath()
   const projectSrc = `${projectRoot}${config.src}`
   let reactComponentTemplatePath
@@ -37,7 +37,6 @@ export default async (projectRoot, config, type, machinename, description = null
       .replace(/ComponentName/g, machinename)
       .replace('component-name', kebabCase)
     if (config.type === 'react-next') parsedReactComponent = parsedReactComponent.replace("import React from 'react'\n", '')
-    if (description) parsedReactComponent = parsedReactComponent.replace('Description', description)
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}/${machinename}.js`, parsedReactComponent)
     // Fetch sass template
     const sassContent = await afs.readFile(`${fronthackPath}/templates/sass-component.sass`, 'utf8')
@@ -45,7 +44,6 @@ export default async (projectRoot, config, type, machinename, description = null
       .replace('// Name', "@import '../../style/variables'\n@import '../../style/mixins'\n\n// Name")
       .replace('Name', humanCase)
       .replace(/name/g, kebabCase)
-    if (description) parsedSassContent = parsedSassContent.replace('Description', description)
     await afs.writeFile(`${projectSrc}/${type}s/${machinename}/style.sass`, parsedSassContent)
     // Fetch index file template
     const indexFile = await afs.readFile(`${fronthackPath}/templates/react-component-index.js`, 'utf8')

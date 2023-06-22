@@ -2,12 +2,11 @@ module.exports = {
   root: true,
   parser: '@typescript-eslint/parser',
   plugins: [
-    '@typescript-eslint',
-    'react-hooks',
+    'prettier',
   ],
   extends: [
-    'next/core-web-vitals',
-    'plugin:@typescript-eslint/recommended',
+    'react-app',
+    'prettier',
   ],
   rules: {
     'comma-dangle': ['warn', {
@@ -41,4 +40,5 @@ module.exports = {
       version: 'detect',
     },
   },
+  ignorePatterns: ["serviceWorker.*", "enableServiceWorker.*"],
 }

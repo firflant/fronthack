@@ -8,7 +8,6 @@ import output from '../helpers/output'
 import generateSassComponent from './generateSassComponent'
 import generateReactComponent from './generateReactComponent'
 import addImportToApp from './addImportToApp'
-import userInput from '../helpers/userInput'
 
 
 const fronthackGet = (path) => new Promise((resolve, reject) => {
@@ -74,12 +73,7 @@ export default async (projectRoot, config, machinename) => {
         } else {
           output(`There is no ready Fronthack component of name ${machinename}.`)
           output('Generating a new blank one...')
-          const { description } = await userInput({
-            name: 'description',
-            description: 'Write short component description',
-            type: 'string',
-          })
-          await generateReactComponent(projectRoot, config, 'component', machinename, description)
+          await generateReactComponent(projectRoot, config, 'component', machinename)
         }
 
       // For Static HTML version
@@ -104,12 +98,7 @@ export default async (projectRoot, config, machinename) => {
         } else {
           output(`There is no ready Fronthack component of name ${machinename}.`)
           output('Generating a new blank one...')
-          const { description } = await userInput({
-            name: 'description',
-            description: 'Write short component description',
-            type: 'string',
-          })
-          await generateSassComponent(projectSrc, 'component', machinename, description)
+          await generateSassComponent(projectSrc, 'component', machinename)
         }
       }
     }
